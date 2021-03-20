@@ -1,0 +1,41 @@
+.productos{text-decoration: none;
+    
+    width: 100%;
+    margin: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow:0px 1px 10px rgba(0,0,0,0.2);
+    cursor: default;
+    transition: all 400ms ease;
+
+}
+
+.productos .informacion{
+padding: 15px;
+text-align: center;
+line-height: 1.5;
+color:#6a6a6a;
+}
+
+.productos img{
+width: 100%;
+height: 110%;
+}
+
+.container{
+    width:50%;
+    display:flexbox;
+    max-width: 300px;
+}
+
+.productos .precio{
+text-decoration: none;
+display: 10px;
+padding: 10px;
+margin-top: 10px;
+color: #2fb4cc;
+border: 1px solid #2fb4cc;
+border-radius: 4px;
+transition: all 400ms ease;
+}
