@@ -17,6 +17,8 @@ import { ContenedorProductosComponent } from './components-contenedores/contened
 import { ContenedorCitasComponent } from './components-contenedores/contenedor-citas/contenedor-citas.component';
 import { ContenedorComprarComponent } from './components-contenedores/contenedor-comprar/contenedor-comprar.component';
 import { CitasComponent } from './components-contenedores/citas/citas.component';
+import { FormularioComponent } from './components-contenedores/formulario/formulario.component';
+import { ImagenComponent } from './components-contenedores/imagen/imagen.component';
 
 
 
@@ -37,7 +39,9 @@ import { CitasComponent } from './components-contenedores/citas/citas.component'
     ContenedorProductosComponent,
     ContenedorCitasComponent,
     ContenedorComprarComponent,
-    CitasComponent
+    CitasComponent,
+    FormularioComponent,
+    ImagenComponent
     ],
   imports: [
     BrowserModule,
