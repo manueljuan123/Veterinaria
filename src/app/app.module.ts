@@ -2,16 +2,20 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
-import { LoginComponent } from './components/login/login.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { CardsComponent } from './components/cards/cards.component';
-import { ProductosComponent } from './components/productos/productos.component';
+import { CarouselComponent } from './components-contenedores/carousel/carousel.component';
+import { LoginComponent } from './components-contenedores/login/login.component';
+import { FooterComponent } from './components-contenedores/footer/footer.component';
+import { NavbarComponent } from './components-contenedores/navbar/navbar.component';
+import { CardsComponent } from './components-contenedores/cards/cards.component';
+import { ProductosComponent } from './components-contenedores/productos/productos.component';
 import { RouterModule } from '@angular/router';
-import { RegistroComponent } from './components/registro/registro.component';
-import { IndexComponent } from './components/index/index.component';
-import { InfoComponent } from './components/info/info.component';
+import { RegistroComponent } from './components-contenedores/registro/registro.component';
+import { InfoComponent } from './components-contenedores/info/info.component';
+import { ContenedorHomeComponent } from './components-contenedores/contenedor-home/contenedor-home.component';
+import { ContenedorRegistroComponent } from './components-contenedores/contenedor-registro/contenedor-registro.component';
+import { ContenedorProductosComponent } from './components-contenedores/contenedor-productos/contenedor-productos.component';
+import { ContenedorCitasComponent } from './components-contenedores/contenedor-citas/contenedor-citas.component';
+import { ContenedorComprarComponent } from './components-contenedores/contenedor-comprar/contenedor-comprar.component';
 
 
 
@@ -26,8 +30,12 @@ import { InfoComponent } from './components/info/info.component';
     CardsComponent,
     ProductosComponent,
     RegistroComponent,
-    IndexComponent,
-    InfoComponent
+    InfoComponent,
+    ContenedorHomeComponent,
+    ContenedorRegistroComponent,
+    ContenedorProductosComponent,
+    ContenedorCitasComponent,
+    ContenedorComprarComponent
     ],
   imports: [
     BrowserModule,

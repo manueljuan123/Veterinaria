@@ -1,4 +1,7 @@
-.perros{
+body{ 
+    overflow-x:hidden;
+ }
+ .perros{
     display: inline-block;
     margin: 0 0.5rem;
   
