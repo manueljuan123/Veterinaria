@@ -5,6 +5,7 @@ import { ContenedorRegistroComponent } from './components-contenedores/contenedo
 import { ContenedorProductosComponent } from './components-contenedores/contenedor-productos/contenedor-productos.component';
 import { ContenedorCitasComponent } from './components-contenedores/contenedor-citas/contenedor-citas.component';
 import { ContenedorComprarComponent } from './components-contenedores/contenedor-comprar/contenedor-comprar.component';
+import { CitasComponent } from './components-contenedores/citas/citas.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'registro', component: ContenedorRegistroComponent},
   {path: 'citas', component: ContenedorCitasComponent},
   {path: 'productos', component: ContenedorProductosComponent},
-  {path: 'comprar', component: ContenedorComprarComponent}
+  {path: 'comprar', component: ContenedorComprarComponent},
+  {path: 'citas', component: CitasComponent}
 ];
 
 @NgModule({
