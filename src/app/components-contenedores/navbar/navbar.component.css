@@ -1,6 +1,7 @@
 .nav-item .nav-link{
     color: white;
-    font-size: 20px;
+    font-size: 25px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 nav ul{
     list-style: none;
@@ -13,15 +14,8 @@ nav ul li{
     float: right;
      
 }
-nav ul li:hover{
-    
-    background: #2377e6;
-    text-decoration:none;
-    padding:5px 5px;
-    
-}
-nav ul a :hover{
-    background: #2377e6;
-    text-decoration:none;
-    padding:5px 5px;
+
+
+nav.navbar {
+    background-color: #000000 !important;
 }
