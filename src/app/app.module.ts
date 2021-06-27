@@ -16,6 +16,8 @@ import { ContenedorCitasComponent } from './components-contenedores/contenedor-c
 import { CitasComponent } from './components-contenedores/citas/citas.component';
 import { FormularioComponent } from './components-contenedores/formulario/formulario.component';
 import { ImagenComponent } from './components-contenedores/imagen/imagen.component';
+import { ContenedorVeterinarioComponent } from './components-contenedores/contenedor-veterinario/contenedor-veterinario.component';
+import { VeterinarioTablaComponent } from './components-contenedores/veterinario-tabla/veterinario-tabla.component';
 
 
 
@@ -35,7 +37,9 @@ import { ImagenComponent } from './components-contenedores/imagen/imagen.compone
     ContenedorCitasComponent,
     CitasComponent,
     FormularioComponent,
-    ImagenComponent
+    ImagenComponent,
+    ContenedorVeterinarioComponent,
+    VeterinarioTablaComponent
     ],
   imports: [
     BrowserModule,
