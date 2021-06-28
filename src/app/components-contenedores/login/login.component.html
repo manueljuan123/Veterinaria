@@ -1,31 +1,11 @@
-
-<div class="container" style="position: relative;">
-    <div class="row">
-      <div class="col-lg-6 text-left col-md-6">
-      <div ><img src="https://www.integravet.cl/wp-content/uploads/2016/10/Dog-PNG-Transparent-Image-1.png" class="perros" alt=""></div> 
-    </div>
+<form [formGroup]="form">
+  <section class="form-register">
+    <h4>Iniciar Sesión</h4>
     
-      <div class="col-lg-6 col-md-6"> 
-            <form class="form-signin text-center">
-               <h1 class="h3 mb-3 font-weight-normal">Ingresar como cliente</h1>
-              <input type="email" id="inputEmail" class="form-control" placeholder="Correo electrónico">
-              <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña">
-              <div class="checkbox mb-3">
-                <label>
-                  <input type="checkbox" value="remember-me"> Recuérdame
-                </label>
-              </div>
-              
-              <a class="btn btn-lg btn-primary btn-responsive btninter" [routerLink]="['citas']">Ingresa</a>
-              <a class="btn btn-lg btn-success btn-responsive btninter right" [routerLink]="['registro']">Regístrate</a>
-              <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
-            </form>
-  <br><br><br><br><br><br><br><br><br>
-
-
-
-  
-  
-
- 
-  
+    <input formControlName="Email" class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su Correo">
+    <input formControlName="password" class="controls" type="password" name="password" id="password" placeholder="Ingrese su Contraseña">
+    <input type="checkbox" name="recordar" value="Sí">Recordar cuenta
+    <button (click)="submit(7)" class="botons">INICIAR</button>
+    <p><a>¿No tienes una cuenta?</a></p>
+  </section>
+</form>

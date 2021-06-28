@@ -8,7 +8,6 @@ import { FooterComponent } from './components-contenedores/footer/footer.compone
 import { NavbarComponent } from './components-contenedores/navbar/navbar.component';
 import { CardsComponent } from './components-contenedores/cards/cards.component';
 import { RouterModule } from '@angular/router';
-import { RegistroComponent } from './components-contenedores/registro/registro.component';
 import { InfoComponent } from './components-contenedores/info/info.component';
 import { ContenedorHomeComponent } from './components-contenedores/contenedor-home/contenedor-home.component';
 import { ContenedorRegistroComponent } from './components-contenedores/contenedor-registro/contenedor-registro.component';
@@ -16,6 +15,9 @@ import { ContenedorCitasComponent } from './components-contenedores/contenedor-c
 import { CitasComponent } from './components-contenedores/citas/citas.component';
 import { FormularioComponent } from './components-contenedores/formulario/formulario.component';
 import { ImagenComponent } from './components-contenedores/imagen/imagen.component';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
+import { RegistroComponent } from './components-contenedores/registro/registro.component';
 import { ContenedorVeterinarioComponent } from './components-contenedores/contenedor-veterinario/contenedor-veterinario.component';
 import { VeterinarioTablaComponent } from './components-contenedores/veterinario-tabla/veterinario-tabla.component';
 
@@ -32,19 +34,23 @@ import { VeterinarioTablaComponent } from './components-contenedores/veterinario
     CardsComponent,
     RegistroComponent,
     InfoComponent,
+    VeterinarioTablaComponent,
     ContenedorHomeComponent,
     ContenedorRegistroComponent,
     ContenedorCitasComponent,
     CitasComponent,
     FormularioComponent,
     ImagenComponent,
-    ContenedorVeterinarioComponent,
-    VeterinarioTablaComponent
-    ],
+    ContenedorVeterinarioComponent
+  
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-   
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
