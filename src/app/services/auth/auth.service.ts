@@ -8,18 +8,40 @@ export class AuthService {
 
   constructor(private http:HttpClient) { }
 
-  server_adress_login = "http://localhost:5000/login";
-  server_adress_register = "http://localhost:5000/register"
+  BASE_URL = "http://localhost:5000"
 
 
-  send_login_post_request(data:any){
-    return this.http.post(this.server_adress_login, JSON.stringify(data) )
+  async send_login_post_request(data:any){
+    try
+    {const response = await fetch(this.BASE_URL+'/login/',
+                      {method:'POST',
+                       body: JSON.stringify(data),
+                       headers: {
+                      'Content-Type': 'application/json'}})
+                      return await response.json()
+    }
+                      
+    catch(error){
+      console.log(error)
+    }
+    return false
+
   }
 
-  send_register_post_request(data:any){
-    return this.http.post(this.server_adress_register, JSON.stringify(data))
-  }
+  async send_register_post_request(data:any){
+    try
+    {const response = await fetch(this.BASE_URL+'/register/',
+                              {method:'POST',
+                               body: JSON.stringify(data),
+                              headers:{
+                                'Content-Type':'application/json'}})
+                              return await response.json()
+    }
+    catch(error){
+      console.log(error)
+    }
+    return false
 
 }
 
-
+}

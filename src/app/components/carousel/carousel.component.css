@@ -1,0 +1,97 @@
+body{
+    margin: 0%;
+}
+.carousel-item{
+    width: 100%;
+    height: 500px;
+    --webkit--background-size:cover ;
+    --moz--background-size:cover ;
+    --o--background-size:cover;
+    background-size:cover ;
+}
+@media (max-width:600px){
+    .carousel-item{ 
+        height: 280px;
+    }
+}
+
+
+.exercise{
+    width: 100%;
+    height: 500px;
+    padding-right: 0%;
+    padding-top:38px;
+    
+}
+.col-lg-6{
+    padding: 2%;
+}
+h2{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00CC99;
+}
+
+strong{
+    color: #00CC99;
+    font-size: 4.5rem;
+    font-weight: bold;
+    
+}
+h3.change{
+    font-size: 4.5rem;
+    font-weight: lighter;
+    padding-right: 3%;
+
+}
+h3{
+    font-size: lighter;
+    font-weight: lighter;
+}
+.carousel-indicators{
+    color: #00CC99;
+    height: 30px;
+    size: 3rem;
+}
+p.text{
+    color: grey;
+}
+h2.welcome{
+    padding-top:30px;
+    padding-right: 40px;
+}
+
+p i{
+    color: #00CC99;
+}
+
+#icon{
+    border-color:  #00CC99;
+}
+
+#corriendo{
+color: #00CC99;
+font-size: 5rem;
+position: absolute;
+bottom: 60;
+left: 10%;
+padding-top:20px ;
+}
+
+#menu{
+    color: white;
+    font-size: 2.5rem;
+    position: absolute;
+    bottom: 60;
+    right: 10%;
+    padding-top:30px ;
+}
+body::-webkit-scrollbar{
+    width: 15px;
+  
+   }
+body::-webkit-scrollbar-thumb{
+    background-color: #00CC99;
+    border-radius: 5px;
+  }
+

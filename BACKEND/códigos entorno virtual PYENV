@@ -1,0 +1,29 @@
+INSTALAR ENTORNO VIRTUAL
+
+- pip install virtualenv
+
+CREAR ENTORNO VIRTUAL:
+
+-( pipenv shell )
+
+- virtualenv .venv
+
+ACTIVAR ENTORNO VIRTUAL
+
+entrar en .venv/bin y poner el código "source activate"
+
+DESACTIVAR ENTORNO VIRTUAL
+
+en la misma anterior ruta poner "deactivate"
+
+CUADERNO PARA LAS DEPENDENCIAS
+
+pip freeze r>requirements.txt
+
+INSTALAR LAS DEPENDENCIAS
+
+pip install -r requirements.txt
+
+
+
+

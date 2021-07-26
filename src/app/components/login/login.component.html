@@ -1,0 +1,11 @@
+<form [formGroup]="form">
+  <section class="form-register">
+    <h4 class="titulo text-center">Iniciar Sesión</h4>
+    <input formControlName="email" class="controls" type="email" name="email" id="correo" placeholder="E-mail">
+    <input formControlName="password" class="controls" type="password" name="password" id="password" placeholder="Contraseña">
+    <input type="checkbox" name="recordar" value="Sí"> Recuérdame
+    <button (click)="submit()" class="botons titulo">INICIAR</button>
+    <p><a routerLink='/registro'>¿No tienes una cuenta?</a></p>
+    <p><a routerLink='/info'>Sobre nosotros</a></p>
+  </section>
+</form>
