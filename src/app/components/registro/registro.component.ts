@@ -31,9 +31,24 @@ export class RegistroComponent implements OnInit {
     let auth = await this.auth.send_register_post_request(this.form.value)
     if (!auth.error){
       this.route.navigate(['/usuario'])
-      Swal.fire(auth.message)
+      Swal.fire({
+        title: "Bienvenido",
+        text:auth.message,
+        position: 'top-end',
+        icon: 'success',
+        showConfirmButton : false,
+        timer: 2000 
+        })
     }else{
-      Swal.fire(auth.message)
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: auth.message,
+        focusConfirm: false,
+        confirmButtonText:
+        '<i class="fa fa-thumbs-up"></i> Entendido',
+        confirmButtonAriaLabel: 'Thumbs up, great!'
+        })
     }
   }
 

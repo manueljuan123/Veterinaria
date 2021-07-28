@@ -31,10 +31,24 @@ export class LoginComponent implements OnInit {
     let auth = await this.auth.send_login_post_request(this.form.value)
     if (!auth.error) {
       this.route.navigate(['/usuario'])
-      Swal.fire(auth.message)
+      Swal.fire({
+        title: "Bienvenido nuevamente,",
+        text:auth.message,
+        position: 'top-end',
+        icon: 'success',
+        showConfirmButton : false,
+        timer: 2000 
+        })
 
     }else{
-      Swal.fire(auth.message)
+      Swal.fire({
+        icon: 'error',
+        title: 'E-mail o contraseña incorrectos',
+        focusConfirm: false,
+        confirmButtonText:
+        '<i class="fa fa-thumbs-up"></i> Entendido',
+        confirmButtonAriaLabel: 'Thumbs up, great!',
+        text: auth.message})
     }
 
     if(auth.any){

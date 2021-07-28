@@ -3,15 +3,15 @@ import jwt
 
 from datetime import datetime, timedelta
 from functools import wraps
+from config.settings import Config
 
 from marshmallow import exceptions
-from config.settings import Config
 from peewee import IntegrityError
 from marshmallow.exceptions import ValidationError
 
 
 from app.models.USER.user_model import UserModel
-from app.schemes.USER.user_schema import user_schema, users_schema
+from app.models import database as db
 
 LoginRouter = Blueprint('login', __name__, url_prefix='/login')
 
@@ -25,20 +25,21 @@ def authentication():
     user = UserModel.get_or_none(UserModel.email == email)
     if user is None or not user.verify_password(password):
         response = {
-        "message":"Usuario no encontrado",
+        "message":"Lo sentimos, sus credenciales no son correctas. Verifique o regístrese antes de volver a intentarlo",
         "error" : True
                     }
-        return make_response({'WWW-Authenticate' : 'Basic realm: "Authentication Failed!"'})
-        
+        return response
+
     else:
-        response = {
-        "message":"Usuario encontrado",
-        "error" : False
-                    }
-        
         session['logged_in'] = True
         token = jwt.encode(
             {"some": "payload"},
             "secret", algorithm="HS256"
         )
-        return token, response
+        response = {
+        "message":"*nombreToken*, Gracias por elegirnos.",
+        "error" : False
+                    }
+        
+
+        return response
