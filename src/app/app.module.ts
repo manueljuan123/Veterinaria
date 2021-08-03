@@ -27,6 +27,10 @@ import { ContenedorCitasComponent } from './containers/contenedor-citas/contened
 import { ContenedorVeterinarioComponent } from './containers/contenedor-veterinario/contenedor-veterinario.component';
 import { ContenedorInfoComponent } from './containers/contenedor-info/contenedor-info.component';
 import { ContenedorUsuarioComponent } from './containers/contenedor-usuario/contenedor-usuario.component';
+import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin/sidebar-admin.component';
+import { SidebarUserComponent } from './components/sidebar-user/sidebar-user/sidebar-user.component';
+import { SidebarVetComponent } from './components/sidebar-vet/sidebar-vet/sidebar-vet.component';
+
 
 
 
@@ -50,7 +54,11 @@ import { ContenedorUsuarioComponent } from './containers/contenedor-usuario/cont
     ImagenComponent,
     ContenedorVeterinarioComponent,
     ContenedorInfoComponent,
-    ContenedorUsuarioComponent
+    ContenedorUsuarioComponent,
+    SidebarAdminComponent,
+    SidebarUserComponent,
+    SidebarVetComponent,
+
 
   ],
   imports: [

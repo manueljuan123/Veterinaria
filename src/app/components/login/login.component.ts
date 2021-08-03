@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service'
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -12,8 +12,7 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
 
   form : FormGroup
-  id: string;
-  response: ''
+
 
   constructor(private fb:FormBuilder, private auth: AuthService, private route: Router) { }
 
@@ -23,8 +22,8 @@ export class LoginComponent implements OnInit {
     //this.id = this.route.snapshot.paramMap.get('id');
 
     this.form = this.fb.group({
-    email:'',
-    password:''
+    email:['', Validators.required, Validators.email],
+    password:['', Validators.required]
   })
   }
   async submit(){
@@ -32,8 +31,8 @@ export class LoginComponent implements OnInit {
     if (!auth.error) {
       this.route.navigate(['/usuario'])
       Swal.fire({
-        title: "Bienvenido nuevamente,",
-        text:auth.message,
+        title: auth.message,
+        text:"gracias por elegirnos",
         position: 'top-end',
         icon: 'success',
         showConfirmButton : false,
@@ -51,9 +50,6 @@ export class LoginComponent implements OnInit {
         text: auth.message})
     }
 
-    if(auth.any){
-      this.route.navigate(['/veterinario'])
-    }
     
   }
 

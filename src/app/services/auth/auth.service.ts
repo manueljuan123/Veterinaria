@@ -11,9 +11,10 @@ export class AuthService {
   BASE_URL = "http://localhost:5000"
 
 
+  // LOGIN
   async send_login_post_request(data:any){
     try
-    {const response = await fetch(this.BASE_URL+'/login/',
+    {const response = await fetch(this.BASE_URL+'/sesion/login',
                       {method:'POST',
                        body: JSON.stringify(data),
                        headers: {
@@ -28,9 +29,10 @@ export class AuthService {
 
   }
 
+  // REGISTRO
   async send_register_post_request(data:any){
     try
-    {const response = await fetch(this.BASE_URL+'/register/',
+    {const response = await fetch(this.BASE_URL+'/sesion/register',
                               {method:'POST',
                                body: JSON.stringify(data),
                               headers:{
@@ -43,5 +45,22 @@ export class AuthService {
     return false
 
 }
+
+// ENVIAR CITA
+  async send_cita_post_request(data:any){
+    try
+    {
+      const response = await fetch(this.BASE_URL+'/cita/create',
+                                {method:'POST',
+                                 body: JSON.stringify(data),
+                                headers:{
+                                  'Content-Type':'application/json'}})
+                                return await response.json()
+    }
+    catch(error){
+      console.log(error)
+    }
+    return false
+  } 
 
 }

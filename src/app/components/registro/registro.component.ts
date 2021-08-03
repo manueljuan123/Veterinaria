@@ -32,12 +32,12 @@ export class RegistroComponent implements OnInit {
     if (!auth.error){
       this.route.navigate(['/usuario'])
       Swal.fire({
-        title: "Bienvenido",
-        text:auth.message,
+        title: auth.message,
+        text:"¡Gracias por registrarte!",
         position: 'top-end',
         icon: 'success',
         showConfirmButton : false,
-        timer: 2000 
+        timer: 3000 
         })
     }else{
       Swal.fire({
