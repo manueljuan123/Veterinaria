@@ -1,0 +1,26 @@
+
+body{
+    overflow: hidden;
+    font-family: 'Muli', sans-serif;
+    font-weight: 300;
+    color: var(--primary);
+}
+
+a:hover{
+    background:linear-gradient(90deg, rgba(2,0,36,1) 17%, rgba(23,161,205,1) 60%, rgba(0,212,255,1) 100%);
+}
+a{
+    text-decoration: none; 
+}
+
+#sidebar-container{
+    min-height: 100vh;
+    background: rgb(0, 18, 122);
+}
+#sidebar-container .logo{
+    padding: .075rem 1.25rem;
+}
+
+#sidebar-container .menu{
+    width: 18rem;
+}
