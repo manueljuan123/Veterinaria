@@ -8,11 +8,16 @@ from app.models import database
 
 # ROUTES
 # Normal USER
-from app.routers.usuario_router import UserRouter
+from app.routers.usuario.usuario_router import UserRouter
 from app.routers.sesion_router import SesionRouter
+from app.routers.mascota_router import MascotaRouter
+
+# Admin
+from app.routers.admin.vista_admin_router import AdminRouter
 
 # Citas
 from app.routers.cita_router import CitaRouter
+from app.routers.historia_router import HistoriaRouter
 
 app = create_app(Config)
 
@@ -21,6 +26,10 @@ CORS(app=app, resources={r"*": {"origins": "*"}})
 
 # USER BLUEPRINTS
 app.register_blueprint(UserRouter)
+app.register_blueprint(MascotaRouter)
+
+# ADMIN BLUEPRINTS
+app.register_blueprint(AdminRouter)
 
 # SESSION BLUEPRINTS
 app.register_blueprint(SesionRouter)
