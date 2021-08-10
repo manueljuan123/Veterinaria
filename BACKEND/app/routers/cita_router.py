@@ -10,15 +10,15 @@ from app.schemas.cita_schema import cita_schema, citas_schema
 
 CitaRouter = Blueprint('cita', __name__, url_prefix='/cita')
 
-@CitaRouter.route('/citas', methods=['POST'])
+@CitaRouter.route('/', methods=['GET'])
 def list_citas():
     citas = CitaModel.select()
     return citas_schema.dumps(citas), 200
 
 
 @CitaRouter.route('/get/<int:id>', methods=['GET'])
-def get_cita(id):
-    cita = CitaModel.get_or_none(id_cita=id)
+def get_citas(id):
+    cita = CitaModel.get_or_none(id=id)
     return cita_schema.dump(cita),200
 
 
@@ -57,7 +57,7 @@ def update_cita(id):
 
 @CitaRouter.route('/delete/<int:id>', methods=['DELETE'])
 def delete_cita(id):
-    cita = CitaModel.get_or_none(id_cita=id)
+    cita = CitaModel.get_or_none(id=id)
 
     if cita is None:
         return {'errors':'Cita no existe'}, 400

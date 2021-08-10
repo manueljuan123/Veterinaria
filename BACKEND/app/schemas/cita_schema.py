@@ -1,5 +1,3 @@
-from app.models.usuario_model import UserModel
-from peewee import ForeignKeyField
 from marshmallow import (Schema, fields, validate)
 
 class CitaSchema(Schema):
@@ -8,10 +6,12 @@ class CitaSchema(Schema):
     fecha = fields.DateTime(required=True)
     motivo = fields.Str(required=True, validate=[validate.Length(max=250)])
     precio_cita = fields.Int(required=True)
-    id_usuario = fields.Int(required=True) 
-    creado = fields.DateTime(dump_only=True)
-    actualizado = fields.DateTime(dump_only=True)
-    eliminado = fields.DateTime(dump_only=True)
+    #cliente = fields.Int(dump_only=True)
+    id_usuario = fields.Int(required=True)    
+    id_veterinario = fields.Int(required=True)
+    create_at = fields.DateTime(dump_only=True)
+    update_at = fields.DateTime(dump_only=True)
+    delete_at = fields.DateTime(dump_only=True)
 
 
 cita_schema = CitaSchema()

@@ -18,4 +18,3 @@ class UserSchema(Schema):
     eliminado = fields.DateTime(dump_only=True)
 
 user_schema = UserSchema()
-users_schema = UserSchema(many=True)
