@@ -1,6 +1,5 @@
 from app.schemas.rol_schema import RolSchema
 from marshmallow import Schema, fields, validate
-from peewee import BlobField
 
 class UserSchema(Schema):
     id = fields.Int(dump_only=True)
@@ -10,12 +9,21 @@ class UserSchema(Schema):
     password = fields.Str(load_only=True)
     celular = fields.Str(required=True)
     direccion = fields.Str(required=True)
-    #foto = BlobField(required=False)
     remember_token = fields.Str(dump_only=True)
-    rol = fields.Nested(RolSchema)
+    rol_id = fields.Int(load_only=True)
+    rol = fields.Nested(RolSchema, dump_only=True)
     creado = fields.DateTime(dump_only=True)
     actualizado = fields.DateTime(dump_only=True)
     eliminado = fields.DateTime(dump_only=True)
 
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
+class UserTypeSchema(Schema):
+    id = fields.Int(dump_only=True)
+    nombre = fields.Str(dump_only=True)
+    apellido = fields.Str(dump_only=True)
+    celular = fields.Str(dump_only=True)
+
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
+

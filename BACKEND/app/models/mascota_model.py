@@ -15,6 +15,7 @@ class MascotaModel(BaseModel):
     tipo_mascota = ForeignKeyField(TipoMascotaModel)
     id_usuario = ForeignKeyField(UserModel)
     #foto = BlobField(column_name='foto', null=True)
+    usuario = ForeignKeyField(UserModel)
     creado = TimestampField(column_name='creado')
     actualizado = TimestampField(column_name='actualizado')
     eliminado = DateTimeField(column_name='eliminado', null=True)

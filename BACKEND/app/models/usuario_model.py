@@ -4,20 +4,19 @@ from datetime import datetime, timedelta
 # importaciones instaladas o de terceros
 from flask import abort, jsonify, make_response
 from werkzeug.security import generate_password_hash, check_password_hash
-from peewee import AutoField, BlobField, CharField, DateTimeField, ForeignKeyField, TimestampField
+from peewee import AutoField, CharField, DateTimeField, ForeignKeyField, TimestampField
 # importaciones propias
 from app.models import BaseModel
 from app.models.rol_model import RolModel
 
 class UserModel(BaseModel):
-    id = AutoField(column_name='id')
+    id = AutoField(column_name='id', primary_key=True)
     nombre = CharField(column_name='nombre', max_length=60)
     apellido = CharField(column_name='apellido', max_length=60)
     email = CharField(column_name='email', max_length=100, unique=True)
     password = CharField(column_name='password', max_length=150)
     celular = CharField(column_name='celular', max_length=10)
     direccion = CharField(column_name='direccion', max_length=255)
-    #foto = BlobField(column_name='foto', null=True)
     remember_token = CharField(null=True, max_length=255)
     rol = ForeignKeyField(RolModel)
     creado = TimestampField(column_name='creado')

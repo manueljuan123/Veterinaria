@@ -31,27 +31,23 @@ def sesion_login():
 
 @SesionRouter.route('/register', methods=['POST'])
 def create_user():
-    rol = request.args.get('rol', default=1)
     data = request.get_json()
-    j = request.get_json()
     try:
-        schema = user_schema.load(j)
+        schema = user_schema.load(data)
     except ValidationError as error:
         return {"errors": error.messages}, 422
     try:
-        user = UserModel.create(rol_id=rol, **schema)
+        del schema['rol_id']
+        user = UserModel.create(rol_id=1, **schema)
     except IntegrityError as error:
         return {"errors": f'{error}'}, 422
 
     user: UserModel = UserModel.login(email=data['email'], password=data['password'])
     user.create_jwt()
-    user = UserModel.select(UserModel, RolModel).join(RolModel).where(UserModel.email == user.email).get()
-    response = {
-        "message":("Bienvenido, "+user.nombre+","),
-        "error": False
-    }
+    #user = UserModel.select(UserModel, RolModel).join(RolModel).where(UserModel.email == user.email).get()
+    user.rol.get()
 
-    return response
+    return make_response(user_schema.dump(user)),201
 
 
 

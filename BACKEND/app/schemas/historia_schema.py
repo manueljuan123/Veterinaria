@@ -1,18 +1,19 @@
 from marshmallow import Schema, fields
-from peewee import TimestampField
+from app.schemas.usuario_schema import UserSchema
+from app.schemas.mascota_schema import MascotaSchema
+from app.schemas.tipo_cita_schema import TipoCitaSchema
+from marshmallow import Schema, fields
 
-class HistoriaClinicaSchema(Schema):
+class HistoriasSchema(Schema):
     id_historia = fields.Int(dump_only=True)
+    observacion = fields.Str(required=True)
     fecha = fields.Date(required=True)
-    motivo_consulta = fields.Str(required=True)
-    medicamento = fields.Str(required=True)
-    alimentos = fields.Str(required=True)
-    habitos = fields.Str(required=True)
-    antecedentes = fields.Str(required=True)
-    id_mascota = fields.Int(required=True)
-    id_veterinario = fields.Int(required=True)
+    tipo_cita = fields.Nested(TipoCitaSchema)
+    mascota = fields.Nested(MascotaSchema)
+    veterinario = fields.Nested(UserSchema)
     creado = fields.DateTime(dump_only=True)
     actualizado = fields.DateTime(dump_only=True)
     eliminado = fields.DateTime(dump_only=True)
 
-historia_clinica_schema = HistoriaClinicaSchema()
+historia_schema = HistoriasSchema()
+historias_schema = HistoriasSchema(many=True)

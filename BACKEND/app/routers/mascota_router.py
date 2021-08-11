@@ -1,14 +1,17 @@
+from flask.helpers import make_response
 from marshmallow.exceptions import ValidationError
 from peewee import IntegrityError
 from app.schemas.mascota_schema import MascotaSchema
 from app.models.mascota_model import MascotaModel
 from datetime import datetime
 from flask import Blueprint, request
+
+from flask import Blueprint, request, jsonify
 from app.schemas.mascota_schema import mascota_schema, mascotas_schema
 
 MascotaRouter = Blueprint('mascota', __name__, url_prefix='/mascota')
 
-@MascotaRouter.route('/create', methods=['POST'])
+@MascotaRouter.route('/crear', methods=['POST'])
 def create_mascota():
     j = request.get_json()
     try:
@@ -29,7 +32,8 @@ def create_mascota():
     return response
 
 
-@MascotaRouter.route('/update/<int:id>', methods=['PUT'])
+
+@MascotaRouter.route('/actualizar/<int:id>', methods=['PUT'])
 def update_mascota(id):
     j = request.get_json()
     try:
@@ -44,11 +48,8 @@ def update_mascota(id):
 
     mascota = MascotaModel.get(id_mascota=id)
 
-    response = {
-        "message":"Mascota actualizada con éxito",
-        "error":False
-    }
-    return response
+    return make_response(jsonify(mascota_schema.dump(mascota))), 201
+
 
 
 @MascotaRouter.route('/delete/<int:id>', methods=['DELETE'])

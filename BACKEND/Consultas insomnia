@@ -1,0 +1,15 @@
+LOGIN: http://127.0.0.1:5000/sesion/login
+REGISTRO: http://127.0.0.1:5000/sesion/register
+
+CREAR MASCOTA: http://127.0.0.1:5000/mascota/create
+ACTUALIZAR MASCOTA: http://127.0.0.1:5000/mascota/update/6
+ELIMINAR MASCOTA: http://127.0.0.1:5000/mascota/delete/6
+
+CREAR CITA: http://127.0.0.1:5000/cita/create
+OBTENER CITA: http://127.0.0.1:5000/cita/get/6
+OBTENER CITAS: http://127.0.0.1:5000/cita/citas
+ACTUALIZAR CITA: http://127.0.0.1:5000/cita/update/1
+ELIMINAR CITA: http://127.0.0.1:5000/cita/delete/1
+
+OBTENER USUARIOS: http://127.0.0.1:5000/admin/users
+OBTENER USUARIO: http://127.0.0.1:5000/admin/getUsuario/5
