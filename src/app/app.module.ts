@@ -40,6 +40,7 @@ import { GestionUsuariosComponent } from './components/gestion-usuarios/gestion-
 import { PerfilVeterinarioComponent } from './components/perfil-veterinario/perfil-veterinario.component';
 import { CitasVeterinarioComponent } from './components/citas-veterinario/citas-veterinario.component';
 import { CitasUsuarioComponent } from './components/citas-usuario/citas-usuario.component';
+import { NavbarVeterinarioComponent } from './components/navbar-veterinario/navbar-veterinario.component';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import { CitasUsuarioComponent } from './components/citas-usuario/citas-usuario.
     PerfilVeterinarioComponent,
     CitasVeterinarioComponent,
     CitasUsuarioComponent,
+    NavbarVeterinarioComponent,
 
 
   ],
