@@ -8,6 +8,8 @@ from app.models.rol_model import RolModel
 from app.schemas.sesion_schema import sesion_schema
 from app.schemas.usuario_schema import user_schema
 
+from app.routers.email_router import confirmacion_registro
+
 SesionRouter = Blueprint('sesion', __name__, url_prefix='/sesion')
 
 
@@ -34,6 +36,7 @@ def create_user():
     data = request.get_json()
     try:
         schema = user_schema.load(data)
+        confirmacion_registro()
     except ValidationError as error:
         return {"errors": error.messages}, 422
     try:

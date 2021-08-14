@@ -1,5 +1,4 @@
 from flask import Blueprint, request
-from marshmallow.fields import Int
 from peewee import IntegrityError
 from marshmallow.exceptions import ValidationError
 
@@ -65,3 +64,4 @@ def eliminar_cita(id):
 
     cita.delete()
     return cita_schema.dump(cita)
+

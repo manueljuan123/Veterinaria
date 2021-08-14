@@ -1,3 +1,4 @@
+from logging import NullHandler
 from app.models.rol_model import RolModel
 from flask.helpers import make_response
 from peewee import IntegrityError
@@ -12,6 +13,7 @@ from app.models.usuario_model import UserModel
 
 UsuarioRouter = Blueprint('usuario', __name__, url_prefix='/usuario')
 
+# Crear usuario con rol definido
 @UsuarioRouter.route('/crear', methods=['POST'])
 def crear_usuario():
     j = request.get_json()
@@ -28,33 +30,6 @@ def crear_usuario():
     user.rol.get()
 
     return make_response(user_schema.dump(user)), 201
-
-# Obtener usuario en específico
-
-@UsuarioRouter.route('/get/<int:id>', methods=['GET'])
-def obtener_usuario(id):
-    user = UserModel.get_or_none(id=id)
-    return user_schema.dump(user), 200
-
-# Listado de todos los usuarios
-
-@UsuarioRouter.route('/listado_usuarios', methods=['POST'])
-def list_users():
-    users = UserModel.select()
-    return users_schema.dumps(users),200
-
-# Listado de trabajadores
-@UsuarioRouter.route('/listado_empleados', methods=['GET'])
-def listado_usuarios():
-    usuarios = UserModel.select().join(RolModel).where(UserModel.rol_id!=1)
-    return make_response(users_schema.dumps(usuarios)), 200
-
-
-# Listado de clientes
-@UsuarioRouter.route('/listado_clientes', methods=['GET'])
-def listado_clientes():
-    duenos = UserModel.select().join(RolModel).where(UserModel.rol_id==1)
-    return make_response(users_schema.dumps(duenos)), 200
 
 
 # Actualizar usuario en específico
@@ -73,7 +48,7 @@ def actualizar_usuario(id):
     user = UserModel.get(id=id)
     return user_schema.dump(user), 202
 
-# Eliminar usuario en específico
+# Inhabilitar usuario en específico
 @UsuarioRouter.route('/eliminar/<int:id>', methods=['DELETE'])
 def eliminar_usuario(id):
     user = UserModel.get_or_none(id=id)
@@ -83,5 +58,51 @@ def eliminar_usuario(id):
 
     user.delete()
     return user_schema.dump(user)
+
+
+# Obtener usuario en específico
+@UsuarioRouter.route('/get/<int:id>', methods=['GET'])
+def obtener_usuario(id):
+    user = UserModel.get_or_none(id=id)
+    return user_schema.dump(user), 200
+
+
+# Listado de todos los usuarios
+@UsuarioRouter.route('/listado_usuarios', methods=['GET'])
+def list_usuarios():
+    users = UserModel.select()
+    return users_schema.dumps(users),200
+
+
+@UsuarioRouter.route('/usuarios_inhabilitados', methods=['GET'])
+def usu_inhabilitados():
+    usuarios = UserModel.select().join(RolModel).where(UserModel.eliminado.is_null(False)) 
+    return users_schema.dumps(usuarios),200
+
+
+# Listado de trabajadores
+@UsuarioRouter.route('/listado_empleados', methods=['GET'])
+def list_empleados():
+    usuarios = UserModel.select().join(RolModel).where(UserModel.rol_id!=1)
+    return make_response(users_schema.dumps(usuarios)), 200
+
+
+# Listado de veterinarios
+@UsuarioRouter.route('/listado_veterinarios', methods=['GET'])
+def list_veterinarios():
+    veterinarios = UserModel.select().join(RolModel).where(UserModel.rol_id==2) & UserModel.select().join(RolModel).where(UserModel.eliminado.is_null(True)) 
+    return make_response(users_schema.dumps(veterinarios)), 200
+
+
+# Listado de clientes
+@UsuarioRouter.route('/listado_clientes', methods=['GET'])
+def list_clientes():
+    duenos = UserModel.select().join(RolModel).where(UserModel.rol_id==1)
+    return make_response(users_schema.dumps(duenos)), 200
+
+
+
+
+
 
     

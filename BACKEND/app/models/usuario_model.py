@@ -3,6 +3,7 @@ import jwt
 from datetime import datetime, timedelta
 # importaciones instaladas o de terceros
 from flask import abort, jsonify, make_response
+from marshmallow.fields import Email
 from werkzeug.security import generate_password_hash, check_password_hash
 from peewee import AutoField, CharField, DateTimeField, ForeignKeyField, TimestampField
 # importaciones propias

@@ -9,11 +9,11 @@ from app.schemas.tipo_cita_schema import tipo_cita_schema
 
 HistoriaRouter = Blueprint('historia', __name__, url_prefix='/historia')
 
-@HistoriaRouter.route('/create', methods=['POST'])
-def create_historia():
+@HistoriaRouter.route('/crear', methods=['POST'])
+def crear_historia():
     j = request.get_json()
     try:
-        schema = historias_schema.load(j)
+        schema = historia_schema.load(j)
     except ValidationError as error:
         return {"errors": error.messages}, 422
 
@@ -23,23 +23,6 @@ def create_historia():
     except IntegrityError as error:
         return {"errors": f'{error}'}, 422
 
-    return historia_schema.dump(**historia)
+    return historia_schema.dump(historia)
 
-@HistoriaRouter.route('/createTipoCita', methods=['POST'])
-def create_tipo_cita():
-    j = request.get_json()
-    try:
-        schema = tipo_cita_schema.load(j)
-    except ValidationError as error:
-        return {"errors": error.messages}, 422
 
-    try:
-        tipo_cita = MascotaModel.create(**schema)
-    except IntegrityError as error:
-        return {"errors": f'{error}'}, 422
-
-    response = {
-        "message":"Historia creada con éxito",
-        "error":False
-    }
-    return tipo_cita_schema.dump(**tipo_cita)
