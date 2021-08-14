@@ -25,7 +25,6 @@ import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuar
 import { ContenedorHomeComponent } from './containers/contenedor-home/contenedor-home.component';
 import { ContenedorRegistroComponent } from './containers/contenedor-registro/contenedor-registro.component';
 import { ContenedorCitasComponent } from './containers/contenedor-citas/contenedor-citas.component';
-import { ContenedorVeterinarioComponent } from './containers/contenedor-veterinario/contenedor-veterinario.component';
 import { ContenedorInfoComponent } from './containers/contenedor-info/contenedor-info.component';
 import { ContenedorUsuarioComponent } from './containers/contenedor-usuario/contenedor-usuario.component';
 import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.component';
@@ -42,7 +41,10 @@ import { CitasVeterinarioComponent } from './components/citas-veterinario/citas-
 import { CitasUsuarioComponent } from './components/citas-usuario/citas-usuario.component';
 import { NavbarVeterinarioComponent } from './components/navbar-veterinario/navbar-veterinario.component';
 import { CarruselVeterinarioComponent } from './components/carrusel-veterinario/carrusel-veterinario.component';
-
+import { VistaInicioComponent } from './containers/contenedor-veterinario/vista-inicio/vista-inicio.component';
+import { VistaAgendarmeComponent } from './containers/contenedor-veterinario/vista-agendarme/vista-agendarme.component';
+import { VistaCitasPendientesComponent } from './containers/contenedor-veterinario/vista-citas-pendientes/vista-citas-pendientes.component';
+import { VistaMisAgendasComponent } from './containers/contenedor-veterinario/vista-mis-agendas/vista-mis-agendas.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,6 @@ import { CarruselVeterinarioComponent } from './components/carrusel-veterinario/
     CitasComponent,
     FormularioComponent,
     ImagenComponent,
-    ContenedorVeterinarioComponent,
     ContenedorInfoComponent,
     ContenedorUsuarioComponent,
     SidebarAdminComponent,
@@ -79,7 +80,10 @@ import { CarruselVeterinarioComponent } from './components/carrusel-veterinario/
     CitasUsuarioComponent,
     NavbarVeterinarioComponent,
     CarruselVeterinarioComponent,
-
+    VistaInicioComponent,
+    VistaAgendarmeComponent,
+    VistaCitasPendientesComponent,
+    VistaMisAgendasComponent,
 
   ],
   imports: [
