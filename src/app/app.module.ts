@@ -30,7 +30,6 @@ import { ContenedorUsuarioComponent } from './containers/contenedor-usuario/cont
 import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.component';
 import { SidebarUserComponent } from './components/sidebar-user/sidebar-user.component';
 import { SidebarVetComponent } from './components/sidebar-vet/sidebar-vet.component';
-import { ContenedorAdminComponent } from './containers/contenedor-admin/contenedor-admin.component';
 import { MascotasUsuarioComponent } from './components/mascotas-usuario/mascotas-usuario.component';
 import { VeterinariosComponent } from './components/veterinarios/veterinarios.component';
 import { GestionCitasComponent } from './components/gestion-citas/gestion-citas.component';
@@ -46,6 +45,10 @@ import { VistaAgendarmeComponent } from './containers/contenedor-veterinario/vis
 import { VistaCitasPendientesComponent } from './containers/contenedor-veterinario/vista-citas-pendientes/vista-citas-pendientes.component';
 import { VistaMisAgendasComponent } from './containers/contenedor-veterinario/vista-mis-agendas/vista-mis-agendas.component';
 import { TableGestionAdminComponent } from './components/table-gestion-admin/table-gestion-admin.component';
+import { MascotasComponent } from './containers/contenedor-admin/mascotas/mascotas.component';
+import { GestionCitasAdminComponent } from './containers/contenedor-admin/gestion-citas-admin/gestion-citas-admin.component';
+import { GestionUsuarioAdminComponent } from './containers/contenedor-admin/gestion-usuario-admin/gestion-usuario-admin.component';
+import { GestionVeterinariosAdminComponent } from './containers/contenedor-admin/gestion-veterinarios-admin/gestion-veterinarios-admin.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +72,6 @@ import { TableGestionAdminComponent } from './components/table-gestion-admin/tab
     SidebarAdminComponent,
     SidebarUserComponent,
     SidebarVetComponent,
-    ContenedorAdminComponent,
     PerfilUsuarioComponent,
     MascotasUsuarioComponent,
     VeterinariosComponent,
@@ -86,6 +88,10 @@ import { TableGestionAdminComponent } from './components/table-gestion-admin/tab
     VistaCitasPendientesComponent,
     VistaMisAgendasComponent,
     TableGestionAdminComponent,
+    MascotasComponent,
+    GestionCitasAdminComponent,
+    GestionUsuarioAdminComponent,
+    GestionVeterinariosAdminComponent,
 
   ],
   imports: [

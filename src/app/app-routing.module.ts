@@ -5,13 +5,9 @@ import { ContenedorRegistroComponent } from './containers/contenedor-registro/co
 import { ContenedorCitasComponent } from './containers/contenedor-citas/contenedor-citas.component';
 import { ContenedorInfoComponent } from './containers/contenedor-info/contenedor-info.component';
 import { ContenedorUsuarioComponent } from './containers/contenedor-usuario/contenedor-usuario.component';
-import { ContenedorAdminComponent } from './containers/contenedor-admin/contenedor-admin.component';
 import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 import { MascotasUsuarioComponent } from './components/mascotas-usuario/mascotas-usuario.component';
 import { VeterinariosComponent } from './components/veterinarios/veterinarios.component'
-import { GestionCitasComponent } from './components/gestion-citas/gestion-citas.component'
-import { GestionVeterinariosComponent } from './components/gestion-veterinarios/gestion-veterinarios.component'
-import { GestionUsuariosComponent } from './components/gestion-usuarios/gestion-usuarios.component'
 import { PerfilVeterinarioComponent } from './components/perfil-veterinario/perfil-veterinario.component'
 import { CitasVeterinarioComponent } from './components/citas-veterinario/citas-veterinario.component';
 import { CitasUsuarioComponent } from './components/citas-usuario/citas-usuario.component';
@@ -19,6 +15,10 @@ import { VistaInicioComponent } from './containers/contenedor-veterinario/vista-
 import { VistaAgendarmeComponent } from './containers/contenedor-veterinario/vista-agendarme/vista-agendarme.component';
 import { VistaCitasPendientesComponent } from './containers/contenedor-veterinario/vista-citas-pendientes/vista-citas-pendientes.component';
 import { VistaMisAgendasComponent } from './containers/contenedor-veterinario/vista-mis-agendas/vista-mis-agendas.component';
+import { GestionCitasAdminComponent } from './containers/contenedor-admin/gestion-citas-admin/gestion-citas-admin.component';
+import { GestionUsuarioAdminComponent } from './containers/contenedor-admin/gestion-usuario-admin/gestion-usuario-admin.component';
+import { GestionVeterinariosAdminComponent } from './containers/contenedor-admin/gestion-veterinarios-admin/gestion-veterinarios-admin.component';
+import { MascotasComponent } from './containers/contenedor-admin/mascotas/mascotas.component';
 
 
 const routes: Routes = [
@@ -27,20 +27,24 @@ const routes: Routes = [
   {path: 'registro', component: ContenedorRegistroComponent},
   {path: 'citas', component: ContenedorCitasComponent},
   {path: 'usuario', component: ContenedorUsuarioComponent},
-  {path: 'admin', component: ContenedorAdminComponent},
   {path: 'perfil-usuario', component: PerfilUsuarioComponent},
   {path: 'perfil-veterinario', component: PerfilVeterinarioComponent},
   {path: 'mascotas', component: MascotasUsuarioComponent},
   {path: 'veterinarios', component: VeterinariosComponent},
-  {path: 'gestion-citas', component: GestionCitasComponent},
-  {path: 'gestion-veterinarios', component: GestionVeterinariosComponent},
-  {path: 'gestion-usuarios', component: GestionUsuariosComponent},
   {path: 'citas-veterinario', component: CitasVeterinarioComponent},
   {path: 'citas-usuario', component: CitasUsuarioComponent},
+
+  //vista veterinario
   {path: 'vista-veterinario-inicio', component:VistaInicioComponent},
   {path: 'vista-veterinario-agendarme',component:VistaAgendarmeComponent},
   {path: 'vista-veterinario-citas-pendientes', component:VistaCitasPendientesComponent},
-  {path: 'vista-veterinario-mis-agendas', component: VistaMisAgendasComponent}
+  {path: 'vista-veterinario-mis-agendas', component: VistaMisAgendasComponent},
+
+  //Vista Admin
+  {path: 'vista-admin-gestion-citas', component:GestionCitasAdminComponent},
+  {path: 'vista-admin-gestion-usuarios', component:GestionUsuarioAdminComponent},
+  {path: 'vista-admin-veterinarios', component:GestionVeterinariosAdminComponent},
+  {path: 'vista-admin-mascotas',component:MascotasComponent}
 
 ];
 
