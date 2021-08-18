@@ -49,6 +49,7 @@ import { MascotasComponent } from './containers/contenedor-admin/mascotas/mascot
 import { GestionCitasAdminComponent } from './containers/contenedor-admin/gestion-citas-admin/gestion-citas-admin.component';
 import { GestionUsuarioAdminComponent } from './containers/contenedor-admin/gestion-usuario-admin/gestion-usuario-admin.component';
 import { GestionVeterinariosAdminComponent } from './containers/contenedor-admin/gestion-veterinarios-admin/gestion-veterinarios-admin.component';
+import { TablaMascotaAdminComponent } from './components/tabla-mascota-admin/tabla-mascota-admin.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { GestionVeterinariosAdminComponent } from './containers/contenedor-admin
     GestionCitasAdminComponent,
     GestionUsuarioAdminComponent,
     GestionVeterinariosAdminComponent,
+    TablaMascotaAdminComponent,
 
   ],
   imports: [
