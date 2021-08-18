@@ -45,6 +45,7 @@ import { VistaInicioComponent } from './containers/contenedor-veterinario/vista-
 import { VistaAgendarmeComponent } from './containers/contenedor-veterinario/vista-agendarme/vista-agendarme.component';
 import { VistaCitasPendientesComponent } from './containers/contenedor-veterinario/vista-citas-pendientes/vista-citas-pendientes.component';
 import { VistaMisAgendasComponent } from './containers/contenedor-veterinario/vista-mis-agendas/vista-mis-agendas.component';
+import { TableGestionAdminComponent } from './components/table-gestion-admin/table-gestion-admin.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { VistaMisAgendasComponent } from './containers/contenedor-veterinario/vi
     VistaAgendarmeComponent,
     VistaCitasPendientesComponent,
     VistaMisAgendasComponent,
+    TableGestionAdminComponent,
 
   ],
   imports: [
