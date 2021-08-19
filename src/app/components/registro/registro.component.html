@@ -47,6 +47,14 @@
     </span>
     <input class="controls" formControlName="password" type="password" name="password" id="password" placeholder="Contraseña" required>
   </div>
+
+  <div>
+    <span 
+    class="text-danger" *ngIf="form.get('confirmation')?.hasError('MustMatch') && form.get('confirmation')?.touched">Las contraseñas <strong>no coinciden</strong>
+    </span>
+    <input class="controls" formControlName="confirmation" type="password" name="confirmation" id="confirmation" placeholder="Confirmar contraseña" required>
+  </div>
+  
     <!--<input type="checkbox" name="recordar" value="Sí"> Acepto los <a href="#">Términos y Condiciones</a>-->
     <button class="botons titulo" [disabled]="form.invalid" type="submit" (click)="submit()">Registrarse</button>
     <p><a href="#" >¿Olvidaste tu contraseña?</a></p>

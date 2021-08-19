@@ -3,20 +3,25 @@ from peewee import IntegrityError
 from marshmallow.exceptions import ValidationError
 
 from datetime import datetime
+from app.middlewares.sesion_middleware import sesion_middleware
+from app.middlewares.vet_middleware import vet_middleware
 
 from app.models.cita_model import CitaModel
 from app.schemas.cita_schema import cita_schema, citas_schema
 
 CitaRouter = Blueprint('cita', __name__, url_prefix='/cita')
 
+
 # Obtener todas las citas
 @CitaRouter.route('/citas', methods=['GET'])
+@sesion_middleware
 def list_citas():
     citas = CitaModel.select()
     return citas_schema.dumps(citas), 200
 
 # Obtener una cita en específico
 @CitaRouter.route('/get/<int:id>', methods=['GET'])
+@sesion_middleware
 def get_cita(id):
     cita = CitaModel.get_or_none(id_cita=id)
     return cita_schema.dump(cita),200

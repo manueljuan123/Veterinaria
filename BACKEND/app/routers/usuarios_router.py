@@ -73,7 +73,7 @@ def list_usuarios():
     users = UserModel.select()
     return users_schema.dumps(users),200
 
-
+# Listado de todos los usuarios inhabilitados
 @UsuarioRouter.route('/usuarios_inhabilitados', methods=['GET'])
 def usu_inhabilitados():
     usuarios = UserModel.select().join(RolModel).where(UserModel.eliminado.is_null(False)) 

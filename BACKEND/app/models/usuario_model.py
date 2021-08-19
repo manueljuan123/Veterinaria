@@ -2,10 +2,10 @@ import jwt
 # importaciones principales
 from datetime import datetime, timedelta
 # importaciones instaladas o de terceros
-from flask import abort, jsonify, make_response
+from flask import abort, jsonify, make_response, current_app as app
 from marshmallow.fields import Email
 from werkzeug.security import generate_password_hash, check_password_hash
-from peewee import AutoField, CharField, DateTimeField, ForeignKeyField, TimestampField
+from peewee import AutoField, CharField, DateTimeField, Delete, ForeignKeyField, TimestampField
 # importaciones propias
 from app.models import BaseModel
 from app.models.rol_model import RolModel
@@ -26,7 +26,7 @@ class UserModel(BaseModel):
 
     class Meta:
         table_name = 'usuarios'
-
+    
     def save(self, *args, **kwargs):
         super(UserModel, self).save(*args, **kwargs)
     
@@ -39,7 +39,7 @@ class UserModel(BaseModel):
 
     def create_jwt(self):
         payload = {'payload': self.email, 'exp': datetime.utcnow() + timedelta(hours=1)}
-        self.remember_token = jwt.encode(payload=payload, key='2752b347875c4e5b81de8f4e4f592493', algorithm="HS256")
+        self.remember_token = jwt.encode(payload=payload, key=app.config.get('SECRET_KEY'), algorithm="HS256")
         self.save()
 
     @staticmethod
@@ -60,7 +60,6 @@ class UserModel(BaseModel):
 
         return self
 
-    
 
 
 

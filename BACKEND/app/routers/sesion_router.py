@@ -1,7 +1,8 @@
+from app.middlewares.sesion_middleware import sesion_middleware
 from flask import abort, Blueprint, jsonify, make_response, request
 
 from marshmallow.exceptions import ValidationError
-from peewee import IntegrityError
+from peewee import Delete, IntegrityError, Update
 
 from app.models.usuario_model import UserModel
 from app.models.rol_model import RolModel
@@ -24,11 +25,8 @@ def sesion_login():
     user: UserModel = UserModel.login(email=data['email'], password=data['password'])
     user.create_jwt()
     user = UserModel.select(UserModel, RolModel).join(RolModel).where(UserModel.email == data['email']).get()
-    response = {
-        "message":("Bienvenido, "+user.nombre+","),
-        "error":False
-    }
-    return response
+
+    return user_schema.dump(user), 202
 
 
 @SesionRouter.route('/register', methods=['POST'])
@@ -36,7 +34,7 @@ def create_user():
     data = request.get_json()
     try:
         schema = user_schema.load(data)
-        confirmacion_registro()
+        #confirmacion_registro()
     except ValidationError as error:
         return {"errors": error.messages}, 422
     try:
@@ -51,6 +49,22 @@ def create_user():
     user.rol.get()
 
     return make_response(user_schema.dump(user)),201
+
+
+@SesionRouter.route('/salir', methods=['GET'])
+@sesion_middleware
+def cerrar_sesion():
+    user : UserModel = UserModel.select(UserModel.id)
+    user.remember_token = Update(None)
+    user.get()
+
+    return make_response(jsonify(message="Sesión cerrada"))
+
+
+
+
+
+
 
 
 
