@@ -22,13 +22,11 @@ import { MascotasComponent } from './containers/contenedor-admin/mascotas/mascot
 
 
 const routes: Routes = [
-  {path: '', component: ContenedorHomeComponent},
-  {path: 'info', component: ContenedorInfoComponent},
+  {path: 'login', component: ContenedorHomeComponent},
+  {path: '', component: ContenedorInfoComponent},
   {path: 'registro', component: ContenedorRegistroComponent},
   {path: 'citas', component: ContenedorCitasComponent},
   {path: 'usuario', component: ContenedorUsuarioComponent},
-  {path: 'perfil-usuario', component: PerfilUsuarioComponent},
-  {path: 'perfil-veterinario', component: PerfilVeterinarioComponent},
   {path: 'mascotas', component: MascotasUsuarioComponent},
   {path: 'veterinarios', component: VeterinariosComponent},
   {path: 'citas-veterinario', component: CitasVeterinarioComponent},
