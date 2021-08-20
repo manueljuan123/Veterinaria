@@ -1,3 +1,4 @@
+from os import error
 from app.middlewares.sesion_middleware import sesion_middleware
 from flask import abort, Blueprint, jsonify, make_response, request
 
@@ -20,12 +21,12 @@ def sesion_login():
     try:
         schema = sesion_schema.load(data)
     except ValidationError as err:
-        abort(make_response(jsonify(message='Lo sentimos, sus credenciales no son correctas. Verifique o regístrese antes de volver a intentarlo', error= err.messages),422))
+        abort(make_response(jsonify(message='Lo sentimos, sus credenciales no son correctas. Verifique o regístrese antes de volver a intentarlo', err= err.messages),422))
 
     user: UserModel = UserModel.login(email=data['email'], password=data['password'])
     user.create_jwt()
     user = UserModel.select(UserModel, RolModel).join(RolModel).where(UserModel.email == data['email']).get()
-
+    
     return user_schema.dump(user), 202
 
 
@@ -35,20 +36,20 @@ def create_user():
     try:
         schema = user_schema.load(data)
         #confirmacion_registro()
-    except ValidationError as error:
-        return {"errors": error.messages}, 422
+    except ValidationError as err:
+        return {"errors": err.messages}, 422
     try:
-        del schema['rol_id']
+        
         user = UserModel.create(rol_id=1, **schema)
-    except IntegrityError as error:
-        return {"errors": f'{error}'}, 422
+    except IntegrityError as err:
+        return {"errors": f'{err}'}, 422
 
     user: UserModel = UserModel.login(email=data['email'], password=data['password'])
     user.create_jwt()
     #user = UserModel.select(UserModel, RolModel).join(RolModel).where(UserModel.email == user.email).get()
     user.rol.get()
 
-    return make_response(user_schema.dump(user)),201
+    return user_schema.dump(user),201
 
 
 @SesionRouter.route('/salir', methods=['GET'])

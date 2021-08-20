@@ -5,9 +5,7 @@ from flask import request, current_app as app, abort, make_response, jsonify
 def sesion_middleware(funcion):
     @wraps(funcion)
     def wrappers(*args, **kwargs):
-
         token = request.headers.get('Authorization')
-        
         try:
             jwt.decode(token, key=app.config.get('SECRET_KEY'), algorithms=['HS256'])
         except:

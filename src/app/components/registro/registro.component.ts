@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class RegistroComponent implements OnInit {
 
   form: FormGroup
+  confirmation: string
 
   constructor(private fb:FormBuilder, private auth:AuthService, private route:Router) { }
 
@@ -23,12 +24,10 @@ export class RegistroComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       celular: ['', Validators.required],
       direccion: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmation: ['', Validators.required]
+      password: ['', Validators.required]
     },
-    {
-      validators: this.MustMatch('password', 'confirmation')
-    })
+)
+
   }
 
   MustMatch(controlName: string, matchingControlName:string){
@@ -48,28 +47,32 @@ export class RegistroComponent implements OnInit {
   }
 
   async submit(){
-    let auth = await this.auth.send_register_post_request(this.form.value)
-    if (!auth.error){
-      this.route.navigate(['/usuario'])
-      Swal.fire({
-        title: auth.message,
-        text:"¡Gracias por registrarte!",
-        position: 'top-end',
-        icon: 'success',
-        showConfirmButton : false,
-        timer: 3000 
-        })
-    }else{
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: auth.message,
-        focusConfirm: false,
-        confirmButtonText:
-        '<i class="fa fa-thumbs-up"></i> Entendido',
-        confirmButtonAriaLabel: 'Thumbs up, great!'
-        })
-    }
-  }
-
+    this.auth.register_user(this.form.value)
+    .subscribe(
+      res =>{
+        localStorage.setItem('token', res.remember_token)
+        this.route.navigate(['/usuario'])
+        Swal.fire({
+          title:"Bienvenid@, "+res.nombre+",",
+          text:"¡Gracias por registrarte!",
+          position: 'top-end',
+          icon: 'success',
+          showConfirmButton : false,
+          timer: 3000
+          })
+      },
+      err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: err.message,
+          focusConfirm: false,
+          confirmButtonText:
+          '<i class="fa fa-thumbs-up"></i> Entendido',
+          confirmButtonAriaLabel: 'Thumbs up, great!'
+          })
+      }
+      
+    )
+ }
 }

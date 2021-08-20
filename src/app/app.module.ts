@@ -53,6 +53,16 @@ import { GestionVeterinariosAdminComponent } from './containers/contenedor-admin
 import { TablaMascotaAdminComponent } from './components/tabla-mascota-admin/tabla-mascota-admin.component';
 import { NavbarUsuarioComponent } from './components/navbar-usuario/navbar-usuario.component';
 
+
+// Services
+
+import { TokenInterceptorService } from './services/auth/token-interceptor.service';
+
+
+// Shared
+import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,6 +107,8 @@ import { NavbarUsuarioComponent } from './components/navbar-usuario/navbar-usuar
     GestionVeterinariosAdminComponent,
     TablaMascotaAdminComponent,
     NavbarUsuarioComponent,
+    TablaMascotaAdminComponent,
+    ConfirmEqualValidatorDirective
 
   ],
   imports: [
@@ -107,12 +119,12 @@ import { NavbarUsuarioComponent } from './components/navbar-usuario/navbar-usuar
     RouterModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [
+  providers: [AuthService, /*Authguard*/
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthService,
+      useClass: TokenInterceptorService,
       multi: true
     }
   ],

@@ -2,7 +2,7 @@ import jwt
 # importaciones principales
 from datetime import datetime, timedelta
 # importaciones instaladas o de terceros
-from flask import abort, jsonify, make_response, current_app as app
+from flask import request, abort, jsonify, make_response, current_app as app
 from marshmallow.fields import Email
 from werkzeug.security import generate_password_hash, check_password_hash
 from peewee import AutoField, CharField, DateTimeField, Delete, ForeignKeyField, TimestampField

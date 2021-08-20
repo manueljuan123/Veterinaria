@@ -18,39 +18,44 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
-
-    //this.id = this.route.snapshot.paramMap.get('id');
-
     this.form = this.fb.group({
-    email:['', Validators.required, Validators.email],
-    password:['', Validators.required]
+    email:['', [Validators.required, Validators.email] ],
+    password:['', Validators.required ]
   })
+  
   }
-  async submit(){
-    let auth = await this.auth.send_login_post_request(this.form.value)
-    if (!auth.error) {
-      this.route.navigate(['/usuario'])
-      Swal.fire({
-        title: auth.message,
-        text:"gracias por elegirnos",
-        position: 'top-end',
-        icon: 'success',
-        showConfirmButton : false,
-        timer: 2000 
-        })
-
-    }else{
-      Swal.fire({
-        icon: 'error',
-        title: 'E-mail o contraseña incorrectos',
-        focusConfirm: false,
-        confirmButtonText:
-        '<i class="fa fa-thumbs-up"></i> Entendido',
-        confirmButtonAriaLabel: 'Thumbs up, great!',
-        text: auth.message})
-    }
-
+  async submit(){ 
+    this.auth.login_user(this.form.value)
+      .subscribe(
+        res => {
+          localStorage.setItem('token', res.remember_token);
+          this.route.navigate(['/usuario'])
+          Swal.fire({
+            title: "Bienvenid@, "+res.nombre+",",
+            text:"gracias por elegirnos",
+            position: 'top-end',
+            icon: 'success',
+            showConfirmButton : false,
+            timer: 2000 
+            })
+          
+        },
+        err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'E-mail o contraseña incorrectos',
+            focusConfirm: false,
+            confirmButtonText:
+            '<i class="fa fa-thumbs-up"></i> Entendido',
+            confirmButtonAriaLabel: 'Thumbs up, great!',
+            text: "Lo sentimos, sus credenciales no son correctas. Verifique o regístrese antes de volver a intentarlo"})
+        }
+          
+          
+      )
+  }
     
   }
 
-}
+
+
