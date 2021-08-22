@@ -4,16 +4,31 @@
     <table class="table table-dark table-striped">
         <thead>
             <tr>
-                <th scope="col">Nombre (Dueño)</th>
+                <th scope="col">ID</th>
                 <th scope="col">Mascota</th>
+                <th scope="col">Dueño</th>
+                <th scope="col">Tipo de Mascota</th>
+                <th scope="col">Género</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Peso</th>
+                <th scope="col">Raza</th>
+                <th scope="col">Estado de salud</th>
                 <th scope="col">Activo/Inactivo</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th></th>
-                <td></td>
-                <td></td>
+            <tr *ngFor="let mascota of mascotas">
+                <th scope="row">{{ mascota.id_mascota }}</th>
+                <td>{{ mascota.nombre }}</td>
+                <td>{{ mascota.usuario_id.nombre }} {{ mascota.usuario_id.apellido}}</td>
+                <td>{{ mascota.tipo_mascota.tipo_mascota }}</td>
+                <td>{{ (mascota.genero == 'H') ? 'Hembra' : 'Macho' }}</td>
+                <td>{{ mascota.edad }}</td>
+                <td>{{ mascota.peso }}</td>
+                <td>{{ mascota.raza }}</td>
+                <td>{{ mascota.estado_salud }}</td>
+                <td>{{ (mascota.eliminado == null) ? 'Activo' : 'Inactivo'  }}</td>
+                
             </tr>
     </table>
 </div>

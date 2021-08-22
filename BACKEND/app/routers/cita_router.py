@@ -13,15 +13,13 @@ CitaRouter = Blueprint('cita', __name__, url_prefix='/cita')
 
 
 # Obtener todas las citas
-@CitaRouter.route('/citas', methods=['GET'])
-@sesion_middleware
+@CitaRouter.route('/listado_citas', methods=['GET'])
 def list_citas():
     citas = CitaModel.select()
     return citas_schema.dumps(citas), 200
 
 # Obtener una cita en específico
 @CitaRouter.route('/get/<int:id>', methods=['GET'])
-@sesion_middleware
 def get_cita(id):
     cita = CitaModel.get_or_none(id_cita=id)
     return cita_schema.dump(cita),200
@@ -43,7 +41,7 @@ def crear_cita():
     return cita_schema.dump(cita), 201
 
 # Actualizar cita
-@CitaRouter.route('/update/<int:id>', methods=['PUT'])
+@CitaRouter.route('/actualizar/<int:id>', methods=['PUT'])
 def update_cita(id):
     j = request.get_json()
     try:

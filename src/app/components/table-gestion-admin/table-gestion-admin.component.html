@@ -1,19 +1,26 @@
 <!--Una de las Vistas del Admin-->
-<h1 class="titulo">Veterinarios</h1>
+<!--Una de las Vistas del Admin-->
+<h1 class="titulo">Veterinarios Disponibles</h1>
 <div class="container">
     <table class="table table-dark table-striped">
         <thead>
             <tr>
-                <th scope="col">Nombre</th>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre Completo</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Celular</th>
+                <th scope="col">Dirección</th>
                 <th scope="col">Rol</th>
-                <th scope="col">Activo/Inactivo</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr *ngFor="let veterinario of veterinarios">
+                <th scope="row">{{ veterinario.id }}</th>
+                <td>{{ veterinario.nombre }} {{ veterinario.apellido}}</td>
+                <td>{{ veterinario.email}}</td>
+                <td>{{ veterinario.celular }}</td>
+                <td>{{ veterinario.direccion }}</td>
+                <td>{{ veterinario.rol.nombre }}</td>
             </tr>
     </table>
 </div>

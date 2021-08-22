@@ -9,6 +9,8 @@ from datetime import datetime
 from app.schemas.usuario_schema import user_schema, users_schema
 from app.models.usuario_model import UserModel
 
+from app.middlewares.sesion_middleware import sesion_middleware
+
 
 
 UsuarioRouter = Blueprint('usuario', __name__, url_prefix='/usuario')

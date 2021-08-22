@@ -4,20 +4,24 @@
     <table class="table table-dark table-striped">
         <thead>
             <tr>
-                <th scope="col"># Agenda</th>
+                <th scope="col">Id</th>
                 <th scope="col">Veterinario</th>
                 <th scope="col">Paciente</th>
+                <th scope="col">Dueño</th>
+                <th scope="col">Motivo</th>
                 <th scope="col">Hora Inicio</th>
                 <th scope="col">Hora Final</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr *ngFor="let cita of citas">
+                <th scope="row">{{ cita.id_cita }}</th>
+                <td>{{ cita.agenda.veterinario.nombre}} {{cita.agenda.veterinario.apellido}}</td>
+                <td>{{ cita.paciente.nombre }}</td>
+                <td>{{ cita.agenda.usuario.nombre }} {{ cita.agenda.usuario.apellido }}</td>
+                <td>{{ cita.motivo }}</td>
+                <td>{{ cita.agenda.fecha_inicio }}</td>
+                <td>{{ cita.agenda.fecha_final }}</td>
             </tr>
     </table>
 </div>

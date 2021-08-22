@@ -12,6 +12,7 @@ class CitaModel(BaseModel):
     agenda = ForeignKeyField(AgendaModel)
     motivo = CharField(column_name='motivo', max_length=250)
     precio_cita = IntegerField(column_name='precio_cita')
+    usuario_id = ForeignKeyField(UserModel)
     paciente = ForeignKeyField(MascotaModel)
     creado = TimestampField(column_name='creado')
     actualizado = TimestampField(column_name='actualizado')

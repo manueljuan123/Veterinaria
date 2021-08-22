@@ -63,7 +63,7 @@ def delete_mascota(id):
 
 
 # Listado de todas las mascotas
-@MascotaRouter.route('listado_mascotas', methods=['GET'])
+@MascotaRouter.route('/listado_mascotas', methods=['GET'])
 def list_mascotas():
     mascotas = MascotaModel.select()
     return mascotas_schema.dumps(mascotas), 200

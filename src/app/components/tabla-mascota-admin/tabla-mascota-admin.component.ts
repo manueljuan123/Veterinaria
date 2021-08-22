@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MascotaI } from 'src/app/models/mascota.interface';
+import { MascotaService } from '../../services/macota/mascota.service';
 
 @Component({
   selector: 'app-tabla-mascota-admin',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TablaMascotaAdminComponent implements OnInit {
 
-  constructor() { }
+  mascotas : MascotaI[];
+
+  constructor(private mascotaService:MascotaService, private router:Router) { }
 
   ngOnInit(): void {
+
+    this.mascotaService.listado_mascotas_get_request().subscribe(res =>{
+      this.mascotas = res;
+    })
   }
 
 }

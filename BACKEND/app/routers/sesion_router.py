@@ -40,7 +40,7 @@ def create_user():
         return {"errors": err.messages}, 422
     try:
         
-        user = UserModel.create(rol_id=1, **schema)
+        user = UserModel.create(rol_id=3, **schema)
     except IntegrityError as err:
         return {"errors": f'{err}'}, 422
 

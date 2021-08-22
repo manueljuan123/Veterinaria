@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { MascotaI } from 'src/app/models/mascota.interface'
 
 @Injectable({
   providedIn: 'root'
@@ -79,21 +81,11 @@ export class MascotaService {
 
 
   // Listado de todas las mascotas
-  async listado_mascotas_get_request(data:any){
-    try
-    {const response = await fetch(this.BASE_URL+'/mascota/listado_mascotas',
-                                  {method: 'GET',
-                                  body: JSON.stringify(data),
-                                  headers:{
-                                    'Content-Type':'application/json'}})
-                                  return await response.json
+  listado_mascotas_get_request(): Observable<MascotaI[]>{
+    let ruta = this.BASE_URL+"/mascota/listado_mascotas"
+    return this.http.get<MascotaI[]>(ruta)
   }
-  catch(error){
-    console.log(error)
 
-  }
-  return false
-  }
 
 
     // Obtener mascotas del usuario
