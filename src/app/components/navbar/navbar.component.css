@@ -1,21 +1,11 @@
-.nav-item .nav-link{
-    color: white;
-    font-size: 15px;
+a{
+    left: 300px;
+}
+li{
+    display: block;
+    padding: 25px;
 
 }
-nav ul{
-    list-style: none;
-    margin: 5px;                                     
-    padding:5px;
-    
-
-}
-nav ul li{
-    float:left;
-    position:relative;
-     
-}
-
-.navbar{
-    height: 50px;
+p{
+    font-size: 1.5em
 }

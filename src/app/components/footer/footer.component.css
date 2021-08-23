@@ -3,11 +3,7 @@ body {
     font-family: 'Alegreya Sans', sans-serif;
 }
 
-/* Sticky footer position and size
--------------------------------------------------- */
-
 body {
-  /* Margin bottom by footer height */
   margin-bottom: 300px;
 }
 .footer {
@@ -15,7 +11,7 @@ body {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 300px;
+  height: 350px;
 }
 
 /* Taller footer on small screens */
