@@ -63,6 +63,8 @@ import { TokenInterceptorService } from './services/auth/token-interceptor.servi
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator';
 import { CardsInicioUsuarioComponent } from './components/cards-inicio-usuario/cards-inicio-usuario.component';
 import { CarrouselVistaUsuarioComponent } from './components/carrousel-vista-usuario/carrousel-vista-usuario.component';
+import { CardsServiciosUsuarioComponent } from './components/cards-servicios-usuario/cards-servicios-usuario.component';
+import { MiniNavComponent } from './components/mini-nav/mini-nav.component';
 
 
 @NgModule({
@@ -112,7 +114,9 @@ import { CarrouselVistaUsuarioComponent } from './components/carrousel-vista-usu
     TablaMascotaAdminComponent,
     ConfirmEqualValidatorDirective,
     CardsInicioUsuarioComponent,
-    CarrouselVistaUsuarioComponent
+    CarrouselVistaUsuarioComponent,
+    CardsServiciosUsuarioComponent,
+    MiniNavComponent
 
   ],
   imports: [
