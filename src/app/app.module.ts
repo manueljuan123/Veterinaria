@@ -65,6 +65,14 @@ import { CardsInicioUsuarioComponent } from './components/cards-inicio-usuario/c
 import { CarrouselVistaUsuarioComponent } from './components/carrousel-vista-usuario/carrousel-vista-usuario.component';
 import { CardsServiciosUsuarioComponent } from './components/cards-servicios-usuario/cards-servicios-usuario.component';
 import { MiniNavComponent } from './components/mini-nav/mini-nav.component';
+import { VistaInicioUsuComponent } from './containers/contenedor-usuario/vista-inicio-usu/vista-inicio-usu.component';
+import { VistaServiciosUsuComponent } from './containers/contenedor-usuario/vista-servicios-usu/vista-servicios-usu.component';
+import { VistaAgendarUsuComponent } from './containers/contenedor-usuario/vista-agendar-usu/vista-agendar-usu.component';
+import { VistaMisCitasUsuComponent } from './containers/contenedor-usuario/vista-mis-citas-usu/vista-mis-citas-usu.component';
+import { VistaMisMascotasUsuComponent } from './containers/contenedor-usuario/vista-mis-mascotas-usu/vista-mis-mascotas-usu.component';
+import { VistaVeterinariosUsuComponent } from './containers/contenedor-usuario/vista-veterinarios-usu/vista-veterinarios-usu.component';
+import { VistaPerfilUsuComponent } from './containers/contenedor-usuario/vista-perfil-usu/vista-perfil-usu.component';
+import { MisMascotasUsuComponent } from './components/mis-mascotas-usu/mis-mascotas-usu.component';
 
 
 @NgModule({
@@ -116,7 +124,15 @@ import { MiniNavComponent } from './components/mini-nav/mini-nav.component';
     CardsInicioUsuarioComponent,
     CarrouselVistaUsuarioComponent,
     CardsServiciosUsuarioComponent,
-    MiniNavComponent
+    MiniNavComponent,
+    VistaInicioUsuComponent,
+    VistaServiciosUsuComponent,
+    VistaAgendarUsuComponent,
+    VistaMisCitasUsuComponent,
+    VistaMisMascotasUsuComponent,
+    VistaVeterinariosUsuComponent,
+    VistaPerfilUsuComponent,
+    MisMascotasUsuComponent
 
   ],
   imports: [
