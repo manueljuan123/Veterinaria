@@ -74,6 +74,7 @@ import { VistaVeterinariosUsuComponent } from './containers/contenedor-usuario/v
 import { VistaPerfilUsuComponent } from './containers/contenedor-usuario/vista-perfil-usu/vista-perfil-usu.component';
 import { MisMascotasUsuComponent } from './components/mis-mascotas-usu/mis-mascotas-usu.component';
 import { MisCitasUsuComponent } from './components/mis-citas-usu/mis-citas-usu.component';
+import { VeterinariosUsuarioComponent } from './components/veterinarios-usuario/veterinarios-usuario.component';
 
 
 @NgModule({
@@ -134,7 +135,8 @@ import { MisCitasUsuComponent } from './components/mis-citas-usu/mis-citas-usu.c
     VistaVeterinariosUsuComponent,
     VistaPerfilUsuComponent,
     MisMascotasUsuComponent,
-    MisCitasUsuComponent
+    MisCitasUsuComponent,
+    VeterinariosUsuarioComponent
 
   ],
   imports: [
