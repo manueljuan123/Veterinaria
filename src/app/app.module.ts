@@ -73,6 +73,7 @@ import { VistaMisMascotasUsuComponent } from './containers/contenedor-usuario/vi
 import { VistaVeterinariosUsuComponent } from './containers/contenedor-usuario/vista-veterinarios-usu/vista-veterinarios-usu.component';
 import { VistaPerfilUsuComponent } from './containers/contenedor-usuario/vista-perfil-usu/vista-perfil-usu.component';
 import { MisMascotasUsuComponent } from './components/mis-mascotas-usu/mis-mascotas-usu.component';
+import { MisCitasUsuComponent } from './components/mis-citas-usu/mis-citas-usu.component';
 
 
 @NgModule({
@@ -132,7 +133,8 @@ import { MisMascotasUsuComponent } from './components/mis-mascotas-usu/mis-masco
     VistaMisMascotasUsuComponent,
     VistaVeterinariosUsuComponent,
     VistaPerfilUsuComponent,
-    MisMascotasUsuComponent
+    MisMascotasUsuComponent,
+    MisCitasUsuComponent
 
   ],
   imports: [
