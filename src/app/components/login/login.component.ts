@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service'
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 @Component({
   selector: 'app-login',
@@ -29,10 +30,9 @@ export class LoginComponent implements OnInit {
       .subscribe(
         res => {
           localStorage.setItem('token', res.remember_token);
-          this.route.navigate(['/usuario'])
           Swal.fire({
             title: "Bienvenid@, "+res.nombre+",",
-            text:"gracias por elegirnos",
+            text:"gracias por elegirnos.",
             position: 'top-end',
             icon: 'success',
             showConfirmButton : false,

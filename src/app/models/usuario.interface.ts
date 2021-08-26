@@ -5,11 +5,12 @@ export interface UsuarioI {
     email: string;
     celular: string;
     direccion: string;
+    remember_token: string;
     rol: Rol;
     eliminado: string;
 }
 
-interface Rol{
+export interface Rol{
     id:Number;
     nombre:string;
 }

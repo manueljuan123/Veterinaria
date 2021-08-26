@@ -25,7 +25,6 @@ import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuar
 // Containers
 import { ContenedorHomeComponent } from './containers/contenedor-home/contenedor-home.component';
 import { ContenedorRegistroComponent } from './containers/contenedor-registro/contenedor-registro.component';
-import { ContenedorCitasComponent } from './containers/contenedor-citas/contenedor-citas.component';
 import { ContenedorInfoComponent } from './containers/contenedor-info/contenedor-info.component';
 import { ContenedorUsuarioComponent } from './containers/contenedor-usuario/contenedor-usuario.component';
 import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.component';
@@ -77,6 +76,7 @@ import { MisCitasUsuComponent } from './components/mis-citas-usu/mis-citas-usu.c
 import { VeterinariosUsuarioComponent } from './components/veterinarios-usuario/veterinarios-usuario.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,7 +90,6 @@ import { VeterinariosUsuarioComponent } from './components/veterinarios-usuario/
     VeterinarioTablaComponent,
     ContenedorHomeComponent,
     ContenedorRegistroComponent,
-    ContenedorCitasComponent,
     CitasComponent,
     FormularioComponent,
     ImagenComponent,
@@ -148,8 +147,9 @@ import { VeterinariosUsuarioComponent } from './components/veterinarios-usuario/
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    
   ],
-  providers: [AuthService, /*Authguard*/
+  providers: [AuthService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

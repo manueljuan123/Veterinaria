@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { UsuarioI } from 'src/app/models/usuario.interface';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +10,13 @@ import { Observable } from 'rxjs';
 export class AuthService{
 
   BASE_URL = "http://localhost:5000"
+  public currentUser:BehaviorSubject<UsuarioI>
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router:Router ) {
+    this.currentUser = new BehaviorSubject(
+      JSON.parse(localStorage.getItem('token'))
+    )
+   }
 
   login_user(data:any){
     return this.http.post<any>(this.BASE_URL+'/sesion/login', data)
@@ -23,9 +30,21 @@ export class AuthService{
     return !!localStorage.getItem('token')
   }
 
+  get getUser(): UsuarioI{ 
+    return this.currentUser.value;
+  }
+
+  cerrar_sesion(){
+    localStorage.removeItem('token');
+    this.currentUser.next(null)
+    
+  }
+
   getToken(){
     return localStorage.getItem('token')
   }
+
+
 
   
 
