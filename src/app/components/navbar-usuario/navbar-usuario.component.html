@@ -13,25 +13,25 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+          <a class="nav-link active" aria-current="page" [routerLink]="['/vista-inicio-usuario']">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Servicios</a>
+          <a class="nav-link" [routerLink]="['/vista-servicios-usuario']">Servicios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Agendar</a>
+          <a class="nav-link" [routerLink]="['/vista-agendar-usuario']">Agendar</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Mis Citas</a>
+          <a class="nav-link"[routerLink]="['vista-mis-citas-usuario']">Mis Citas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Mis Mascotas</a>
+          <a class="nav-link" [routerLink]="['/vista-mis-mascotas-usuario']">Mis Mascotas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Veterinarios</a>
+          <a class="nav-link"[routerLink]="['/vista-veterinarios-usuario']">Veterinarios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+          <a class="nav-link text-dark" [routerLink]="['/vista-perfil-usuario']"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
               fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
               <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
             </svg></a>

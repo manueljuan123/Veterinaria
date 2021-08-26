@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MascotasUsuarioComponent } from './mascotas-usuario.component';
+import { AgendarCitaUsuarioComponent } from './agendar-cita-usuario.component';
 
-describe('MascotasUsuarioComponent', () => {
-  let component: MascotasUsuarioComponent;
-  let fixture: ComponentFixture<MascotasUsuarioComponent>;
+describe('AgendarCitaUsuarioComponent', () => {
+  let component: AgendarCitaUsuarioComponent;
+  let fixture: ComponentFixture<AgendarCitaUsuarioComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MascotasUsuarioComponent ]
+      declarations: [ AgendarCitaUsuarioComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MascotasUsuarioComponent);
+    fixture = TestBed.createComponent(AgendarCitaUsuarioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

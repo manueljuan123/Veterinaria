@@ -26,11 +26,9 @@ import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuar
 import { ContenedorHomeComponent } from './containers/contenedor-home/contenedor-home.component';
 import { ContenedorRegistroComponent } from './containers/contenedor-registro/contenedor-registro.component';
 import { ContenedorInfoComponent } from './containers/contenedor-info/contenedor-info.component';
-import { ContenedorUsuarioComponent } from './containers/contenedor-usuario/contenedor-usuario.component';
 import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.component';
 import { SidebarUserComponent } from './components/sidebar-user/sidebar-user.component';
 import { SidebarVetComponent } from './components/sidebar-vet/sidebar-vet.component';
-import { MascotasUsuarioComponent } from './components/mascotas-usuario/mascotas-usuario.component';
 import { VeterinariosComponent } from './components/veterinarios/veterinarios.component';
 import { GestionCitasComponent } from './components/gestion-citas/gestion-citas.component';
 import { GestionVeterinariosComponent } from './components/gestion-veterinarios/gestion-veterinarios.component';
@@ -74,6 +72,7 @@ import { VistaPerfilUsuComponent } from './containers/contenedor-usuario/vista-p
 import { MisMascotasUsuComponent } from './components/mis-mascotas-usu/mis-mascotas-usu.component';
 import { MisCitasUsuComponent } from './components/mis-citas-usu/mis-citas-usu.component';
 import { VeterinariosUsuarioComponent } from './components/veterinarios-usuario/veterinarios-usuario.component';
+import { AgendarCitaUsuarioComponent } from './components/agendar-cita-usuario/agendar-cita-usuario.component';
 
 
 
@@ -94,12 +93,10 @@ import { VeterinariosUsuarioComponent } from './components/veterinarios-usuario/
     FormularioComponent,
     ImagenComponent,
     ContenedorInfoComponent,
-    ContenedorUsuarioComponent,
     SidebarAdminComponent,
     SidebarUserComponent,
     SidebarVetComponent,
     PerfilUsuarioComponent,
-    MascotasUsuarioComponent,
     VeterinariosComponent,
     GestionCitasComponent,
     GestionVeterinariosComponent,
@@ -135,7 +132,8 @@ import { VeterinariosUsuarioComponent } from './components/veterinarios-usuario/
     VistaPerfilUsuComponent,
     MisMascotasUsuComponent,
     MisCitasUsuComponent,
-    VeterinariosUsuarioComponent
+    VeterinariosUsuarioComponent,
+    AgendarCitaUsuarioComponent
 
   ],
   imports: [
