@@ -60,10 +60,8 @@ import { TokenInterceptorService } from './services/auth/token-interceptor.servi
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator';
 import { CardsInicioUsuarioComponent } from './components/cards-inicio-usuario/cards-inicio-usuario.component';
 import { CarrouselVistaUsuarioComponent } from './components/carrousel-vista-usuario/carrousel-vista-usuario.component';
-import { CardsServiciosUsuarioComponent } from './components/cards-servicios-usuario/cards-servicios-usuario.component';
 import { MiniNavComponent } from './components/mini-nav/mini-nav.component';
 import { VistaInicioUsuComponent } from './containers/contenedor-usuario/vista-inicio-usu/vista-inicio-usu.component';
-import { VistaServiciosUsuComponent } from './containers/contenedor-usuario/vista-servicios-usu/vista-servicios-usu.component';
 import { VistaAgendarUsuComponent } from './containers/contenedor-usuario/vista-agendar-usu/vista-agendar-usu.component';
 import { VistaMisCitasUsuComponent } from './containers/contenedor-usuario/vista-mis-citas-usu/vista-mis-citas-usu.component';
 import { VistaMisMascotasUsuComponent } from './containers/contenedor-usuario/vista-mis-mascotas-usu/vista-mis-mascotas-usu.component';
@@ -73,6 +71,7 @@ import { MisMascotasUsuComponent } from './components/mis-mascotas-usu/mis-masco
 import { MisCitasUsuComponent } from './components/mis-citas-usu/mis-citas-usu.component';
 import { VeterinariosUsuarioComponent } from './components/veterinarios-usuario/veterinarios-usuario.component';
 import { AgendarCitaUsuarioComponent } from './components/agendar-cita-usuario/agendar-cita-usuario.component';
+import { FooterUsuarioComponent } from './components/footer-usuario/footer-usuario.component';
 
 
 
@@ -121,10 +120,8 @@ import { AgendarCitaUsuarioComponent } from './components/agendar-cita-usuario/a
     ConfirmEqualValidatorDirective,
     CardsInicioUsuarioComponent,
     CarrouselVistaUsuarioComponent,
-    CardsServiciosUsuarioComponent,
     MiniNavComponent,
     VistaInicioUsuComponent,
-    VistaServiciosUsuComponent,
     VistaAgendarUsuComponent,
     VistaMisCitasUsuComponent,
     VistaMisMascotasUsuComponent,
@@ -133,7 +130,8 @@ import { AgendarCitaUsuarioComponent } from './components/agendar-cita-usuario/a
     MisMascotasUsuComponent,
     MisCitasUsuComponent,
     VeterinariosUsuarioComponent,
-    AgendarCitaUsuarioComponent
+    AgendarCitaUsuarioComponent,
+    FooterUsuarioComponent
 
   ],
   imports: [

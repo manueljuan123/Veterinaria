@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VistaServiciosUsuComponent } from './vista-servicios-usu.component';
+import { FooterUsuarioComponent } from './footer-usuario.component';
 
-describe('VistaServiciosUsuComponent', () => {
-  let component: VistaServiciosUsuComponent;
-  let fixture: ComponentFixture<VistaServiciosUsuComponent>;
+describe('FooterUsuarioComponent', () => {
+  let component: FooterUsuarioComponent;
+  let fixture: ComponentFixture<FooterUsuarioComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VistaServiciosUsuComponent ]
+      declarations: [ FooterUsuarioComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VistaServiciosUsuComponent);
+    fixture = TestBed.createComponent(FooterUsuarioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

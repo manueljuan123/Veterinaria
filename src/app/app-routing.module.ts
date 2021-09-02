@@ -16,7 +16,6 @@ import { MascotasComponent } from './containers/contenedor-admin/mascotas/mascot
 import { NoAuthGuard } from './guards/no-auth.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { VistaInicioUsuComponent } from './containers/contenedor-usuario/vista-inicio-usu/vista-inicio-usu.component';
-import { VistaServiciosUsuComponent } from './containers/contenedor-usuario/vista-servicios-usu/vista-servicios-usu.component';
 import { VistaAgendarUsuComponent } from './containers/contenedor-usuario/vista-agendar-usu/vista-agendar-usu.component';
 import { VistaMisCitasUsuComponent } from './containers/contenedor-usuario/vista-mis-citas-usu/vista-mis-citas-usu.component';
 import { VistaMisMascotasUsuComponent } from './containers/contenedor-usuario/vista-mis-mascotas-usu/vista-mis-mascotas-usu.component';
@@ -25,13 +24,12 @@ import { VistaPerfilUsuComponent } from './containers/contenedor-usuario/vista-p
 
 
 const routes: Routes = [
-  {path: '', component: ContenedorInfoComponent, canActivate: [NoAuthGuard]},
+  {path: '', component: ContenedorInfoComponent},
   {path: 'login', component: ContenedorHomeComponent, canActivate: [NoAuthGuard]},
   {path: 'registro', component: ContenedorRegistroComponent, canActivate:[NoAuthGuard]},
 
   // Vista usuario
   {path: 'vista-inicio-usuario', component: VistaInicioUsuComponent},
-  {path: 'vista-servicios-usuario',component: VistaServiciosUsuComponent},
   {path: 'vista-agendar-usuario', component: VistaAgendarUsuComponent},
   {path: 'vista-mis-citas-usuario', component: VistaMisCitasUsuComponent},
   {path: 'vista-mis-mascotas-usuario', component: VistaMisMascotasUsuComponent},
