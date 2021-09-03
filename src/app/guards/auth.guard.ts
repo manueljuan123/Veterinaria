@@ -17,25 +17,10 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
     ): boolean {
     const currentUser = this.authService.getUser;
-    if (this.authService.loggediIn && currentUser.rol.id === 1){
-      this.router.navigate(['/vista-admin-gestion-usuarios'])
-      return true;
-
-    }else{
-      return false;
-    }
-  
-    if (currentUser && currentUser.rol.nombre === "Veterinario"){
-      this.router.navigate(['vista-veterinario-inicio'])
+    if (currentUser){
       return true;
     }
-  
-    else if (currentUser && currentUser.rol.nombre === "Usuario"){
-      this.router.navigate(['/usuario'])
-      return true;
-    }
-  
-      return false;
-    }
-  
+    return false;
+      
+}
 }

@@ -12,7 +12,7 @@ export class NoAuthGuard implements CanActivate {
 
     ): boolean {
       const currentUser = this.authService.getUser
-      if (this.authService.loggediIn){
+      if (currentUser){
         return true;
       }else{
         this.router.navigate(['/login'])

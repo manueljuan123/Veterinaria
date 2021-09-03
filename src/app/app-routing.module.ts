@@ -25,8 +25,8 @@ import { VistaPerfilUsuComponent } from './containers/contenedor-usuario/vista-p
 
 const routes: Routes = [
   {path: '', component: ContenedorInfoComponent},
-  {path: 'login', component: ContenedorHomeComponent, canActivate: [NoAuthGuard]},
-  {path: 'registro', component: ContenedorRegistroComponent, canActivate:[NoAuthGuard]},
+  {path: 'login', component: ContenedorHomeComponent},
+  {path: 'registro', component: ContenedorRegistroComponent},
 
   // Vista usuario
   {path: 'vista-inicio-usuario', component: VistaInicioUsuComponent},
@@ -37,16 +37,16 @@ const routes: Routes = [
   {path: 'vista-perfil-usuario', component: VistaPerfilUsuComponent},
 
   // Vista veterinario
-  {path: 'vista-veterinario-inicio', component:VistaInicioComponent, canActivate: [AuthGuard]},
-  {path: 'vista-veterinario-agendarme',component:VistaAgendarmeComponent, canActivate: [AuthGuard]},
-  {path: 'vista-veterinario-citas-pendientes', component:VistaCitasPendientesComponent, canActivate: [AuthGuard]},
-  {path: 'vista-veterinario-mis-agendas', component: VistaMisAgendasComponent, canActivate: [AuthGuard]},
+  {path: 'vista-veterinario-inicio', component:VistaInicioComponent},
+  {path: 'vista-veterinario-agendarme',component:VistaAgendarmeComponent},
+  {path: 'vista-veterinario-citas-pendientes', component:VistaCitasPendientesComponent},
+  {path: 'vista-veterinario-mis-agendas', component: VistaMisAgendasComponent},
 
   // Vista Admin
-  {path: 'vista-admin-gestion-citas', component:GestionCitasAdminComponent, canActivate: [AuthGuard]},
-  {path: 'vista-admin-gestion-usuarios', component:GestionUsuarioAdminComponent, canActivate: [AuthGuard]},
-  {path: 'vista-admin-veterinarios', component:GestionVeterinariosAdminComponent, canActivate: [AuthGuard]},
-  {path: 'vista-admin-mascotas',component:MascotasComponent, canActivate: [AuthGuard]}
+  {path: 'vista-admin-gestion-citas', component:GestionCitasAdminComponent},
+  {path: 'vista-admin-gestion-usuarios', component:GestionUsuarioAdminComponent},
+  {path: 'vista-admin-veterinarios', component:GestionVeterinariosAdminComponent},
+  {path: 'vista-admin-mascotas',component:MascotasComponent}
 
 ];
 
