@@ -51,7 +51,7 @@ export class RegistroComponent implements OnInit {
     .subscribe(
       res =>{
         localStorage.setItem('token', res.remember_token)
-        this.route.navigate(['/usuario'])
+        this.route.navigate(['/vista-inicio-usuario'])
         Swal.fire({
           title:"Bienvenid@, "+res.nombre+",",
           text:"¡Gracias por registrarte!",

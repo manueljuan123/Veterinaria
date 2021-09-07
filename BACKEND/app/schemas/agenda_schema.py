@@ -4,6 +4,7 @@ from marshmallow import (Schema, fields)
 
 class AgendaSchema(Schema):
     id_agenda =  fields.Int(dump_only=True)
+    nombre = fields.Str(required=True)
     fecha_inicio = fields.DateTime(required=True)
     fecha_final = fields.DateTime(required=True)
     disponible = fields.Bool(dump_only=True)
@@ -22,6 +23,7 @@ agendas_schema = AgendaSchema(many=True)
 
 class AgendaTypeSchema(Schema):
     id_agenda = fields.Int(dump_only=True)
+    nombre = fields.Str(dump_only=True)
     veterinario = fields.Int(dump_only=True)
     usuario = fields.Int(dump_only=True)
     fecha_inicio = fields.DateTime(dump_only=True)

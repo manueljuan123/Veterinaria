@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AgendaService } from 'src/app/services/agenda/agenda.service';
+import { AgendaI } from '../../models/agenda';
 
 @Component({
   selector: 'app-cards-inicio-usuario',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardsInicioUsuarioComponent implements OnInit {
 
-  constructor() { }
+  agendas : AgendaI[];
+
+  constructor(private agendaService:AgendaService) { }
 
   ngOnInit(): void {
+    this.agendaService.obtener_agendas_get_request().subscribe(res =>{
+      this.agendas = res;
+    })
   }
 
 }

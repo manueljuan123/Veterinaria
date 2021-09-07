@@ -12,6 +12,7 @@ export class AuthService{
   BASE_URL = "http://localhost:5000"
   public currentUser:BehaviorSubject<UsuarioI>
 
+
   constructor(private http:HttpClient, private router:Router ) {
     this.currentUser = new BehaviorSubject(
       JSON.parse(localStorage.getItem('token'))
@@ -43,6 +44,7 @@ export class AuthService{
   getToken(){
     return localStorage.getItem('token')
   }
+
 
 
 

@@ -21,6 +21,7 @@ import { VistaMisCitasUsuComponent } from './containers/contenedor-usuario/vista
 import { VistaMisMascotasUsuComponent } from './containers/contenedor-usuario/vista-mis-mascotas-usu/vista-mis-mascotas-usu.component';
 import { VistaVeterinariosUsuComponent } from './containers/contenedor-usuario/vista-veterinarios-usu/vista-veterinarios-usu.component';
 import { VistaPerfilUsuComponent } from './containers/contenedor-usuario/vista-perfil-usu/vista-perfil-usu.component';
+import { AdminGuard } from './guards/admin.guard';
 
 
 const routes: Routes = [

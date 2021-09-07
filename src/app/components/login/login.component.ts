@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth/auth.service'
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthGuard } from 'src/app/guards/auth.guard';
+import { UsuarioI, Rol } from '../../models/usuario.interface';
 
 @Component({
   selector: 'app-login',
@@ -28,8 +29,22 @@ export class LoginComponent implements OnInit {
   async submit(){ 
     this.auth.login_user(this.form.value)
       .subscribe(
-        res => {
+        (res : any) => {
           localStorage.setItem('token', res.remember_token);
+
+          if (res.rol.id === 1){
+            this.route.navigate(['/vista-admin-gestion-usuarios'])
+          }
+
+          if (res.rol.id === 2){
+            this.route.navigate(['vista-veterinario-inicio'])
+          }
+
+          if (res.rol.id === 3){
+            this.route.navigate(['vista-inicio-usuario'])
+          }
+
+
           Swal.fire({
             title: "Bienvenid@, "+res.nombre+",",
             text:"gracias por elegirnos.",
@@ -38,6 +53,7 @@ export class LoginComponent implements OnInit {
             showConfirmButton : false,
             timer: 2000 
             })
+            
           
         },
         err => {

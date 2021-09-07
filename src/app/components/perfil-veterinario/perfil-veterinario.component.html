@@ -9,11 +9,13 @@
     </div>
     <div class="col-sm-8  p-3 ">
       <h4 class="mt-0 text-center">Sobre Mi</h4>
-      <p>Nombre:  </p>
-      <p>Apellido: </p>
-      <p>Direccion: </p>
-      <p>Celular: </p>
-      <p>Correo:  </p>
+      <th *ngFor="let veterinario of veterinario_datos">
+      <p>Nombre: {{ veterinario.nombre }}  </p>
+      <p>Apellido: {{ veterinario.apellido }}</p>
+      <p>Direccion: {{ veterinario.direccion }} </p>
+      <p>Celular: {{ veterinario.celular }} </p>
+      <p>Correo:  {{ veterinario.email }}</p>
+    </th>
       <p><button type="button" class="btn btn-info">Actualizar Datos</button></p> 
     </div>
   </div>

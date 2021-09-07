@@ -10,6 +10,7 @@ export class AgendarCitaUsuarioComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+   
   }
 
 }

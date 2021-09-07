@@ -54,7 +54,7 @@ class UserModel(BaseModel):
     @classmethod
     def login(cls, **kwargs):
         self: cls = cls.get_or_none(cls.email == kwargs['email'])
-
+        
         if self is None or not self.verify_password(kwargs['password']):
             abort(make_response(jsonify(message='Lo sentimos, sus credenciales no son correctas. Verifique o regístrese antes de volver a intentarlo.', error=True),422))
 

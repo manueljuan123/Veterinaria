@@ -31,8 +31,9 @@ export class UsuarioService {
 
 
     // Obtener usuario en específico
-  obtener_usuario_get_request(data:any, user){
-    return this.http.get<any>(this.BASE_URL+'/usuario/get/'+user, data)
+  obtener_usuario_get_request(user):Observable<UsuarioI[]>{
+    let ruta = this.BASE_URL+'/usuario/get/'+user
+    return this.http.get<UsuarioI[]>(ruta)
   }
 
   // Listado de todos los usuarios

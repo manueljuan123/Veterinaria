@@ -9,9 +9,9 @@ export interface CitaI {
     agenda:      Agenda;
     precio_cita: number;
 }
-
 interface Agenda {
     eliminado:    null;
+    nombre:       string;
     creado:       Date;
     id_agenda:    number;
     disponible:   boolean;

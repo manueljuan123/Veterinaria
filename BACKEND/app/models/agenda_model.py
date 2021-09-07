@@ -1,11 +1,12 @@
 from datetime import datetime
-from peewee import AutoField, BooleanField, DateTimeField, ForeignKeyField, IntegerField, TimestampField
+from peewee import AutoField, BooleanField, CharField, DateTimeField, ForeignKeyField, IntegerField, TimestampField, _StringField
 
 from app.models import BaseModel
 from app.models.usuario_model import UserModel
 
 class AgendaModel(BaseModel):
     id_agenda = AutoField(column_name='id_agenda', primary_key=True)
+    nombre = CharField(column_name='nombre')
     fecha_inicio = DateTimeField(column_name='fecha_inicio')
     fecha_final = DateTimeField(column_name='fecha_final')
     disponible = BooleanField(column_name='disponible')

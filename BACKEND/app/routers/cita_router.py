@@ -7,6 +7,7 @@ from app.middlewares.sesion_middleware import sesion_middleware
 from app.middlewares.vet_middleware import vet_middleware
 
 from app.models.cita_model import CitaModel
+from app.models.usuario_model import UserModel
 from app.schemas.cita_schema import cita_schema, citas_schema
 
 CitaRouter = Blueprint('cita', __name__, url_prefix='/cita')
@@ -67,4 +68,14 @@ def eliminar_cita(id):
 
     cita.delete()
     return cita_schema.dump(cita)
+
+
+# Obtener citas del usuario
+@CitaRouter.route('/listado_citas_usuario/<int:id>', methods=['GET'])
+def obtener_citas(id):
+    citas_usuario = CitaModel.select().join(UserModel).where(CitaModel.id_cita == id).execute()
+    return citas_schema.dumps(citas_usuario)
+
+
+
 

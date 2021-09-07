@@ -27,9 +27,9 @@ class MascotaTypeSchema(Schema):
     usuario = fields.Int(dump_only=True)
     nombre = fields.Str(dump_only=True)
     genero = fields.Str(dump_only=True)
-    edad = fields.Int(dump_only=True)
+    edad = fields.Str(dump_only=True)
     raza = fields.Str(dump_only=True)
-    peso = fields.Int(dump_only=True)
+    peso = fields.Str(dump_only=True)
     estado_salud = fields.Str(dump_only=True)
 
 mascota_schema = MascotaSchema()

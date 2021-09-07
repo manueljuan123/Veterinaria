@@ -1,64 +1,22 @@
 
 <div class="container">
     <div class="row row-cols-1 row-cols-md-3 g-4  pt-3">
-
+        <tr *ngFor="let agenda of agendas">
         <div class="col">
-            <div class="card" style="width: 18rem;">
-                <li class="list-group-item">AGENDA 1 </li>
+            <div class="card border-info" style="width: 18rem;">
+                <li class="list-group-item border-info">{{ agenda.nombre }} </li>
                 <img src="../../../assets/img/logo.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Descripcion</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
+                
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Veterinario: </li>
-                    <li class="list-group-item">Hora Inicio (time)</li>
-                    <li class="list-group-item">(Diponibilidad)</li>
-                    <li class="list-group-item"><button type="button" class="btn btn-info">Tomar Cita</button></li>
+                    <li class="list-group-item">Veterinario: {{ agenda.usuario.nombre }} {{ agenda.usuario.apellido }} </li>
+                    <li class="list-group-item">Hora: {{ agenda.fecha_inicio }}</li>
+                    <li class="list-group-item">Disponibilidad: {{ (agenda.disponible == false) ? 'Disponible' : 'Ocupado' }}</li>
+                    <li class="list-group-item text-center"><button type="button" class="btn btn-info">Tomar Cita</button></li>
                 </ul>
             </div>
-        </div>
-
-
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <li class="list-group-item">AGENDA 2 </li>
-                <img src="../../../assets/img/logo.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Descripcion</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Veterinario: </li>
-                    <li class="list-group-item">Hora Inicio (time)</li>
-                    <li class="list-group-item">(Diponibilidad)</li>
-                    <li class="list-group-item"><button type="button" class="btn btn-info">Tomar Cita</button></li>
-                </ul>
-            </div>
-        </div>
-
-
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <li class="list-group-item">AGENDA 3</li>
-                <img src="../../../assets/img/logo.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Descripcion</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Veterinario: </li>
-                    <li class="list-group-item">Hora Inicio (time)</li>
-                    <li class="list-group-item">(Diponibilidad)</li>
-                    <li class="list-group-item"><button type="button" class="btn btn-info">Tomar Cita</button></li>
-                </ul>
-            </div>
-        </div>
-
+</div>
+    </tr>
     </div>
 </div>
 
-<div class="pt-5"></div>
+<br><br><br><br>
