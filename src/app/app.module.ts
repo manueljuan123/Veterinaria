@@ -69,6 +69,7 @@ import { CitaService } from './services/cita/cita.service';
 
 // Shared
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator';
+import { HistoriaClinicaComponent } from './components/historia-clinica/historia-clinica.component';
 
 
 
@@ -123,7 +124,8 @@ import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator
     MisCitasUsuComponent,
     VeterinariosUsuarioComponent,
     AgendarCitaUsuarioComponent,
-    FooterUsuarioComponent
+    FooterUsuarioComponent,
+    HistoriaClinicaComponent
 
   ],
   imports: [
