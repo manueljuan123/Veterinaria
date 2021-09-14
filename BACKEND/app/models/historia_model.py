@@ -9,6 +9,7 @@ from app.models import BaseModel
 class HistoriasModel(BaseModel):
     id_historia = AutoField(column_name='id_historia', primary_key=True)
     observacion = CharField(column_name='observacion', max_length=255)
+    medicamentos = CharField(column_name='medicamentos', max_length=100, null=True)
     fecha = DateField(column_name='fecha')
     tipo_cita_id = ForeignKeyField(TipoCitaModel)
     mascota_id = ForeignKeyField(MascotaModel)

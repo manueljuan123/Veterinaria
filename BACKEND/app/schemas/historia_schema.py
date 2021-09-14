@@ -7,6 +7,7 @@ from marshmallow import Schema, fields
 class HistoriasSchema(Schema):
     id_historia = fields.Int(dump_only=True)
     observacion = fields.Str(required=True)
+    medicamentos = fields.Str(required=True)
     fecha = fields.Date(required=True)
     tipo_cita = fields.Nested(TipoCitaSchema, dump_only=True)
     tipo_cita_id = fields.Int(required=True, load_only=True)

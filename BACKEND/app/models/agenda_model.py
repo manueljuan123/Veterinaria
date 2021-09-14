@@ -11,7 +11,7 @@ class AgendaModel(BaseModel):
     fecha_final = DateTimeField(column_name='fecha_final')
     disponible = BooleanField(column_name='disponible')
     veterinario = ForeignKeyField(UserModel)
-    usuario = ForeignKeyField(UserModel)
+    usuario = ForeignKeyField(UserModel, null=True)
     creado = TimestampField(column_name='creado')
     actualizado = TimestampField(column_name='actualizado')
     eliminado = DateTimeField(column_name='eliminado', null=True)

@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 from flask import request, abort, jsonify, make_response, current_app as app
 from marshmallow.fields import Email
 from werkzeug.security import generate_password_hash, check_password_hash
-from peewee import AutoField, CharField, DateTimeField, Delete, ForeignKeyField, TimestampField
+from peewee import AutoField, BlobField, CharField, DateTimeField, Delete, ForeignKeyField, TimestampField
 # importaciones propias
 from app.models import BaseModel
 from app.models.rol_model import RolModel

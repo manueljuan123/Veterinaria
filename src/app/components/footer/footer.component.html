@@ -11,15 +11,18 @@
           </div>
           
           <div class="col-md-5">
-              <form>
+              <form [formGroup]="form">
                   <fieldset class="form-group">
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Ingresa correo electrónico">
+                    <span 
+                    class="text-danger" *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">El e-mail <strong>es inválido</strong>
+                    </span>
+                      <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" placeholder="Ingresa correo electrónico">
                   </fieldset>
                   <fieldset class="form-group mt-3">
-                      <textarea class="form-control" id="exampleMessage" placeholder="Consulta"></textarea>
+                      <textarea formControlName="consulta" class="form-control" id="exampleMessage" placeholder="Consulta"></textarea>
                   </fieldset>
                   <fieldset class="form-group text-xs-right mt-3">
-                      <button type="button" class="btn btn-lg btn-primary btn-block titulo">Enviar Consulta</button>
+                      <button type="button" (click)="submit()" class="btn btn-lg btn-primary btn-block titulo">Enviar Consulta</button>
                   </fieldset>
               </form>
           </div>

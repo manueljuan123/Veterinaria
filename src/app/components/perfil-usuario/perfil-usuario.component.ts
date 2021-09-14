@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { UsuarioService } from '../../services/usuario/usuario.service';
+import { UsuarioI } from 'src/app/models/usuario.interface';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilUsuarioComponent implements OnInit {
 
-  constructor() { }
+  usuarios : UsuarioI[]
+
+  constructor(private auth:AuthService, private usuario:UsuarioService) { }
 
   ngOnInit(): void {
+    this.usuario.obtener_usuario_get_request(6).subscribe(res => {
+      this.usuarios = res;
+    })
   }
 
 }

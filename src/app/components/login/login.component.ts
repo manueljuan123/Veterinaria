@@ -31,29 +31,42 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (res : any) => {
           localStorage.setItem('token', res.remember_token);
-
           if (res.rol.id === 1){
             this.route.navigate(['/vista-admin-gestion-usuarios'])
+            Swal.fire({
+              title: "Bienvenid@, "+res.nombre+".",
+              text:"La administración está dispuesta a tu servicio.",
+              icon: 'info',
+              showConfirmButton : false,
+              timer: 3000 
+              })
+              
           }
 
           if (res.rol.id === 2){
             this.route.navigate(['vista-veterinario-inicio'])
+            Swal.fire({
+              title: "Bienvenid@, "+res.nombre+".",
+              text:"Los clientes están esperando tus agendas, ¡Apresúrate!",
+              icon: 'success',
+              showConfirmButton : false,
+              timer: 4000 
+              })
           }
 
           if (res.rol.id === 3){
             this.route.navigate(['vista-inicio-usuario'])
+            Swal.fire({
+              title: "Bienvenid@, "+res.nombre+".",
+              text:"Gracias por elegir nuestro servicio.",
+              icon: 'success',
+              showConfirmButton : false,
+              timer: 3000 
+              })
           }
 
 
-          Swal.fire({
-            title: "Bienvenid@, "+res.nombre+",",
-            text:"gracias por elegirnos.",
-            position: 'top-end',
-            icon: 'success',
-            showConfirmButton : false,
-            timer: 2000 
-            })
-            
+
           
         },
         err => {

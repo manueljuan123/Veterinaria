@@ -35,9 +35,9 @@ export class CitaService {
   }
 
   // Obtener citas del usuario
-  obtener_listado_citas_usuario_get_request(user:Number): Observable<CitaI[]>{
-    let ruta = this.BASE_URL+"/cita/listado_citas_usuario/"+user
-    return this.http.get<CitaI[]>(ruta)
+  obtener_listado_citas_usuario_get_request(id?:any): Observable<CitaI[]>{
+    let ruta = this.BASE_URL+'/cita/listado_citas_usuario/'+ id;
+    return this.http.get<CitaI[]>(ruta);
   }
 
   // Obtener una cita en específico

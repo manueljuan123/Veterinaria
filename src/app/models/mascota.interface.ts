@@ -11,12 +11,12 @@ export interface MascotaI {
     tipo_mascota: TipoMascota;
 }
 
-export interface TipoMascota {
+interface TipoMascota {
     id_tipo_mascota: number;
     tipo_mascota:    string;
 }
 
-export interface Usuario{
+interface Usuario{
     id:          number;
     nombre:      string;
     apellido:    string;

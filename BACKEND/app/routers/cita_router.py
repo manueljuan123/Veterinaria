@@ -73,7 +73,7 @@ def eliminar_cita(id):
 # Obtener citas del usuario
 @CitaRouter.route('/listado_citas_usuario/<int:id>', methods=['GET'])
 def obtener_citas(id):
-    citas_usuario = CitaModel.select().join(UserModel).where(CitaModel.id_cita == id).execute()
+    citas_usuario = CitaModel.select().join(UserModel).where(CitaModel.usuario_id == id).execute()
     return citas_schema.dumps(citas_usuario)
 
 

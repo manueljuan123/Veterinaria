@@ -35,7 +35,7 @@ def create_user():
     data = request.get_json()
     try:
         schema = user_schema.load(data)
-        #confirmacion_registro()
+        confirmacion_registro()
     except ValidationError as err:
         return {"errors": err.messages}, 422
     try:
