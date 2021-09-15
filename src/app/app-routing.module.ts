@@ -25,7 +25,7 @@ import { AdminGuard } from './guards/admin.guard';
 
 
 const routes: Routes = [
-  {path: '', component: ContenedorInfoComponent },
+  {path: '', component: ContenedorInfoComponent},
   {path: 'login', component: ContenedorHomeComponent},
   {path: 'registro', component: ContenedorRegistroComponent},
 
@@ -44,10 +44,10 @@ const routes: Routes = [
   {path: 'vista-veterinario-mis-agendas', component: VistaMisAgendasComponent},
 
   // Vista Admin
-  {path: 'vista-admin-gestion-citas', component:GestionCitasAdminComponent},
-  {path: 'vista-admin-gestion-usuarios', component:GestionUsuarioAdminComponent},
-  {path: 'vista-admin-veterinarios', component:GestionVeterinariosAdminComponent},
-  {path: 'vista-admin-mascotas',component:MascotasComponent}
+  {path: 'vista-admin-gestion-citas', component:GestionCitasAdminComponent, canActivate:[AdminGuard]},
+  {path: 'vista-admin-gestion-usuarios', component:GestionUsuarioAdminComponent, canActivate:[AdminGuard]},
+  {path: 'vista-admin-veterinarios', component:GestionVeterinariosAdminComponent, canActivate:[AdminGuard]},
+  {path: 'vista-admin-mascotas',component:MascotasComponent, canActivate:[AdminGuard]}
 
 ];
 

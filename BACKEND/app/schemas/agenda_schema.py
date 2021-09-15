@@ -1,4 +1,5 @@
 from app.schemas.usuario_schema import UserSchema, UserTypeSchema
+from app.schemas.mascota_schema import MascotaTypeSchema
 from app.models.agenda_model import AgendaModel
 from marshmallow import (Schema, fields)
 
@@ -12,6 +13,8 @@ class AgendaSchema(Schema):
     veterinario_id = fields.Int(required=True, load_only=True) 
     usuario = fields.Nested(UserTypeSchema, dump_only=True)
     usuario_id = fields.Int(required=True, load_only=True)
+    mascota = fields.Nested(MascotaTypeSchema, dump_only=True)
+    mascota_id = fields.Int(load_only=True)
     creado = fields.DateTime(dump_only=True)
     actualizado = fields.DateTime(dump_only=True)
     eliminado = fields.DateTime(dump_only=True)

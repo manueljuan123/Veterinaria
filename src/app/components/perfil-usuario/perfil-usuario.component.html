@@ -1,22 +1,21 @@
 <div class="container-lg pt-3">
     <div class="row g-0 bg-light position-relative">
         <div class="col-4  p-3 ">
-          <div class="img-fluid" alt="..." width="200px"> 
-            <p class="p-2"><button type="button" class="btn btn-info text-center">Mis Mascotas</button></p> 
-            <p class="p-2"><button type="button" class="btn btn-info text-center">Cambiar Contraseña</button></p> 
-        </div>
+          <tr *ngFor="let usuario of usuarios">
+            <th>
         <div class="col-sm-8  p-3 ">
-          <h4 class="mt-0 text-center">Sobre Mi</h4>
-          <input type="file">
-          <label>
-            <input type="submit">
-          </label>
-          
-          <p>Nombre:  </p>
-          <p>Apellido: </p>
-          <p>Direccion: </p>
-          <p>Celular: </p>
-          <p>Correo:  </p>
-          <p><button type="button" class="btn btn-info">Actualizar Datos</button></p> 
+
+          <h4 class="mt-0 text-center">Sobre Mi</h4>         
+          <p>Nombre: {{ usuario.nombre }} {{ usuario.apellido }} </p>
+          <p>Direccion: {{ usuario.direccion }} </p>
+          <p>Celular: {{ usuario.celular }} </p>
+          <p>Correo: {{ usuario.email }} </p>
+          <p><button type="button" class="btn btn-info">Actualizar usuario</button></p> 
+
         </div>
+      </th>
+    </tr>
+        <div class="img-fluid" alt="..." width="200px"> 
+          <p class="p-2"><button type="button" class="btn btn-info text-center">Cambiar Contraseña</button></p> 
+      </div>
       </div>

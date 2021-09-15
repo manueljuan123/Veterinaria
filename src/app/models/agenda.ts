@@ -1,19 +1,32 @@
+
 export interface AgendaI {
-    eliminado:    null;
-    nombre:       string;
-    creado:       Date;
-    id_agenda:    number;
-    disponible:   boolean;
-    veterinario:  Usuario;
-    actualizado:  Date;
-    fecha_inicio: Date;
     fecha_final:  Date;
     usuario:      Usuario;
+    creado:       Date;
+    actualizado:  Date;
+    fecha_inicio: Date;
+    disponible:   boolean;
+    mascota:      Mascota | null;
+    eliminado:    null;
+    id_agenda:    number;
+    veterinario:  Usuario;
+    nombre:       string;
+}
+
+interface Mascota {
+    edad:         string;
+    raza:         string;
+    estado_salud: string;
+    peso:         string;
+    genero:       string;
+    id_mascota:   number;
+    nombre:       string;
 }
 
 interface Usuario {
-    celular:  string;
-    apellido: string;
-    nombre:   string;
     id:       number;
+    celular:  string;
+    nombre:   string;
+    apellido: string;
 }
+

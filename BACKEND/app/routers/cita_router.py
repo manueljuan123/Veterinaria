@@ -8,6 +8,8 @@ from app.middlewares.vet_middleware import vet_middleware
 
 from app.models.cita_model import CitaModel
 from app.models.usuario_model import UserModel
+from app.models.agenda_model import AgendaModel
+from app.schemas.agenda_schema import agendas_schema, agenda_schema
 from app.schemas.cita_schema import cita_schema, citas_schema
 
 CitaRouter = Blueprint('cita', __name__, url_prefix='/cita')

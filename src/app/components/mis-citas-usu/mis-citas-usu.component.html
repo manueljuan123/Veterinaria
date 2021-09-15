@@ -3,20 +3,18 @@
     <table class="table table-hover">
         <thead>
             <tr class="table-info">
-                <th scope="col"># Cita</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Paciente</th>
                 <th scope="col">Veterinario</th>
-                <th scope="col">Agendada/cancelada</th>
+                <th scope="col">Estado</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let cita of citas">
-                <th scope="row">{{ cita.id_cita }}</th>
                 <td>{{ cita.agenda.fecha_inicio}}</td>
                 <td>{{ cita.paciente.nombre }}</td>
                 <td>{{ cita.agenda.veterinario.nombre }}</td>
-                <td>{{ cita.eliminado }}</td>
+                <td>{{ (cita.eliminado == null) ? 'Pendiente' : 'Agendada' }}</td>
             </tr>
         </tbody>
     </table>

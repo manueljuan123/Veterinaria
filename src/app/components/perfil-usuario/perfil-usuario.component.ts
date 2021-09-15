@@ -14,8 +14,10 @@ export class PerfilUsuarioComponent implements OnInit {
 
   constructor(private auth:AuthService, private usuario:UsuarioService) { }
 
+  userId = this.auth.getId()
+
   ngOnInit(): void {
-    this.usuario.obtener_usuario_get_request(6).subscribe(res => {
+    this.usuario.obtener_usuario_get_request(this.userId).subscribe(res => {
       this.usuarios = res;
     })
   }

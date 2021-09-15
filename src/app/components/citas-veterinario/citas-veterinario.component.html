@@ -3,18 +3,18 @@
     <table class="table table-dark table-striped">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre (Dueño)</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Dueño</th>
                 <th scope="col">Mascota</th>
                 <th scope="col">Fecha</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th></th>
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr *ngFor="let agenda of agendasPendientes">
+                <th>{{ agenda.nombre }}</th>
+                <td>{{ agenda.usuario.nombre }} </td>
+                <td>{{ agenda.mascota.nombre }}</td>
+                <td>{{ agenda.fecha_inicio }}</td>
             </tr>
     </table>
 </div>

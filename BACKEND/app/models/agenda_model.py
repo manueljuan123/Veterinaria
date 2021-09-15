@@ -3,6 +3,7 @@ from peewee import AutoField, BooleanField, CharField, DateTimeField, ForeignKey
 
 from app.models import BaseModel
 from app.models.usuario_model import UserModel
+from app.models.mascota_model import MascotaModel
 
 class AgendaModel(BaseModel):
     id_agenda = AutoField(column_name='id_agenda', primary_key=True)
@@ -12,6 +13,7 @@ class AgendaModel(BaseModel):
     disponible = BooleanField(column_name='disponible')
     veterinario = ForeignKeyField(UserModel)
     usuario = ForeignKeyField(UserModel, null=True)
+    mascota = ForeignKeyField(MascotaModel, null=True)
     creado = TimestampField(column_name='creado')
     actualizado = TimestampField(column_name='actualizado')
     eliminado = DateTimeField(column_name='eliminado', null=True)

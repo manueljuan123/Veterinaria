@@ -18,4 +18,10 @@ export class AgendaService {
     let ruta = this.BASE_URL+"/agenda/listado_agendas"
     return this.http.get<AgendaI[]>(ruta)
   }
+
+  // Obtener las agendas de un veterinario pendientes
+  obtener_agendas_veterinario_get_request(id?:any): Observable<AgendaI[]>{
+    let ruta = this.BASE_URL+"/agenda/agendas_veterinario/"+id
+    return this.http.get<AgendaI[]>(ruta)
+  }
 }

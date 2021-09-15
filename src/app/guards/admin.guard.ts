@@ -14,8 +14,8 @@ export class AdminGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
     ): boolean {
-    const currentUser = this.authService.getUser;
-    if (currentUser && currentUser.rol.id === 1){
+    const currentUser = this.authService.isLogin;
+    if (this.authService.isAdmin()){
       return true;
     }
     else{

@@ -14,16 +14,11 @@ export class MisMascotasUsuComponent implements OnInit {
 
   constructor(private mascotaService:MascotaService, private auth:AuthService) { }
   
+  userId = this.auth.getId()
 
   ngOnInit() {
-    this.mascotaService.listado_mascotas_usuario_get_request( this.auth.getUser.id).subscribe(res =>
+    this.mascotaService.listado_mascotas_usuario_get_request(this.userId).subscribe(res =>
       this.mascotas = res)
   }
 
 }
-/*
-ngOnInit() {
-  this.mascotaService.listado_mascotas_usuario_get_request(this.auth.checkValue(() => this.auth.getUser.id)).subscribe(res =>
-    this.mascotas = res)
-}
-*/

@@ -14,15 +14,14 @@ export class NoAuthGuard implements CanActivate {
     state: RouterStateSnapshot
 
     ): boolean {
-      const currentUser = this.authService.getUser
+      const currentUser = this.authService.loggediIn()
       if (currentUser){
         return true
-      }
-      this.router.navigate(['/login'], {
-        queryParams : {returnUrl: state.url}
-      });
+      }else{ 
       return false;
-      }
+      
+    }
+  }
 
     }
 

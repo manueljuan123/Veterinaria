@@ -4,16 +4,20 @@
     <table class="table table-dark table-striped">
         <thead>
             <tr>
-                <th scope="col"># Agenda</th>
-                <th scope="col">Fecha (Inicio)</th>
-                <th scope="col">Fecha (Final)</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Dueño</th>
+                <th scope="col">Macota</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Estado</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th></th>
-                <td></td>
-                <td></td>
+            <tr *ngFor='let agenda of agendas'>
+                <th>{{ agenda.nombre }}</th>
+                <td>{{ agenda.usuario.nombre }}</td>
+                <td>{{ agenda.mascota.nombre }}</td>
+                <td>{{ agenda.fecha_inicio }}</td>
+                <td>{{ agenda.disponible }}</td>
             </tr>
     </table>
 </div>

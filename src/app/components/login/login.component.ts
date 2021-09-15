@@ -30,7 +30,8 @@ export class LoginComponent implements OnInit {
     this.auth.login_user(this.form.value)
       .subscribe(
         (res : any) => {
-          localStorage.setItem('token', res.remember_token);
+          this.auth.login(res.remember_token, res.id)
+          this.auth.loggediIn()
           if (res.rol.id === 1){
             this.route.navigate(['/vista-admin-gestion-usuarios'])
             Swal.fire({
@@ -40,7 +41,8 @@ export class LoginComponent implements OnInit {
               showConfirmButton : false,
               timer: 3000 
               })
-              
+              this.auth.currentU()
+              this.auth.admin.next(true)
           }
 
           if (res.rol.id === 2){

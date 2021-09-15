@@ -16,8 +16,8 @@ def confirmacion_registro():
     
     #credenciales
     proveedor_correo = 'smtp.live.com: 587'
-    remitente = 'VeterinariaADSI2026943@gmail.com'
-    password = 'Adsi2026943'
+    remitente = 'veterinariaconectada@hotmail.com'
+    password = 'adsi2026943'
 
     #conexion a servidor
     servidor = smtplib.SMTP(proveedor_correo)
@@ -47,7 +47,7 @@ def consulta():
     
     #credenciales
     proveedor_correo = 'smtp.live.com: 587'
-    remitente = 'consultaveco@gmail.com'
+    remitente = 'consultaveco@hotmail.com'
     password = 'adsi2026943'
 
     #conexion a servidor
@@ -63,7 +63,7 @@ def consulta():
     msg = MIMEMultipart()
     msg.attach(MIMEText(mensaje, 'html'))
     msg['From'] = remitente
-    msg['To'] = 'VeterinariaADSI2026943@gmail.com'
+    msg['To'] = 'veterinariaconectada@hotmail.com'
     msg['Subject'] = email
     print("Correo enviado con éxito")
     return servidor.sendmail(msg['From'] , msg['To'], msg.as_string())
@@ -84,8 +84,8 @@ def envio_historia(email):
     
     #credenciales
     proveedor_correo = 'smtp.live.com: 587'
-    remitente = 'VeterinariaADSI2026943@gmail.com'
-    password = 'Adsi2026943'
+    remitente = 'veterinariaconectada@hotmail.com'
+    password = 'adsi2026943'
 
     #conexion a servidor
     servidor = smtplib.SMTP(proveedor_correo)

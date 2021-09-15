@@ -13,7 +13,7 @@ from app.schemas.tipo_cita_schema import tipo_cita_schema
 HistoriaRouter = Blueprint('historia', __name__, url_prefix='/historia')
 
 @HistoriaRouter.route('/crear', methods=['POST'])
-def crear_historia(email):
+def crear_historia():
     j = request.get_json()
     try:
         schema = historia_schema.load(j)
@@ -22,7 +22,7 @@ def crear_historia(email):
 
     try:
         historia = HistoriasModel.create(**schema)
-        envio_historia(email)
+        envio_historia('juanmanuelyatemendez@gmail.com')
 
     except IntegrityError as error:
         return {"errors": f'{error}'}, 422

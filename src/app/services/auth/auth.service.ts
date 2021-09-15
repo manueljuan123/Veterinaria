@@ -13,6 +13,10 @@ export class AuthService{
   public currentUser:BehaviorSubject<UsuarioI>
   
   isLogin = new BehaviorSubject<boolean>(this.checkToken())
+  admin = new BehaviorSubject<boolean>(null);
+  veterinario = new BehaviorSubject<boolean>(null)
+  usuario = new BehaviorSubject<boolean>(null)
+
 
 
   constructor(private http:HttpClient, private router:Router ) {
@@ -29,7 +33,7 @@ export class AuthService{
     return this.http.post<any>(this.BASE_URL+'/sesion/register', data)
   }
 
-  private checkToken() : boolean {
+  checkToken() : boolean {
     return !!localStorage.getItem('token');
   }
 
@@ -37,8 +41,9 @@ export class AuthService{
     return this.isLogin.asObservable();
   }
  
-  login(token:string):void{
+  login(token:string, id):void{
     localStorage.setItem('token', token);
+    localStorage.setItem('id', id)
     this.isLogin.next(true);
   }
 
@@ -49,6 +54,7 @@ export class AuthService{
 
   cerrar_sesion(){
     localStorage.removeItem('token');
+    localStorage.removeItem('id')
     this.currentUser.next(null)
     
   }
@@ -57,5 +63,25 @@ export class AuthService{
     return localStorage.getItem('token')
   }
 
+  getId(){
+    return localStorage.getItem('id')
+  }
 
+ // Roles
+
+currentU(): UsuarioI{ 
+  return this.currentUser.value
+}
+
+ isAdmin() : Observable<boolean> {
+  return this.admin.asObservable();
+ }
+
+ isVet() : Observable<boolean> {
+  return this.veterinario.asObservable();
+ }
+
+ isUser() : Observable<boolean> {
+  return this.usuario.asObservable();
+ }
 }

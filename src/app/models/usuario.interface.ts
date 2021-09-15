@@ -10,6 +10,8 @@ export interface UsuarioI {
     eliminado: string;
 }
 
+
+
 export interface Rol{
     id:Number;
     nombre:string;

@@ -1,24 +1,28 @@
 
 <div class="container pt-2" >
-    <tr >
-        <th >
+    
     <p class="lead titulo">Mis Mascotas</p>
     <div class="row row-cols-1 row-cols-md-3 g-4 ">
+        <tr *ngFor='let mascota of mascotas'>
+            <th >
         <div class="col">
             <div class="card border-info" style="width: 18rem;">
 
-                <li class="list-group-item border-info titulo" >Nombre Mascota:</li>
+                <li class="list-group-item border-info titulo" >Nombre Mascota: {{ mascota.nombre }}</li>
                 <img src="../../../assets/img/logo.png" class="card-img-top" alt="...">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item border-info">Edad:</li>
-                    <li class="list-group-item border-info">Raza:</li>
+                    <li class="list-group-item border-info">Edad: {{ mascota.edad }}</li>
+                    <li class="list-group-item border-info">Raza: {{ mascota.raza }}</li>
+                    <li class="list-group-item border-info">Género: {{ (mascota.genero == 'H') ? 'Hembra' : 'Macho' }}</li>
+                    <li class="list-group-item border-info">Tipo: {{ mascota.tipo_mascota.tipo_mascota }}</li>
+                    <li class="list-group-item border-info">Estado: {{ mascota.estado_salud }}</li>
                 </ul>
             </div>
         </div>
-
-</div> 
-</th>
+    </th>
 </tr>
+</div> 
+
 </div>
 
 
