@@ -9,9 +9,10 @@
 		<p class="text-dark font-weight-bold fw-bold">AGENDA +</p>
 		<p class="text-secondary fw-bold">CUIDA TUS ANIMALES</p>
 	  </div>
-  
+	  
 	  <div class="collapse navbar-collapse" id="navbarNavDropdown">
 		<ul class="navbar-nav ml-auto">
+
 		  <li class="nav-item">
 			<a class="nav-link active" aria-current="page" [routerLink]="['/vista-veterinario-inicio']">Inicio</a>
 		  </li>
@@ -21,10 +22,9 @@
 		  <li class="nav-item">
 			<a class="nav-link" [routerLink]="['/vista-veterinario-citas-pendientes']">Citas Pendientes</a>
 		  </li>
-		  <li class="nav-item">
+		  <li class="nav-item" >
 			<a class="nav-link" [routerLink]= "['/vista-veterinario-mis-agendas']">Historia Clinica</a>
 		  </li>
-
 
 		  <li class="nav-item">
 			<button type="submit" [routerLink]="['/']" (click)="logout()" class="btn btn-info titulo">Salir<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">

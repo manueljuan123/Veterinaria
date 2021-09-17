@@ -33,7 +33,7 @@ const routes: Routes = [
   {path: 'vista-inicio-usuario', component: VistaInicioUsuComponent},
   {path: 'vista-agendar-usuario', component: VistaAgendarUsuComponent},
   {path: 'vista-mis-citas-usuario', component: VistaMisCitasUsuComponent},
-  {path: 'vista-mis-mascotas-usuario', component: VistaMisMascotasUsuComponent, canActivate:[AuthGuard]},
+  {path: 'vista-mis-mascotas-usuario', component: VistaMisMascotasUsuComponent},
   {path: 'vista-veterinarios-usuario', component: VistaVeterinariosUsuComponent, canActivate:[AuthGuard]},
   {path: 'vista-perfil-usuario', component: VistaPerfilUsuComponent},
 

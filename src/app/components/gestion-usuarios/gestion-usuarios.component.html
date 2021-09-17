@@ -29,40 +29,64 @@
 <!--crear usuario-->
 
 <div class="container pt-5">
-    <p class="lead titulo text-center">Crear Usuario</p>
-    <form class="row g-3 ">
+    <p class="lead titulo text-center">Crear Veterinario</p>
+    <form class="row g-3 " [formGroup]="form">
         <div class="col-md-6">
             <label for="inputNombr3" class="form-label">Nombre:</label>
-            <input type="text" class="form-control border-info" id="inputNombr3" placeholder="Nombre">
+            <span 
+            class="text-danger" *ngIf="form.get('nombre')?.hasError('required') && form.get('nombre')?.touched">El nombre <strong>es requerido</strong>
+            </span>
+            <input type="text" formControlName="nombre" class="form-control border-info" name="nombre" id="inputNombr3" placeholder="Nombre">
         </div>
 
         <div class="col-md-6">
             <label for="inputApell3" class="form-label">Apellido: </label>
-            <input type="text" class="form-control border-info" id="inputApell3" placeholder="Apellido">
+            <span 
+            class="text-danger" *ngIf="form.get('apellido')?.hasError('required') && form.get('apellido')?.touched"> El apellido <strong>es requerido</strong>
+            </span>
+            <input type="text" formControlName="apellido" class="form-control border-info" name="apellido" id="inputApell3" placeholder="Apellido">
         </div>
         
         <div class="col-md-6">
             <label for="inputCelu3" class="form-label">Celular</label>
-            <input type="text" class="form-control border-info" id="inputCelu3" placeholder="Celular">
+            <span 
+            class="text-danger" *ngIf="form.get('celular').hasError('required') && form.get('celular')?.touched">El celular <strong>es requerido</strong>
+            </span>
+            <input type="text" formControlName="celular" class="form-control border-info" name="celular" id="inputCelu3" placeholder="Celular">
         </div>
 
         <div class="col-md-6">
             <label for="inputDirec3" class="form-label">Direccion</label>
-            <input type="text" class="form-control border-info" id="inputDirec3" placeholder="">
+            <span 
+            class="text-danger" *ngIf="form.get('direccion').hasError('required') && form.get('direccion')?.touched">La direccion <strong>es requerida</strong>
+            </span>
+            <input type="text" formControlName="direccion" class="form-control border-info" name="direccion" id="inputDirec3" placeholder="">
         </div>
 
         <div class="col-md-6">
             <label for="inputEmail3" class="form-label">Email</label>
-            <input type="text" class="form-control border-info" id="inputEmail3" placeholder="Email">
+            
+            <span 
+            class="text-danger" *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">El e-mail <strong>es requerido</strong>
+            </span>
+        
+            <span 
+            class="text-danger" *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">El e-mail <strong>es inválido</strong>
+            </span>
+
+            <input type="text" class="form-control border-info" formControlName="email" name="email" id="inputEmail3" placeholder="Email">
         </div>
 
         <div class="col-md-6">
             <label for="inputPass3" class="form-label">Contraseña</label>
-            <input type="password" class="form-control border-info" id="input3" placeholder="Contraseña">
+            <span 
+            class="text-danger" *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">La contraseña <strong>es requerida</strong>
+            </span>
+            <input type="password" formControlName="password" name="password" class="form-control border-info" id="input3" placeholder="Contraseña">
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-info">Registrar</button>
+            <button type="submit" [disabled]="form.invalid" (click)="submit()" class="btn btn-info">Registrar</button>
         </div>
     </form>
 </div>

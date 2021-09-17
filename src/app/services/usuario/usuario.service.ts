@@ -12,11 +12,10 @@ export class UsuarioService {
 
   BASE_URL = "http://localhost:5000"
 
-  // Crear usuario con rol definido
+  // Crear usuario con rol veterinario
   crear_usuario_post_request(data:any){
     return this.http.post<any>(this.BASE_URL+'/usuario/crear', data)
   }
-
 
   // Actualizar usuario en específico
   actualizar_usuario_put_request(data:any){
@@ -59,8 +58,9 @@ export class UsuarioService {
   }
 
     // Listado de clientes
-  listado_clientes_get_request(data:any){
-    return this.http.get<any>(this.BASE_URL+'/usuario/listado_clientes')
+  listado_clientes_get_request(): Observable<UsuarioI[]>{
+    let ruta = this.BASE_URL+'/usuario/listado_clientes'
+    return this.http.get<UsuarioI[]>(ruta)
   }
 
 

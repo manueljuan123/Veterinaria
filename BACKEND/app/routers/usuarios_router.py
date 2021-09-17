@@ -1,4 +1,7 @@
 from logging import NullHandler
+
+from flask.json import jsonify
+from werkzeug.exceptions import abort
 from app.models.rol_model import RolModel
 from flask.helpers import make_response
 from peewee import IntegrityError
@@ -15,23 +18,20 @@ from app.middlewares.sesion_middleware import sesion_middleware
 
 UsuarioRouter = Blueprint('usuario', __name__, url_prefix='/usuario')
 
-# Crear usuario con rol definido
+# Crear usuario con rol veterinario
 @UsuarioRouter.route('/crear', methods=['POST'])
 def crear_usuario():
-    j = request.get_json()
-    
+    data = request.get_json()
     try:
-        schema = user_schema.load(j)
-    except ValidationError as error:
-        return {"errors": error.messages}, 422
+        schema = user_schema.load(data)
+    except:
+        abort(make_response(jsonify(message="Dato inválido", error=True), 422))
     try:
-        user = UserModel.create(**schema)
-    except IntegrityError as error:
-        return {"errors": f'{error}'}, 422
+        user = UserModel.create(rol_id=2, **schema)
+    except IntegrityError as err:
+        return {"errors": f'{err}'}, 422
 
-    user.rol.get()
-
-    return make_response(user_schema.dump(user)), 201
+    return user_schema.dump(user),201
 
 
 # Actualizar usuario en específico
@@ -40,8 +40,8 @@ def actualizar_usuario(id):
     j = request.get_json()
     try:
         schema = user_schema.load(j)
-    except ValidationError as err:
-        return {"errors": err.messages}, 422
+    except:
+        abort(make_response(jsonify(message="Dato inválido", error=True), 422))
     try:
         user = UserModel.update(actualizado=datetime.now(), **schema).where(UserModel.id==id).execute()
     except IntegrityError as err:
@@ -56,7 +56,7 @@ def eliminar_usuario(id):
     user = UserModel.get_or_none(id=id)
     
     if user is None:
-        return {'errors':'usuario no existe'}, 400
+        abort(make_response(jsonify(message="Usuario no existe", error=True), 404))
 
     user.delete()
     return user_schema.dump(user)
@@ -66,6 +66,10 @@ def eliminar_usuario(id):
 @UsuarioRouter.route('/get/<int:id>', methods=['GET'])
 def obtener_usuario(id):
     user = UserModel.get_or_none(id=id)
+
+    if user == None:
+        abort(make_response(jsonify(message="Usuario no existe", error=True), 404))
+        
     return user_schema.dump(user), 200
 
 
@@ -92,7 +96,7 @@ def list_empleados():
 # Listado de veterinarios
 @UsuarioRouter.route('/listado_veterinarios', methods=['GET'])
 def list_veterinarios():
-    veterinarios = UserModel.select().join(RolModel).where(UserModel.rol_id==2) & UserModel.select().join(RolModel).where(UserModel.eliminado.is_null(True)) 
+    veterinarios = UserModel.select().join(RolModel).where(UserModel.rol_id==2, UserModel.eliminado.is_null(True)) 
     return make_response(users_schema.dumps(veterinarios)), 200
 
 

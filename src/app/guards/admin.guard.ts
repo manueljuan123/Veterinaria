@@ -14,15 +14,14 @@ export class AdminGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
     ): boolean {
-    const currentUser = this.authService.isLogin;
-    if (this.authService.isAdmin()){
+    const currentUser = this.authService.isAdmin();
+    if (currentUser){
       return true;
     }
     else{
-      this.router.navigate['/']
       return false;
     }
-
+    
   }
   
 }

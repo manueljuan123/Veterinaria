@@ -4,7 +4,7 @@
 
     <div class="">
       <span 
-      class="text-danger" *ngIf="form.get('nombre')?.hasError('required') && form.get('nombre')?.touched">El nombre <strong>es requerido</strong>
+      class="text-danger" *ngIf="form.get('nombre')?.hasError('required') && form.get('nombre')?.touched"> El nombre <strong>es requerido</strong>
       </span>
     <input class="controls" formControlName="nombre" type="text" name="nombre" id="nombre" placeholder="Nombre" required>
   </div>

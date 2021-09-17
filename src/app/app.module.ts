@@ -139,7 +139,7 @@ import { HistoriaClinicaComponent } from './components/historia-clinica/historia
     ReactiveFormsModule,
     
   ],
-  providers: [AuthService,
+  providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

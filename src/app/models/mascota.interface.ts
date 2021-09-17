@@ -1,6 +1,6 @@
 export interface MascotaI {
     raza:         string;
-    usuario_id:   Usuario;
+    usuario:      Usuario;
     eliminado:    Date;
     peso:         number;
     estado_salud: string;
@@ -11,7 +11,7 @@ export interface MascotaI {
     tipo_mascota: TipoMascota;
 }
 
-interface TipoMascota {
+export interface TipoMascota {
     id_tipo_mascota: number;
     tipo_mascota:    string;
 }

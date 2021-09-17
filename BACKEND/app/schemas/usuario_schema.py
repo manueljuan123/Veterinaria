@@ -23,6 +23,7 @@ class UserTypeSchema(Schema):
     nombre = fields.Str(dump_only=True)
     apellido = fields.Str(dump_only=True)
     celular = fields.Str(dump_only=True)
+    email = fields.Str(dump_only=True)
 
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)

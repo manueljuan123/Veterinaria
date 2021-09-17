@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioI } from 'src/app/models/usuario.interface';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { UsuarioService } from '../../services/usuario/usuario.service';
 
 @Component({
   selector: 'app-navbar-veterinario',
@@ -8,9 +10,13 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class NavbarVeterinarioComponent implements OnInit {
 
-  constructor(private auth:AuthService) { }
+  constructor(private auth:AuthService, private usuario: UsuarioService) { }
+
+  veterinarios: UsuarioI[]
 
   ngOnInit(): void {
+    this.usuario.listado_veterinarios_get_request().subscribe(res=>
+      this.veterinarios = res)
   }
 
   async logout(){

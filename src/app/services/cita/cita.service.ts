@@ -30,7 +30,7 @@ export class CitaService {
 
   // Obtener todas las citas
   obtener_listado_citas_get_request(): Observable<CitaI[]>{
-    let ruta = this.BASE_URL+"/cita/listado_citas"
+    let ruta = this.BASE_URL+"/cita/listado"
     return this.http.get<CitaI[]>(ruta)
   }
 

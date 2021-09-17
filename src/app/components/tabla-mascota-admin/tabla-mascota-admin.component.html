@@ -6,7 +6,6 @@
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Mascota</th>
-                <th scope="col">Dueño</th>
                 <th scope="col">Tipo de Mascota</th>
                 <th scope="col">Género</th>
                 <th scope="col">Edad</th>
@@ -20,7 +19,6 @@
             <tr *ngFor="let mascota of mascotas">
                 <th scope="row">{{ mascota.id_mascota }}</th>
                 <td>{{ mascota.nombre }}</td>
-                <td>{{ mascota.usuario_id.nombre }} {{ mascota.usuario_id.apellido}}</td>
                 <td>{{ mascota.tipo_mascota.tipo_mascota }}</td>
                 <td>{{ (mascota.genero == 'H') ? 'Hembra' : 'Macho' }}</td>
                 <td>{{ mascota.edad }}</td>

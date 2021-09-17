@@ -28,5 +28,6 @@ interface Usuario {
     celular:  string;
     nombre:   string;
     apellido: string;
+    email:    string;
 }
 

@@ -28,52 +28,53 @@
 
 <div class="container pt-5">
     <p class="lead titulo text-center">Registrar Nueva Mascota</p>
-    <form class="row g-3 ">
+    <form class="row g-3 " [formGroup]="form" *ngIf="this.userId">
         <div class="col-md-6">
             <label for="inputNombr3" class="form-label">Nombre:</label>
-            <input type="text" class="form-control border-info" id="inputNombr3" placeholder="Nombre">
+            <input type="text" class="form-control border-info" id="inputNombr3" formControlName="nombre" placeholder="">
         </div>
         <div class="col-md-6">
-            <label for="inputEdd4" class="form-label">Edad (Meses):</label>
-            <input type="number" class="form-control border-info" id="inputEdd4" placeholder="Meses">
+            <label for="inputEdd4" class="form-label">Edad:</label>
+            <input type="text" class="form-control border-info" id="inputEdd4" formControlName="edad" placeholder="">
         </div>
         <div class="col-md-6">
-            <label for="inputAddress" class="form-label">Peso (Kg):</label>
-            <input type="number" class="form-control border-info" id="inputAddress" placeholder="Kg">
+            <label for="inputAddress" class="form-label">Peso:</label>
+            <input type="text" class="form-control border-info" id="inputAddress" formControlName="peso" placeholder="">
         </div>
         <div class="col-md-6">
             <label for="inputAddress2" class="form-label">Raza:</label>
-            <input type="text" class="form-control border-info" id="inputAddress2" placeholder="Raza">
+            <input type="text" class="form-control border-info" id="inputAddress2" formControlName="raza" placeholder="">
         </div>
         <div class="col-md-4">
-            <label for="inputState" class="form-label">Genero:</label>
-            <select id="inputState" class="form-select border-info">
-                <option selected>Genero</option>
-                <option value="1">1.Macho</option>
-                <option value="2">2.Hembra</option>
+            <label for="inputState" class="form-label">Género:</label>
+            <select formControlName="genero" class="form-select border-info">
+                <option>M</option>
+                <option>H</option>
             </select>
         </div>
         <div class="col-md-4">
             <label for="inputState" class="form-label">Tipo Mascota</label>
-            <select id="inputState" class="form-select border-info">
-                <option selected>Tipo Mascota</option>
-                <option value="1">1.Perro</option>
-                <option value="2">2.Gato</option>
-                <option value="3">3.Conejo</option>
-                <option value="4">4.Aves</option>
+            <select formControlName="tipo_mascota" class="form-select border-info">
+                <option [value]="tipo" *ngFor="let tipo of tipo_mascota">{{ tipo.tipo_mascota }}</option>
             </select>
         </div>
         <div class="col-md-4">
             <label for="inputState" class="form-label">Estado de Salud</label>
-            <select id="inputState" class="form-select border-info">
-                <option selected>Estado de Salud</option>
-                <option value="1">Bien</option>
-                <option value="2">Mal</option>
+            <select formControlName="estado_salud" class="form-select border-info">
+                <option>Saludable</option>
+                <option>Enfermo</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="inputState" class="form-label">Yo</label>
+            <select formControlName="id_usuario" class="form-select border-info">
+                <option *ngIf="this.userId">{{ this.userId }}</option>
             </select>
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-info">Registrar</button>
+            <button type="submit" (click)="submit()" [disabled]="form.invalid" class="btn btn-info">Registrar</button>
         </div>
     </form>
 </div>

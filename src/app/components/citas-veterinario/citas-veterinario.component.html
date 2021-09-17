@@ -3,18 +3,44 @@
     <table class="table table-dark table-striped">
         <thead>
             <tr>
+                <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Dueño</th>
                 <th scope="col">Mascota</th>
                 <th scope="col">Fecha</th>
+                <th scope="col">Historia / Eliminar</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let agenda of agendasPendientes">
+                <th>{{ agenda.id_agenda }}</th>
                 <th>{{ agenda.nombre }}</th>
                 <td>{{ agenda.usuario.nombre }} </td>
                 <td>{{ agenda.mascota.nombre }}</td>
-                <td>{{ agenda.fecha_inicio }}</td>
+                <td>{{ agenda.fecha_inicio | date:'short' }}</td>
+                <td>
+                    <div class="row">
+                        <div class="col-3">
+                            <button type="button" class="btn btn-success" (click)="crearHistoria( agenda.id_agenda )" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <!--la linea svg es el icono-->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z"/>
+                                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                                  </svg>
+                              </button>
+                        </div>
+                        <div class="col-3">
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash2" viewBox="0 0 16 16">
+                                    <path d="M14 3a.702.702 0 0 1-.037.225l-1.684 10.104A2 2 0 0 1 10.305 15H5.694a2 2 0 0 1-1.973-1.671L2.037 3.225A.703.703 0 0 1 2 3c0-1.105 2.686-2 6-2s6 .895 6 2zM3.215 4.207l1.493 8.957a1 1 0 0 0 .986.836h4.612a1 1 0 0 0 .986-.836l1.493-8.957C11.69 4.689 9.954 5 8 5c-1.954 0-3.69-.311-4.785-.793z"/>
+                                  </svg>
+                            </button>
+
+                            
+                        </div>
+                    </div>
+                </td>
             </tr>
     </table>
 </div>

@@ -11,10 +11,13 @@
         </thead>
         <tbody>
             <tr *ngFor="let cita of citas">
-                <td>{{ cita.agenda.fecha_inicio}}</td>
+                <td>{{ cita.agenda.fecha_inicio | date:'short' }}</td>
                 <td>{{ cita.paciente.nombre }}</td>
                 <td>{{ cita.agenda.veterinario.nombre }}</td>
                 <td>{{ (cita.eliminado == null) ? 'Pendiente' : 'Agendada' }}</td>
+                    
+                    
+                
             </tr>
         </tbody>
     </table>

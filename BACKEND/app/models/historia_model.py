@@ -1,3 +1,4 @@
+from app.schemas.usuario_schema import UserTypeSchema
 from app.models.usuario_model import UserModel
 from app.models.mascota_model import MascotaModel
 from app.models.tipo_cita_model import TipoCitaModel
@@ -11,9 +12,10 @@ class HistoriasModel(BaseModel):
     observacion = CharField(column_name='observacion', max_length=255)
     medicamentos = CharField(column_name='medicamentos', max_length=100, null=True)
     fecha = DateField(column_name='fecha')
-    tipo_cita_id = ForeignKeyField(TipoCitaModel)
-    mascota_id = ForeignKeyField(MascotaModel)
-    veterinario_id = ForeignKeyField(UserModel)
+    tipo_cita = ForeignKeyField(TipoCitaModel)
+    mascota = ForeignKeyField(MascotaModel)
+    veterinario = ForeignKeyField(UserModel)
+    usuario = ForeignKeyField(UserModel)
     creado = TimestampField(column_name='creado')
     actualizado = TimestampField(column_name='actualizado')
     eliminado = DateTimeField(column_name='eliminado', null=True)

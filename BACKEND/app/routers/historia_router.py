@@ -1,4 +1,7 @@
 
+from flask.helpers import make_response
+from flask.json import jsonify
+from werkzeug.exceptions import abort
 from app.models.historia_model import HistoriasModel
 from marshmallow.exceptions import ValidationError
 from peewee import IntegrityError
@@ -12,21 +15,28 @@ from app.schemas.tipo_cita_schema import tipo_cita_schema
 
 HistoriaRouter = Blueprint('historia', __name__, url_prefix='/historia')
 
-@HistoriaRouter.route('/crear', methods=['POST'])
-def crear_historia():
+@HistoriaRouter.route('/crear/<string:email>', methods=['POST'])
+def crear_historia(email):
     j = request.get_json()
     try:
         schema = historia_schema.load(j)
-    except ValidationError as error:
-        return {"errors": error.messages}, 422
+    except:
+        abort(make_response(jsonify(message="Dato inválido", error=True), 422))
 
     try:
         historia = HistoriasModel.create(**schema)
-        envio_historia('juanmanuelyatemendez@gmail.com')
+        envio_historia(email)
 
-    except IntegrityError as error:
-        return {"errors": f'{error}'}, 422
+    except:
+        abort(make_response(jsonify(message="Dato inválido", error=True), 422))
 
-    return historia_schema.dump(historia)
+    return historia_schema.dump(historia), 201
+
+
+# Listado de todas las historias
+@HistoriaRouter.route('/listado', methods=['GET'])
+def list_historias():
+    historias = HistoriasModel.select()
+    return historias_schema.dumps(historias),200
 
 

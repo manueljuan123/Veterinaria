@@ -36,13 +36,13 @@ def create_user():
     try:
         schema = user_schema.load(data)
         confirmacion_registro()
-    except ValidationError as err:
-        return {"errors": err.messages}, 422
+    except:
+        abort(make_response(jsonify(message="Dato inválido", error=True), 422))
     try:
         
         user = UserModel.create(rol_id=3, **schema)
-    except IntegrityError as err:
-        return {"errors": f'{err}'}, 422
+    except:
+        abort(make_response(jsonify(message="Dato inválido", error=True), 422))
 
     user: UserModel = UserModel.login(email=data['email'], password=data['password'])
     user.create_jwt()

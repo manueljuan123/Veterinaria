@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MascotaI } from 'src/app/models/mascota.interface'
 import { UsuarioI } from '../../models/usuario.interface';
-
+import { TipoMascota } from 'src/app/models/mascota.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,19 +15,7 @@ export class MascotaService {
 
   // Crear mascota
   async crear_mascota_post_request(data:any){
-    try
-    {const response = await fetch(this.BASE_URL+'/mascota/crear',
-                            {method: 'POST',
-                             body: JSON.stringify(data),
-                             headers:{
-                               'Content-Type':'application/json'}})
-                            return await response.json()
-
-    }
-    catch(error){
-      console.log(error)
-    }
-    return false
+    return this.http.post<any>(this.BASE_URL+`/mascota/crear`, data)
   }
 
   // Actualizar mascota en específico
@@ -83,7 +71,7 @@ export class MascotaService {
 
   // Listado de todas las mascotas
   listado_mascotas_get_request(): Observable<MascotaI[]>{
-    let ruta = this.BASE_URL+"/mascota/listado_mascotas"
+    let ruta = this.BASE_URL+"/mascota/listado"
     return this.http.get<MascotaI[]>(ruta)
   }
 
@@ -112,5 +100,11 @@ export class MascotaService {
   }
   return false
   }
+
+    // Listado tipo mascotas
+    listado_all_tipo_mascotas_get_request(): Observable<TipoMascota[]>{
+      let ruta = this.BASE_URL+"/mascota/listado_tipo"
+      return this.http.get<TipoMascota[]>(ruta)
+    }
 
 }

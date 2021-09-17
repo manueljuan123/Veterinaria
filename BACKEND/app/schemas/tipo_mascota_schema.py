@@ -5,5 +5,5 @@ class TipoMascotaSchema(Schema):
     id_tipo_mascota = fields.Int(dump_only=True)
     tipo_mascota = fields.Str(required=True)
 
-tipo_mascota_schema = TipoMascotaModel()
-tipo_mascotas_schema = TipoMascotaModel(many=True)
+tipo_mascota_schema = TipoMascotaSchema()
+tipo_mascotas_schema = TipoMascotaSchema(many=True)

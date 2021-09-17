@@ -19,6 +19,7 @@ from app.routers.historia_router import HistoriaRouter
 # EMAIL
 from app.routers.email_router import EmailRouter
 
+
 app = create_app(Config)
 
 CORS(app=app, resources={r"*": {"origins": "*"}})

@@ -1,8 +1,12 @@
 from flask import Blueprint, request
+from flask.helpers import make_response
+from flask.json import jsonify
 from peewee import IntegrityError
 from marshmallow.exceptions import ValidationError
 
 from datetime import datetime
+
+from werkzeug.exceptions import abort
 from app.middlewares.sesion_middleware import sesion_middleware
 from app.middlewares.vet_middleware import vet_middleware
 
@@ -16,7 +20,7 @@ CitaRouter = Blueprint('cita', __name__, url_prefix='/cita')
 
 
 # Obtener todas las citas
-@CitaRouter.route('/listado_citas', methods=['GET'])
+@CitaRouter.route('/listado', methods=['GET'])
 def list_citas():
     citas = CitaModel.select()
     return citas_schema.dumps(citas), 200
@@ -25,6 +29,9 @@ def list_citas():
 @CitaRouter.route('/get/<int:id>', methods=['GET'])
 def get_cita(id):
     cita = CitaModel.get_or_none(id_cita=id)
+    if cita == None:
+        abort(make_response(jsonify(message="Cita no existe", error=True), 404))
+    
     return cita_schema.dump(cita),200
 
 # Crear una cita
@@ -33,13 +40,13 @@ def crear_cita():
     j = request.get_json()
     try:
         schema = cita_schema.load(j)
-    except ValidationError as err:
-        return {"errors": err.messages}, 422
+    except:
+        abort(make_response(jsonify(message="Dato no válido", error=True), 422))
 
     try:
         cita = CitaModel.create(**schema)
     except IntegrityError as err:
-        return {"errors": f'{err}'}, 422
+        abort(make_response(jsonify(message="Dato no válido", error=True), 422))
 
     return cita_schema.dump(cita), 201
 
@@ -49,13 +56,13 @@ def update_cita(id):
     j = request.get_json()
     try:
         schema = cita_schema.load(j)
-    except ValidationError as err:
-        return {"errors": err.messages}, 422
+    except:
+        abort(make_response(jsonify(message="Dato no válido", error=True), 422))
 
     try:
         cita = CitaModel.update(update_at=datetime.now(), **schema).where(CitaModel.id_cita == id).execute()
-    except IntegrityError as err:
-        return {"errors": f'{err}'}, 422
+    except:
+        abort(make_response(jsonify(message="Dato no válido", error=True), 422))
 
     cita = CitaModel.get(id=id)
     return cita_schema.dump(cita), 202
@@ -66,7 +73,7 @@ def eliminar_cita(id):
     cita = CitaModel.get_or_none(id_cita=id)
 
     if cita is None:
-        return {'errors':'Cita no existe'}, 400
+        abort(make_response(jsonify(message="Cita no existe", error=True), 404))
 
     cita.delete()
     return cita_schema.dump(cita)

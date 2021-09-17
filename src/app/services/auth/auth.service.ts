@@ -41,9 +41,10 @@ export class AuthService{
     return this.isLogin.asObservable();
   }
  
-  login(token:string, id):void{
+  login(token:string, id, email):void{
     localStorage.setItem('token', token);
     localStorage.setItem('id', id)
+    localStorage.setItem('email', email)
     this.isLogin.next(true);
   }
 
@@ -55,6 +56,7 @@ export class AuthService{
   cerrar_sesion(){
     localStorage.removeItem('token');
     localStorage.removeItem('id')
+    localStorage.removeItem('email')
     this.currentUser.next(null)
     
   }
@@ -65,6 +67,10 @@ export class AuthService{
 
   getId(){
     return localStorage.getItem('id')
+  }
+
+  getEmail(){
+    return localStorage.getItem('email')
   }
 
  // Roles
