@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UsuarioI } from 'src/app/models/usuario.interface';
 import { Router } from '@angular/router';
+import { TokenInterceptorService } from './token-interceptor.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class AuthService{
   BASE_URL = "http://localhost:5000"
   public currentUser:BehaviorSubject<UsuarioI>
   
+  
   isLogin = new BehaviorSubject<boolean>(this.checkToken())
   admin = new BehaviorSubject<boolean>(null);
   veterinario = new BehaviorSubject<boolean>(null)
@@ -19,10 +21,11 @@ export class AuthService{
 
 
 
-  constructor(private http:HttpClient, private router:Router ) {
+  constructor(private http:HttpClient, private router:Router, private interceptor:TokenInterceptorService ) {
     this.currentUser = new BehaviorSubject(
       JSON.parse(localStorage.getItem('token'))
     )
+    
    }
 
   login_user(data:any){
@@ -52,6 +55,7 @@ export class AuthService{
     return this.currentUser.value
   }
 
+  
 
   cerrar_sesion(){
     localStorage.removeItem('token');
@@ -90,4 +94,17 @@ currentU(): UsuarioI{
  isUser() : Observable<boolean> {
   return this.usuario.asObservable();
  }
+
+
+ postRequestSendForm(route: string, data?:any) {
+  let config:any = {
+    responseType: "json"
+  }
+  const token = this.getToken()
+  const header = new HttpHeaders().set('Authorization', token);
+  config["header"] = header;
+  //Notese que como tercer parametro se pasa la configuracion de la request
+  return this.http.post(route, data, config);
+}
+
 }

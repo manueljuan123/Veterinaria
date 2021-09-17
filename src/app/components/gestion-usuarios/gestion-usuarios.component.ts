@@ -6,6 +6,7 @@ import { UsuarioI } from 'src/app/models/usuario.interface'
 import { AuthService } from '../../services/auth/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-gestion-usuarios',
@@ -21,6 +22,8 @@ export class GestionUsuariosComponent implements OnInit {
   
   constructor(private fb:FormBuilder,private usuarioService:UsuarioService, private auth:AuthService, private route:Router) { }
   
+
+
   ngOnInit(): void {
     this.form = this.fb.group({
       nombre:['', Validators.required],

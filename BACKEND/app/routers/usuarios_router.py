@@ -1,18 +1,18 @@
-from logging import NullHandler
 
+from flask import Blueprint, request
+from werkzeug.utils import secure_filename
+import os
 from flask.json import jsonify
 from werkzeug.exceptions import abort
 from app.models.rol_model import RolModel
 from flask.helpers import make_response
 from peewee import IntegrityError
-from marshmallow.exceptions import ValidationError
 from flask import Blueprint, request
 from datetime import datetime
 
 from app.schemas.usuario_schema import user_schema, users_schema
 from app.models.usuario_model import UserModel
 
-from app.middlewares.sesion_middleware import sesion_middleware
 
 
 
@@ -105,6 +105,17 @@ def list_veterinarios():
 def list_clientes():
     duenos = UserModel.select().join(RolModel).where(UserModel.rol_id==1)
     return make_response(users_schema.dumps(duenos)), 200
+
+
+# Cargar foto
+@UsuarioRouter.route('/uploader', methods=['POST'])
+def upload_file():
+      f = request.files['img']
+      id_user  = request.form.get('id')
+      os.mkdir('imagen/'+'perfil_'+id_user)
+      print("Email: ", id_user)
+      f.save(os.path.join('imagen/'+'perfil_'+id_user, secure_filename(id_user+".jpg")))
+      return 'file uploaded successfully'
 
 
 
