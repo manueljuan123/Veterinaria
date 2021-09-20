@@ -63,12 +63,13 @@ def eliminar_usuario(id):
 
 
 # Obtener usuario en específico
-@UsuarioRouter.route('/get/<int:id>', methods=['GET'])
-def obtener_usuario(id):
-    user = UserModel.get_or_none(id=id)
+@UsuarioRouter.route('/get', methods=['GET'])
+def obtener_usuario():
+    token = request.headers.get('Authorization')
+    auth = UserModel.decode_jwt(token[7:])
+    user_token = UserModel.select().where(UserModel.email==auth['payload']).get()
 
-    if user == None:
-        abort(make_response(jsonify(message="Usuario no existe", error=True), 404))
+    user = UserModel.get_or_none(id=user_token.id)
         
     return user_schema.dump(user), 200
 
@@ -111,11 +112,14 @@ def list_clientes():
 @UsuarioRouter.route('/uploader', methods=['POST'])
 def upload_file():
       f = request.files['img']
-      id_user  = request.form.get('id')
-      os.mkdir('imagen/'+'perfil_'+id_user)
-      print("Email: ", id_user)
-      f.save(os.path.join('imagen/'+'perfil_'+id_user, secure_filename(id_user+".jpg")))
-      return 'file uploaded successfully'
+      token = request.headers.get('Authorization')
+      auth = UserModel.decode_jwt(token[7:])
+      user = UserModel.select().where(UserModel.email==auth['payload']).get()
+      currentUser = str(user.id)
+      ruta = "BACKEND/imagen/perfil_"+currentUser+".jpg"
+      os.mkdir('imagen/'+'perfil_'+currentUser)
+      f.save(os.path.join('imagen/'+'perfil_'+currentUser, secure_filename(currentUser+".jpg")))
+      return ruta
 
 
 

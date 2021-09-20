@@ -11,7 +11,7 @@
                     <li class="list-group-item">Veterinario: {{ agenda.usuario.nombre }} {{ agenda.usuario.apellido }} </li>
                     <li class="list-group-item">Hora: {{ agenda.fecha_inicio }}</li>
                     <li class="list-group-item">Disponibilidad: {{ (agenda.disponible == false) ? 'Disponible' : 'Ocupado' }}</li>
-                    <li class="list-group-item text-center"><button type="button" class="btn btn-info">Tomar Cita</button></li>
+                    <li class="list-group-item text-center"><button (click)="pushAgenda(agenda.id_agenda)" type="button" class="btn btn-info">Tomar Cita</button></li>
                 </ul>
             </div>
 </div>

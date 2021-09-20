@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MascotaService } from '../../services/macota/mascota.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { MascotaI, TipoMascota } from 'src/app/models/mascota.interface';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { UsuarioI } from 'src/app/models/usuario.interface';
@@ -15,32 +15,31 @@ import { UsuarioI } from 'src/app/models/usuario.interface';
 export class MisMascotasUsuComponent implements OnInit {
 
   mascotas : MascotaI[]
-  tipo_mascota : TipoMascota[]
+  tipo_mascotaI : TipoMascota[]
   usuarios : UsuarioI[]
   form : FormGroup;
 
   constructor(private mascotaService:MascotaService, private auth:AuthService, private fb:FormBuilder, private route:Router) { }
   
-  userId = this.auth.getId()
 
   ngOnInit() {
     this.form = this.fb.group({
-      nombre:['', Validators.required],
-      genero:['', Validators.required],
-      edad:['', Validators.required],
-      raza:['', Validators.required],
-      peso:['', Validators.required ],
-      estado_salud:['', Validators.required ],
-      tipo_mascota:['', Validators.required],
-      id_usuario:['']
+      nombre: new FormControl('', [Validators.required]),
+      genero: new FormControl('', [Validators.required]),
+      edad: new FormControl('', [Validators.required]),
+      raza: new FormControl('', [Validators.required]),
+      peso: new FormControl('', [Validators.required]),
+      estado_salud: new FormControl('', [Validators.required]),
+      id_tipo_mascota: new FormControl('', [Validators.required]),
     })
+    console.log(this.tipo_mascotaI)
 
-    this.mascotaService.listado_mascotas_usuario_get_request(this.userId).subscribe(res =>
+    this.mascotaService.listado_mascotas_usuario_get_request().subscribe(res =>
       this.mascotas = res)
 
 
     this.mascotaService.listado_all_tipo_mascotas_get_request().subscribe(res=>
-      this.tipo_mascota = res)
+      this.tipo_mascotaI = res)
   }
 
   async submit(){
@@ -55,7 +54,6 @@ export class MisMascotasUsuComponent implements OnInit {
               timer: 3000 
               })
               this.form.reset()
-              this.route.navigate(['/vista-mis-mascotas-usuario'])
 
       }, err => {
         Swal.fire({

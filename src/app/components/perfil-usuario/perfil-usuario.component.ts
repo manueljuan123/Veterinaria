@@ -10,15 +10,15 @@ import { UsuarioI } from 'src/app/models/usuario.interface';
 })
 export class PerfilUsuarioComponent implements OnInit {
 
-  usuarios : UsuarioI[]
+  usuario : UsuarioI
 
-  constructor(private auth:AuthService, private usuario:UsuarioService) { }
+  constructor(private auth:AuthService, private usuariosS:UsuarioService) { }
 
   userId = this.auth.getId()
 
   ngOnInit(): void {
-    this.usuario.obtener_usuario_get_request(this.userId).subscribe(res => {
-      this.usuarios = res;
+    this.usuariosS.obtener_usuario_get_request().subscribe(res => {
+      this.usuario = res;
     })
   }
 

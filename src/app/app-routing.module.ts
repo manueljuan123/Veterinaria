@@ -31,7 +31,7 @@ const routes: Routes = [
 
   // Vista usuario
   {path: 'vista-inicio-usuario', component: VistaInicioUsuComponent},
-  {path: 'vista-agendar-usuario', component: VistaAgendarUsuComponent},
+  {path: 'vista-agendar-usuario/:id', component: VistaAgendarUsuComponent},
   {path: 'vista-mis-citas-usuario', component: VistaMisCitasUsuComponent},
   {path: 'vista-mis-mascotas-usuario', component: VistaMisMascotasUsuComponent},
   {path: 'vista-veterinarios-usuario', component: VistaVeterinariosUsuComponent, canActivate:[AuthGuard]},
@@ -41,7 +41,7 @@ const routes: Routes = [
   {path: 'vista-veterinario-inicio', component:VistaInicioComponent},
   {path: 'vista-veterinario-agendarme',component:VistaAgendarmeComponent},
   {path: 'vista-veterinario-citas-pendientes', component:VistaCitasPendientesComponent},
-  {path: 'vista-veterinario-mis-agendas', component: VistaMisAgendasComponent},
+  {path: 'vista-veterinario-mis-agendas/:id', component: VistaMisAgendasComponent},
 
   // Vista Admin
   {path: 'vista-admin-gestion-citas', component:GestionCitasAdminComponent, canActivate:[AdminGuard]},

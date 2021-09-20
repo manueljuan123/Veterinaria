@@ -30,9 +30,9 @@ export class UsuarioService {
 
 
     // Obtener usuario en específico
-  obtener_usuario_get_request(id?:any):Observable<UsuarioI[]>{
-    let ruta = this.BASE_URL+'/usuario/get/'+id
-    return this.http.get<UsuarioI[]>(ruta)
+  obtener_usuario_get_request():Observable<UsuarioI>{
+    let ruta = this.BASE_URL+'/usuario/get'
+    return this.http.get<UsuarioI>(ruta)
   }
 
   // Listado de todos los usuarios

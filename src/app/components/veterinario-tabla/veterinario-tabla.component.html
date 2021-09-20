@@ -1,21 +1,27 @@
 <!--esta vista es usada para el contenido mi agenda veterinario -->
 
-<h1 class="titulo">Mis Agenda</h1>
+<h1 class="titulo">Agendarme</h1>
 <div class="container">
-  <form class="form-floating">
-    <input type="datetime-local" class="form-control" id="floatingInputValue" value="">
-    <label for="floatingInputValue">Fecha Y Hora de Inicio</label>
-  </form>
-  <div class="pt-3">
-    <form class="form-floating">
-      <input type="datetime-local" class="form-control" id="floatingInputValue" value="">
-      <label for="floatingInputValue">Fecha Y Hora de Final</label>
-    </form>
+<form [formGroup]="form">
+  <div class="col-md-5">
+    <label for="inputVete" class="form-label" formControlName="nombre">Nombre</label>
+    <input type="text" class="form-control">
   </div>
-  <div class="d-grid gap-2 col-6 mx-auto pt-3">
-    <button class="btn btn-outline-info" type="button">Crear Espacio</button>
-  </div>
-</div>
 
+  <div class="col-md-5">
+    <input type="datetime-local" class="form-control" formControlName="fecha_inicio" id="floatingInputValue" value="">
+    <label for="floatingInputValue">Fecha Y Hora de Inicio</label>
+  </div>
+
+  <div class="col-md-5">
+    
+      <input type="datetime-local" class="form-control" formControlName="fecha_final" id="floatingInputValue" value="">
+      <label for="floatingInputValue">Fecha Y Hora de Final</label>
+  </div>
+
+  <div class="d-grid gap-2 col-6 mx-auto pt-3">
+    <button class="btn btn-outline-info" (click)="submit()" type="submit">Crear Espacio</button>
+  </div>
+</form>
 <br>
 <br>

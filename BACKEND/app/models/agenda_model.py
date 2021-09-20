@@ -25,6 +25,13 @@ class AgendaModel(BaseModel):
     def save(self, *args, **kwargs):
         super(AgendaModel, self).save(*args, **kwargs)
 
+    def agenda_intervalo(segundos):
+        minutos, segundos = divmod(segundos, 60)
+        horas, minutos = divmod(minutos, 60)
+        dias, horas = divmod(horas, 24)
+
+        return dias, horas, minutos, segundos
+
     
     def delete(self):
         self.eliminado = None if self.eliminado is not None else datetime.now()

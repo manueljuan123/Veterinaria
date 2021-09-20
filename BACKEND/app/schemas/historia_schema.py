@@ -14,7 +14,6 @@ class HistoriasSchema(Schema):
     veterinario = fields.Nested(UserTypeSchema, dump_only=True)
     veterinario_id = fields.Int(required=True, load_only=True) 
     usuario = fields.Nested(UserTypeSchema, dump_only=True)
-    usuario_id = fields.Int(required=True, load_only=True)
     mascota = fields.Nested(MascotaTypeSchema, dump_only=True)
     mascota_id = fields.Int(load_only=True)
     creado = fields.DateTime(dump_only=True)

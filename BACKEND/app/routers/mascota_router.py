@@ -15,16 +15,19 @@ from app.schemas.mascota_schema import mascota_schema, mascotas_schema
 MascotaRouter = Blueprint('mascota', __name__, url_prefix='/mascota')
 
 # Crear mascota
-@MascotaRouter.route('/crear', methods=['POST', 'GET'])
+@MascotaRouter.route('/crear', methods=['POST'])
 def create_mascota():
     j = request.get_json()
+    token = request.headers.get('Authorization')
+    auth = UserModel.decode_jwt(token[7:])
+    user = UserModel.select().where(UserModel.email==auth['payload']).get()
     try:
         schema = mascota_schema.load(j)
-    except:
-        abort(make_response(jsonify(message="Dato inválido", error=True), 422))
+    except ValidationError as err:
+        abort(make_response(jsonify(message="Dato inválido", error=True, errors=err.messages), 422))
 
     try:
-        mascota = MascotaModel.create(**schema)
+        mascota = MascotaModel.create(usuario_id=user.id, **schema)
     except:
         abort(make_response(jsonify(message="Dato inválido", error=True), 422))
 
@@ -78,16 +81,19 @@ def obtener_mascota(id):
 
 
 # Obtener las mascotas del usuario
-@MascotaRouter.route('/all/<int:id>', methods=['GET'])
-def obtener_mascotas_usuario(id):
-    mascotasUsuario = MascotaModel.select().join(UserModel).where(MascotaModel.usuario_id == id).execute()
+@MascotaRouter.route('/all', methods=['GET'])
+def obtener_mascotas_usuario():
+    token = request.headers.get('Authorization')
+    auth = UserModel.decode_jwt(token[7:])
+    user = UserModel.select().where(UserModel.email==auth['payload']).get()
+    mascotasUsuario = MascotaModel.select().where(MascotaModel.usuario_id == user.id).execute()
     return mascotas_schema.dumps(mascotasUsuario), 200
 
 
 # Listado por tipo de mascotas
 @MascotaRouter.route('/listado_tipo/<int:id>', methods=['GET'])
 def list_por_tipo_mascotas(id):
-    tipo_mascota = MascotaModel.select().join(TipoMascotaModel).where(MascotaModel.tipo_mascota == id).execute()
+    tipo_mascota = MascotaModel.select().join(TipoMascotaModel).where(MascotaModel.tipo_mascota == id, MascotaModel.eliminado.is_null(True)).execute()
     return make_response(jsonify(mascotas_schema.dump(tipo_mascota))), 200
 
 

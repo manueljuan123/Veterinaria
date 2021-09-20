@@ -11,9 +11,8 @@ class MascotaSchema(Schema):
     raza = fields.Str(required=True)
     peso = fields.Str(required=True)
     estado_salud = fields.Str(required=True)
-    usuario_id = fields.Int(required=True, load_only=True)
     usuario = fields.Nested(UserTypeSchema, dump_only=True)
-    tipo_mascota_id = fields.Int(required=True, load_only=True)
+    id_tipo_mascota = fields.Int(load_only=True)
     tipo_mascota = fields.Nested(TipoMascotaSchema, dump_only=True)
     creado = fields.DateTime(dump_only=True)
     actualizado = fields.DateTime(dump_only=True)
@@ -32,5 +31,4 @@ class MascotaTypeSchema(Schema):
     peso = fields.Str(dump_only=True)
     estado_salud = fields.Str(dump_only=True)
 
-mascota_schema = MascotaSchema()
-mascotas_schema = MascotaSchema(many=True)
+

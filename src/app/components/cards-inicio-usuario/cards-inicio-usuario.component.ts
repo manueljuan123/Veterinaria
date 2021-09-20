@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AgendaService } from 'src/app/services/agenda/agenda.service';
 import { AgendaI } from '../../models/agenda';
 
@@ -11,7 +12,7 @@ export class CardsInicioUsuarioComponent implements OnInit {
 
   agendas : AgendaI[];
 
-  constructor(private agendaService:AgendaService) { }
+  constructor(private agendaService:AgendaService, private router:Router) { }
 
   ngOnInit(): void {
     this.agendaService.obtener_agendas_get_request().subscribe(res =>{
@@ -19,4 +20,7 @@ export class CardsInicioUsuarioComponent implements OnInit {
     })
   }
 
+  pushAgenda(id:any){
+    this.router.navigate(['/vista-agendar-usuario', id])
+  }
 }

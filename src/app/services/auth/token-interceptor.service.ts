@@ -16,7 +16,7 @@ export class TokenInterceptorService implements HttpInterceptor {
     const token: string = localStorage.getItem('token');
     let tokenizedReq = req
 
-    if(token){ 
+    if(!!token){ 
 
     tokenizedReq = req.clone({
       setHeaders:{

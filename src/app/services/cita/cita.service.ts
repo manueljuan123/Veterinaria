@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CitaI } from 'src/app/models/cita.interface'
+import { TipoCitaI } from 'src/app/models/tipo_cita.interface'
 
 @Injectable({
   providedIn: 'root'
@@ -35,14 +36,21 @@ export class CitaService {
   }
 
   // Obtener citas del usuario
-  obtener_listado_citas_usuario_get_request(id?:any): Observable<CitaI[]>{
-    let ruta = this.BASE_URL+'/cita/listado_citas_usuario/'+ id;
+  obtener_listado_citas_usuario_get_request(): Observable<CitaI[]>{
+    let ruta = this.BASE_URL+'/cita/listado_citas_usuario'
     return this.http.get<CitaI[]>(ruta);
   }
 
   // Obtener una cita en específico
-  obtener_cita_get_request(data:any){
-    return this.http.get<any>(this.BASE_URL+"/cita/get/id", data)
+  obtener_cita_get_request(id?:any): Observable<CitaI>{
+    let ruta = this.BASE_URL+"/cita/"+id
+    return this.http.get<CitaI>(ruta)
+  }
+
+  // Obtener una cita en específico
+  obtener_tipo_cita_get_request(): Observable<TipoCitaI[]>{
+    let ruta = this.BASE_URL+"/cita/listado_tipo_cita"
+    return this.http.get<TipoCitaI[]>(ruta)
   }
 }
 

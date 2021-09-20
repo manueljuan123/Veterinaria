@@ -77,8 +77,8 @@ export class MascotaService {
 
 
   // Listado de todas las mascotas del usuario
-  listado_mascotas_usuario_get_request(id:any): Observable<MascotaI[]>{
-    let ruta = this.BASE_URL+"/mascota/all/"+id
+  listado_mascotas_usuario_get_request(): Observable<MascotaI[]>{
+    let ruta = this.BASE_URL+"/mascota/all"
     return this.http.get<MascotaI[]>(ruta)
   }
 

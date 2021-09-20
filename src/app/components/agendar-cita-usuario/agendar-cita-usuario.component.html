@@ -1,33 +1,37 @@
 <div class="container pt-5">
     <p class="lead titulo text-center">Agenda Tus Citas</p>
-    <form class="row g-3 ">
+    <form class="row g-3 " [formGroup]="form">
         <div class="col-md-8">
-            <label for="FormControlTextarea1" class="form-label">Motivo: </label>
-            <textarea class="form-control border-info" id="FormControlTextarea1" rows="3" ></textarea>
+            <label for="FormControlTextarea1" class="form-label" >Motivo: </label>
+            <textarea class="form-control border-info" formControlName="motivo" id="FormControlTextarea1" rows="3" ></textarea>
         </div>
 
         <div class="col-md-5">
-            <label for="inputState" class="form-label">Paciente (Mascota):</label>
-            <select id="inputState" class="form-select border-info">
+            <label for="inputState" class="form-label" >Paciente (Mascota):</label>
+            <select id="inputState" formControlName="paciente_id" class="form-select border-info">
                 <option selected>Mascota</option>
-                <option value="1">muestra Mascotas</option>
+                <ng-container *ngFor="let mascota of mascotasU">
+                    <option [value]="mascota.id_mascota">{{mascota.nombre}}</option>    
+                </ng-container>
+                
+                
             </select>
         </div>
         <div class="col-md-5">
             <label for="inputState" class="form-label">Veterinario</label>
-            <select id="inputState" class="form-select border-info">
+            <select id="inputState" formControlName="agenda_id" class="form-select border-info">
                 <option selected>Veterinario</option>
-                <option value="1">Bien</option>
+                <option [value]="agenda.id_agenda">{{ agenda.nombre }}</option>
             </select>
         </div>
 
         <div class="col-md-5">
             <label for="inputdate" class="form-label">Fecha:</label>
-            <input type="datetime-local" class="form-control border-info" id="date" min="2021-09-15">
+            <input type="datetime-local" class="form-control border-info" [value]="agenda.fecha_inicio" id="date" min="2021-09-15">
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-info">Agendar</button>
+            <button type="submit" (click)="submit()" class="btn btn-info">Agendar</button>
         </div>
     </form>
 </div>

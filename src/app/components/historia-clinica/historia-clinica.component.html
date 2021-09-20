@@ -3,57 +3,57 @@
     <form class="row g-3" [formGroup]="form">
         <tr >
         <div class="col-md-5">
-            <label for="inputState" class="form-label" formControlName="usuario">Dueño: </label>
-            <select id="inputState"  class="form-select border-info">
-                <option [value]="usuario" *ngFor="let historia of historias" selected> {{ historia.usuario.nombre }} </option>
+            <label for="inputState" class="form-label" >Dueño: </label>
+            <select id="inputState" formControlName="usuario_id" class="form-select border-info">
+                <option [value]="agenda.id_agenda">{{ agenda.usuario.nombre }} {{ agenda.usuario.apellido }}</option>
             </select>
         </div>
 
         <div class="col-md-5">
-            <label for="inputVete" class="form-label" formControlName="email">Email</label>
-            <select id="inputState"  class="form-select border-info">
-                <option [value]="email" *ngFor="let historia of historias" selected> {{ historia.usuario.email }} </option>
+            <label for="inputVete" class="form-label" >Email</label>
+            <select id="inputState" formControlName="email" class="form-select border-info">
+                <option [value]="agenda.id_agenda"> {{ agenda.usuario.email }} </option>
             </select>
         </div>
         
         <div class="col-md-5">
-            <label for="inputState" class="form-label" formControlName="mascota">Paciente (Mascota):</label>
-            <select id="inputState"  class="form-select border-info">
-                <option [value]="mascota" *ngFor="let historia of historias" selected> {{ historia.mascota.nombre }}</option>
+            <label for="inputState" class="form-label" >Paciente (Mascota):</label>
+            <select id="inputState" formControlName="mascota_id" class="form-select border-info">
+                <option [value]="agenda.id_agenda"> {{ agenda.mascota.nombre }} </option>
             </select>
         </div>
         
         <div class="col-md-5">
-            <label for="inputVete" class="form-label" formControlName="veterinario">Veterinario</label>
-            <select id="inputState"  class="form-select border-info">
-                <option [value]="vet" *ngFor="let historia of historias" selected> {{ historia.veterinario.nombre }}</option>
+            <label for="inputVete" class="form-label" >Veterinario</label>
+            <select id="inputState" formControlName="veterinario_id" class="form-select border-info">
+                <option [value]="agenda.id_agenda"> {{ agenda.veterinario.nombre }}  {{ agenda.veterinario.apellido }}</option>
             </select>
         </div>
     </tr>
         <tr>
         <div class="col-md-8">
-            <label for="FormControlTextarea1" formControlName="observacion" class="form-label">Observacion:</label>
-            <textarea class="form-control border-info" id="FormControlTextarea1" rows="3" ></textarea>
+            <label for="FormControlTextarea1"  class="form-label">Observacion:</label>
+            <textarea class="form-control border-info" formControlName="observacion" id="FormControlTextarea1" rows="3" ></textarea>
         </div>
 
         <div class="col-md-5">
-            <label for="inputdate" class="form-label" formControlName="fecha" >Fecha:</label>
-            <input type="date" class="form-control border-info" id="inputdate">
+            <label for="inputdate" class="form-label"  >Fecha:</label>
+            <input type="date" formControlName="fecha" class="form-control border-info" id="inputdate">
         </div>
 
         <div class="col-md-5">
-            <label for="inputTipoC" class="form-label" formControlName="tipo_cita">Tipo Cita</label>
-            <input type="text"class="form-control border-info" id="inputTipoC"/>
+            <label for="inputTipoC" class="form-label" >Tipo Cita</label>
+            <input type="text" formControlName="tipo_cita_id" class="form-control border-info" id="inputTipoC"/>
         </div>
 
 
         <div class="col-md-5">
-            <label for="inputVete" class="form-label" formControlName="medicamentos">Medicamentos</label>
-            <input type="text"class="form-control border-info" id="inputVete"/>
+            <label for="inputVete" class="form-label" >Medicamentos</label>
+            <input type="text" formControlName="medicamentos" class="form-control border-info" id="inputVete"/>
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Crear</button>
+            <button type="submit" (click)="submit()" class="btn btn-primary">Crear</button>
         </div>
     </tr>
     </form>

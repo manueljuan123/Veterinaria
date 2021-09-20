@@ -15,22 +15,25 @@ from app.schemas.tipo_cita_schema import tipo_cita_schema
 
 HistoriaRouter = Blueprint('historia', __name__, url_prefix='/historia')
 
-@HistoriaRouter.route('/crear/<string:email>', methods=['POST'])
-def crear_historia(email):
+@HistoriaRouter.route('/crear', methods=['POST'])
+def crear_historia():
     j = request.get_json()
+    token = request.headers.get('Authorization')
+    auth = UserModel.decode_jwt(token[7:])
+    user = UserModel.select().where(UserModel.email==auth['payload']).get()
     try:
         schema = historia_schema.load(j)
-    except:
-        abort(make_response(jsonify(message="Dato inválido", error=True), 422))
+    except ValidationError as err:
+        abort(make_response(jsonify(message="Dato inválido", error=True, errors=err.messages), 422))
 
     try:
         historia = HistoriasModel.create(**schema)
-        envio_historia(email)
+        envio_historia(user.email)
 
     except:
         abort(make_response(jsonify(message="Dato inválido", error=True), 422))
 
-    return historia_schema.dump(historia), 201
+    return make_response(historia_schema.dump(historia)), 201
 
 
 # Listado de todas las historias

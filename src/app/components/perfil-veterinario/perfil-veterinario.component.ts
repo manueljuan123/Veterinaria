@@ -11,18 +11,22 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class PerfilVeterinarioComponent implements OnInit {
 
-  veterinario_datos : UsuarioI[];
   form: FormGroup;
-  gg="jjjj";
+  veterinario: UsuarioI;
+  imagen:any
+  
 
-  constructor(private fb:FormBuilder, private veterinario:UsuarioService, private auth:AuthService) { }
+  constructor(private fb:FormBuilder, private veterinariosS:UsuarioService, private auth:AuthService) { }
 
   ngOnInit(): void {
   this.form = this.fb.group({
     img: [null],
-    email: ['', Validators.required]
-
   });
+
+  this.veterinariosS.obtener_usuario_get_request().subscribe(res => 
+    this.veterinario = res
+  )
+
  }
 
  upload(event) {
@@ -38,11 +42,10 @@ export class PerfilVeterinarioComponent implements OnInit {
 
       var formData: any = new FormData();
       formData.append("img", this.form.get('img').value);
-      formData.append("id", this.form.get('email').value);
 
       this.auth.postRequestSendForm('http://localhost:5000/usuario/uploader', formData).subscribe(
         (response: any) => {
-
+          this.imagen = response.ruta
         },
       (error) => {
    
@@ -54,3 +57,4 @@ export class PerfilVeterinarioComponent implements OnInit {
     }
   }
 }
+

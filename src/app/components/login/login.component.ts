@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.auth.login_user(this.form.value)
       .subscribe(
         (res : any) => {
-          this.auth.login(res.remember_token, res.id, res.email)
+          this.auth.login(res.remember_token)
           this.auth.loggediIn()
           if (res.rol.id === 1){
             this.route.navigate(['/vista-admin-gestion-usuarios'])

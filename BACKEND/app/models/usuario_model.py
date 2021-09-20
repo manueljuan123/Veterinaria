@@ -43,6 +43,16 @@ class UserModel(BaseModel):
         self.save()
 
     @staticmethod
+    def decode_jwt(token):
+        try:
+            payload = jwt.decode(token, key=app.config.get('SECRET_KEY'), algorithms=["HS256"])
+            
+        except:
+            abort(make_response(jsonify(message="No autorizado", error=True)), 401)  
+        return payload
+
+
+    @staticmethod
     def make_password(pwd: str)-> str:
         return generate_password_hash(pwd, method='sha256')
 

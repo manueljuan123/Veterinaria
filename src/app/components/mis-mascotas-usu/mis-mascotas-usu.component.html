@@ -4,11 +4,10 @@
     <p class="lead titulo">Mis Mascotas</p>
     <div class="row row-cols-1 row-cols-md-3 g-4 ">
         <tr *ngFor='let mascota of mascotas'>
-            <th >
         <div class="col">
             <div class="card border-info" style="width: 18rem;">
 
-                <li class="list-group-item border-info titulo" >Nombre Mascota: {{ mascota.nombre }}</li>
+                <li class="list-group-item border-info titulo">Nombre Mascota: {{ mascota.nombre }}</li>
                 <img src="../../../assets/img/logo.png" class="card-img-top" alt="...">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item border-info">Edad: {{ mascota.edad }}</li>
@@ -19,16 +18,15 @@
                 </ul>
             </div>
         </div>
-    </th>
 </tr>
 </div> 
 
 </div>
 
 
-<div class="container pt-5">
+<div class="container pt-5" [formGroup]="form">
     <p class="lead titulo text-center">Registrar Nueva Mascota</p>
-    <form class="row g-3 " [formGroup]="form" *ngIf="this.userId">
+    <form class="row g-3">
         <div class="col-md-6">
             <label for="inputNombr3" class="form-label">Nombre:</label>
             <input type="text" class="form-control border-info" id="inputNombr3" formControlName="nombre" placeholder="">
@@ -54,8 +52,13 @@
         </div>
         <div class="col-md-4">
             <label for="inputState" class="form-label">Tipo Mascota</label>
-            <select formControlName="tipo_mascota" class="form-select border-info">
-                <option [value]="tipo" *ngFor="let tipo of tipo_mascota">{{ tipo.tipo_mascota }}</option>
+            <select id="inputState" formControlName="tipo_mascota_id" class="form-select border-info">
+                <option [selected]>Mascota</option>
+                <ng-container *ngFor="let tipo of tipo_mascotaI">
+                    <option [value]="id_tipo_mascota">{{ tipo.id_tipo_mascota }}</option>
+                </ng-container>
+                
+                
             </select>
         </div>
         <div class="col-md-4">
@@ -66,15 +69,8 @@
             </select>
         </div>
 
-        <div class="col-md-4">
-            <label for="inputState" class="form-label">Yo</label>
-            <select formControlName="id_usuario" class="form-select border-info">
-                <option *ngIf="this.userId">{{ this.userId }}</option>
-            </select>
-        </div>
-
         <div class="col-12">
-            <button type="submit" (click)="submit()" [disabled]="form.invalid" class="btn btn-info">Registrar</button>
+            <button type="submit" (click)="submit()" class="btn btn-info">Registrar</button>
         </div>
     </form>
 </div>

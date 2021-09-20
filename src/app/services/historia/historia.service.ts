@@ -13,8 +13,8 @@ export class HistoriaService {
   BASE_URL = "http://localhost:5000"
 
   // Crear historia
-  crear_historia_post_request(email:any, data:any):Observable<HistoriaI[]>{
-    return this.http.post<any>(this.BASE_URL+`/historia/crear/${email}`, data )
+  crear_historia_post_request(data:any):Observable<HistoriaI[]>{
+    return this.http.post<any>(this.BASE_URL+`/historia/crear`, data)
   }
 
   // Listado Historias

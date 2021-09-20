@@ -18,16 +18,11 @@ export class CitasVeterinarioComponent implements OnInit {
   userId = this.auth.getId()
 
   ngOnInit(): void {
-    let agendaid = this.activerouter.snapshot.paramMap.get('id')
-    let vetId = this.activerouter.params.subscribe( params => {
-      const id = params.get('id')
-    })
-
-    this.agendas.obtener_agendas_veterinario_get_request(vetId).subscribe(res =>
+    this.agendas.obtener_agendas_veterinario_get_request().subscribe(res =>
       this.agendasPendientes = res)
   }
 
-  crearHistoria(id:any){
+  pushHistorio(id:any){
     this.route.navigate(['vista-veterinario-mis-agendas', id])
   }
 

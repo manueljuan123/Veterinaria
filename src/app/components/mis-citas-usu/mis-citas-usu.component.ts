@@ -15,10 +15,9 @@ export class MisCitasUsuComponent implements OnInit {
 
   constructor(private citaService:CitaService, private auth:AuthService) { }
 
-  userId = this.auth.getId()
 
   ngOnInit(): void {
-    this.citaService.obtener_listado_citas_usuario_get_request(this.userId).subscribe(res =>
+    this.citaService.obtener_listado_citas_usuario_get_request().subscribe(res =>
       this.citas = res)
       }
 
