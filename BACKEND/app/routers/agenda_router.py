@@ -22,13 +22,13 @@ def crear_agenda():
     user = UserModel.select().where(UserModel.email==auth['payload']).get()
     try:
         schema = agenda_schema.load(j)
-    except:
-        abort (make_response(jsonify(message="Dato no válido", error=True), 422))
+    except ValidationError as err:
+        abort (make_response(jsonify(message="Dato no válido", error=True, errors=err.messages), 422))
     
     try:
-        agenda = AgendaModel.create(usuario_id=user.id,**schema)
-    except:
-        abort(make_response(jsonify(message="Dato no válido", error=True), 422))
+        agenda = AgendaModel.create(veterinario_id=user.id,**schema)
+    except IntegrityError as err:
+        return {"errors": f'{err}'}, 422
 
     return agenda_schema.dump(agenda), 201
 

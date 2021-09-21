@@ -23,6 +23,8 @@ export class PerfilVeterinarioComponent implements OnInit {
     img: [null],
   });
 
+  this.imagen = this.form.get('img')
+
   this.veterinariosS.obtener_usuario_get_request().subscribe(res => 
     this.veterinario = res
   )
