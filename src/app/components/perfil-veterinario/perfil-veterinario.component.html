@@ -23,8 +23,62 @@
           <p>Celular: {{ veterinario.celular }}</p>
           <p>Correo: {{ veterinario.email }}</p>
 
+          <p><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalV">Editar Datos</button>
+          </p>
+
 
     </div>
   </div>
 
   </div>
+
+  
+<!-- Modal -->
+<div class="modal fade" id="exampleModalV" tabindex="-1" aria-labelledby="exampleModalVLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title titulo" id="exampleModalVLabel">Editar</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+                  <form class="row g-3 ">
+                      <div class="col-md-6">
+                          <label for="inputNombr3" class="form-label">Nombre:</label>
+                          <input type="text" class="form-control border-info" id="inputNombr3" placeholder="Nombre">
+                      </div>
+              
+                      <div class="col-md-6">
+                          <label for="inputApell3" class="form-label">Apellido: </label>
+                          <input type="text" class="form-control border-info" id="inputApell3" placeholder="Apellido">
+                      </div>
+                      
+                      <div class="col-md-6">
+                          <label for="inputCelu3" class="form-label">Celular</label>
+                          <input type="text" class="form-control border-info" id="inputCelu3" placeholder="Celular">
+                      </div>
+              
+                      <div class="col-md-6">
+                          <label for="inputDirec3" class="form-label">Direccion</label>
+                          <input type="text" class="form-control border-info" id="inputDirec3" placeholder="Direccion">
+                      </div>
+              
+                      <div class="col-md-6">
+                          <label for="inputEmail3" class="form-label">Email</label>
+                          <input type="text" class="form-control border-info" id="inputEmail3" placeholder="Email">
+                      </div>
+
+                      <div class="col-md-6">
+                        <label for="inputPass3" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control border-info" id="input3" placeholder="Contraseña">
+                    </div>
+            
+                  </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-info">Guardar</button>
+          </div>
+      </div>
+  </div>
+</div>

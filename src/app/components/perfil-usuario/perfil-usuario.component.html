@@ -1,18 +1,75 @@
 <div class="container-lg pt-3">
-    <div class="row g-0 bg-light position-relative">
-        <div class="col-4  p-3 ">
-        <div class="col-sm-8  p-3 ">
+  <div class="row g-0 bg-light position-relative">
+    <div class="col-4  p-3 ">
+      <div class="col-sm-8  p-3 ">
 
-          <h4 class="mt-0 text-center">Sobre Mi</h4>         
-          <p>Nombre: {{ usuario.nombre }} {{ usuario.apellido }} </p>
-          <p>Direccion: {{ usuario.direccion }} </p>
-          <p>Celular: {{ usuario.celular }} </p>
-          <p>Correo: {{ usuario.email }} </p>
-          <p><button type="button" class="btn btn-info">Actualizar usuario</button></p> 
+        <h4 class="mt-0 text-center">Sobre Mi</h4>
+        <p>Nombre: {{ usuario.nombre }} {{ usuario.apellido }} </p>
+        <p>Direccion: {{ usuario.direccion }} </p>
+        <p>Celular: {{ usuario.celular }} </p>
+        <p>Correo: {{ usuario.email }} </p>
+        <p><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal"
+            data-bs-target="#exampleModalU">Actualizar usuario</button></p>
 
-        </div>
+      </div>
 
+      <!--
         <div class="img-fluid" alt="..." width="200px"> 
           <p class="p-2"><button type="button" class="btn btn-info text-center">Cambiar Contraseña</button></p> 
+      </div>-->
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalU" tabindex="-1" aria-labelledby="exampleModalULabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title titulo" id="exampleModalULabel">Editar</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+                  <form class="row g-3 ">
+                      <div class="col-md-6">
+                          <label for="inputNombr3" class="form-label">Nombre:</label>
+                          <input type="text" class="form-control border-info" id="inputNombr3" placeholder="Nombre">
+                      </div>
+              
+                      <div class="col-md-6">
+                          <label for="inputApell3" class="form-label">Apellido: </label>
+                          <input type="text" class="form-control border-info" id="inputApell3" placeholder="Apellido">
+                      </div>
+                      
+                      <div class="col-md-6">
+                          <label for="inputCelu3" class="form-label">Celular</label>
+                          <input type="text" class="form-control border-info" id="inputCelu3" placeholder="Celular">
+                      </div>
+              
+                      <div class="col-md-6">
+                          <label for="inputDirec3" class="form-label">Direccion</label>
+                          <input type="text" class="form-control border-info" id="inputDirec3" placeholder="Direccion">
+                      </div>
+              
+                      <div class="col-md-6">
+                          <label for="inputEmail3" class="form-label">Email</label>
+                          <input type="text" class="form-control border-info" id="inputEmail3" placeholder="Email">
+                      </div>
+
+                      <div class="col-md-6">
+                        <label for="inputPass3" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control border-info" id="input3" placeholder="Contraseña">
+                    </div>
+            
+                  </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-info">Guardar</button>
+          </div>
       </div>
-      </div>
+  </div>
+</div>
+
+
