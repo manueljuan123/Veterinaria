@@ -23,7 +23,7 @@ export class MisMascotasUsuComponent implements OnInit {
   
 
   ngOnInit() {
-    this.form = this.fb.group({
+    this.form = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
       genero: new FormControl('', [Validators.required]),
       edad: new FormControl('', [Validators.required]),
@@ -32,11 +32,9 @@ export class MisMascotasUsuComponent implements OnInit {
       estado_salud: new FormControl('', [Validators.required]),
       id_tipo_mascota: new FormControl('', [Validators.required]),
     })
-    console.log(this.tipo_mascotaI)
 
     this.mascotaService.listado_mascotas_usuario_get_request().subscribe(res =>
       this.mascotas = res)
-
 
     this.mascotaService.listado_all_tipo_mascotas_get_request().subscribe(res=>
       this.tipo_mascotaI = res)
@@ -56,6 +54,8 @@ export class MisMascotasUsuComponent implements OnInit {
               this.form.reset()
 
       }, err => {
+        console.log(err)
+        console.log(this.form)
         Swal.fire({
           icon: 'error',
           title: 'ERROR',

@@ -26,7 +26,7 @@ def crear_agenda():
         abort (make_response(jsonify(message="Dato no válido", error=True, errors=err.messages), 422))
     
     try:
-        agenda = AgendaModel.create(veterinario_id=user.id,**schema)
+        agenda = AgendaModel.create(veterinario_id=user.id, **schema)
     except IntegrityError as err:
         return {"errors": f'{err}'}, 422
 

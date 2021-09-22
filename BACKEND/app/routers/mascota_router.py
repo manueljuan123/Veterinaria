@@ -28,8 +28,8 @@ def create_mascota():
 
     try:
         mascota = MascotaModel.create(usuario_id=user.id, **schema)
-    except:
-        abort(make_response(jsonify(message="Dato inválido", error=True), 422))
+    except IntegrityError as err:
+        return {"errors": f'{err}'}, 422
 
 
     return make_response(mascota_schema.dump(mascota)), 201

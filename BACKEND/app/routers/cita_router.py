@@ -51,6 +51,8 @@ def crear_cita():
 
     try:
         cita = CitaModel.create(usuario_id=user.id, **schema)
+        agenda_update = AgendaModel.update(disponible=False).where(AgendaModel.usuario == user.id).execute()
+
     except IntegrityError as err:
         {"errors": f'{err}'}, 422
 

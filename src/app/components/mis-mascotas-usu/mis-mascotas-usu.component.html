@@ -51,11 +51,12 @@
             </select>
         </div>
         <div class="col-md-4">
-            <label for="inputState" class="form-label">Tipo Mascota. 1.Perro - 2.Gato</label>
-            <select id="inputState" formControlName="tipo_mascota_id" class="form-select border-info">
+
+            <label for="inputState" class="form-label">Tipo Mascota</label>
+            <select id="inputState" formControlName="id_tipo_mascota" class="form-select border-info">
                 <option [selected]>Mascota</option>
                 <ng-container *ngFor="let tipo of tipo_mascotaI">
-                    <option [value]="id_tipo_mascota">{{ tipo.id_tipo_mascota }}</option>
+                    <option [value]="id_tipo_mascota">{{ tipo.tipo_mascota }}</option>
                 </ng-container>
                 
                 
