@@ -14,14 +14,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let cita of citas">
-                <th scope="row">{{ cita.id_cita }}</th>
-                <td>{{ cita.agenda.veterinario.nombre}} {{cita.agenda.veterinario.apellido}}</td>
-                <td>{{ cita.paciente.nombre }}</td>
-                <td>{{ cita.agenda.usuario.nombre }} {{ cita.agenda.usuario.apellido }}</td>
-                <td>{{ cita.motivo }}</td>
-                <td>{{ cita.agenda.fecha_inicio }}</td>
-                <td>{{ cita.agenda.fecha_final }}</td>
+            <tr *ngFor="let agenda of agendas">
+                <th scope="row">{{ agenda.id_agenda }}</th>
+                <td>{{ agenda.veterinario.nombre }} {{ agenda.veterinario.apellido}}</td>
+                <td>{{ agenda.mascota.nombre }}</td>
+                <td>{{ agenda.usuario.nombre }} {{ agenda.usuario.apellido }}</td>
+                <td>{{ agenda.motivo }}</td>
+                <td>{{ agenda.fecha_inicio }}</td>
+                <td>{{ agenda.fecha_final }}</td>
             </tr>
     </table>
 </div>

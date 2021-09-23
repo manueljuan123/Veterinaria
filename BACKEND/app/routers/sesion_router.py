@@ -35,11 +35,9 @@ def create_user():
     data = request.get_json()
     try:
         schema = user_schema.load(data)
-        confirmacion_registro()
     except:
         abort(make_response(jsonify(message="Dato inválido", error=True), 422))
     try:
-        
         user = UserModel.create(rol_id=3, **schema)
     except:
         abort(make_response(jsonify(message="Dato inválido", error=True), 422))

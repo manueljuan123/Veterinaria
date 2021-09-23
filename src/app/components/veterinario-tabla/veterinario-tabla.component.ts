@@ -15,7 +15,7 @@ export class VeterinarioTablaComponent implements OnInit {
   constructor(private agendaS:AgendaService, private fb:FormBuilder) { }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
+    this.form = new FormGroup({
       nombre : new FormControl('', [Validators.required]),
       fecha_inicio : new FormControl('', [Validators.required]),
       fecha_final : new FormControl('', [Validators.required])
@@ -43,7 +43,7 @@ export class VeterinarioTablaComponent implements OnInit {
             confirmButtonText:
             '<i class="fa fa-thumbs-up"></i> Entendido',
             confirmButtonAriaLabel: 'Thumbs up, great!',
-            text: "ERROR"})
+            text: JSON.stringify(err)})
           })
         }
 

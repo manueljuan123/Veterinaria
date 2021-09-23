@@ -64,7 +64,6 @@ import { VistaPerfilUsuComponent } from './containers/contenedor-usuario/vista-p
 // Services
 
 import { TokenInterceptorService } from './services/auth/token-interceptor.service';
-import { CitaService } from './services/cita/cita.service';
 
 
 // Shared

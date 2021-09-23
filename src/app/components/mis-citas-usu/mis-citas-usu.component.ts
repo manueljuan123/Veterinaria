@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CitaI } from '../../models/cita.interface';
-import { CitaService } from '../../services/cita/cita.service';
-import { AuthService } from '../../services/auth/auth.service';
-import { UsuarioI } from '../../models/usuario.interface';
+import { AgendaI } from 'src/app/models/agenda';
+import { AgendaService } from 'src/app/services/agenda/agenda.service';
 
 @Component({
   selector: 'app-mis-citas-usu',
@@ -11,14 +9,14 @@ import { UsuarioI } from '../../models/usuario.interface';
 })
 export class MisCitasUsuComponent implements OnInit {
 
-  citas : CitaI[];
+  agendas : AgendaI[];
 
-  constructor(private citaService:CitaService, private auth:AuthService) { }
+  constructor(private agendaS:AgendaService) { }
 
 
   ngOnInit(): void {
-    this.citaService.obtener_listado_citas_usuario_get_request().subscribe(res =>
-      this.citas = res)
+    this.agendaS.obtener_agendas_usuario_get_request().subscribe(res =>
+      this.agendas = res)
       }
 
 

@@ -5,7 +5,7 @@ export interface AgendaI {
     creado:       Date;
     actualizado:  Date;
     fecha_inicio: Date;
-    disponible:   boolean;
+    motivo:       string; 
     mascota:      Mascota | null;
     eliminado:    null;
     id_agenda:    number;

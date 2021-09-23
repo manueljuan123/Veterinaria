@@ -5,19 +5,15 @@
         <thead>
             <tr>
                 <th scope="col">Nombre</th>
-                <th scope="col">Dueño</th>
-                <th scope="col">Macota</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Estado</th>
+                <th scope="col">Fecha Inicio</th>
+                <th scope="col">Fecha Final</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor='let agenda of agendas'>
                 <th>{{ agenda.nombre }}</th>
-                <td>{{ agenda.usuario.nombre }}</td>
-                <td>{{ agenda.mascota.nombre }}</td>
-                <td>{{ agenda.fecha_inicio }}</td>
-                <td>{{ agenda.disponible }}</td>
+                <td>{{ agenda.fecha_inicio | date:"short" }}</td>
+                <td>{{ agenda.fecha_final | date:"short" }}</td>
             </tr>
     </table>
 </div>

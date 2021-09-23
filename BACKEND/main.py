@@ -13,7 +13,6 @@ from app.routers.usuarios_router import UsuarioRouter
 from app.routers.agenda_router import AgendaRouter
 
 # Citas
-from app.routers.cita_router import CitaRouter
 from app.routers.historia_router import HistoriaRouter
 
 # EMAIL
@@ -33,7 +32,6 @@ app.register_blueprint(EmailRouter)
 
 # SESSION BLUEPRINTS
 app.register_blueprint(SesionRouter)
-app.register_blueprint(CitaRouter)
 
 
 

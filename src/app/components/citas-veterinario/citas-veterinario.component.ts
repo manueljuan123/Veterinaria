@@ -13,9 +13,8 @@ export class CitasVeterinarioComponent implements OnInit {
 
   agendasPendientes: AgendaI[]
 
-  constructor(private activerouter: ActivatedRoute, private agendas:AgendaService, private auth:AuthService, private route:Router) { }
+  constructor(private agendas:AgendaService, private auth:AuthService, private route:Router) { }
 
-  userId = this.auth.getId()
 
   ngOnInit(): void {
     this.agendas.obtener_agendas_veterinario_get_request().subscribe(res =>

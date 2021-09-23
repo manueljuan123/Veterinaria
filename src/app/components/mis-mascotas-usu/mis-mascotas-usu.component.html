@@ -7,13 +7,13 @@
         <div class="col">
             <div class="card border-info" style="width: 18rem;">
 
-                <li class="list-group-item border-info titulo">Nombre Mascota: {{ mascota.nombre }}</li>
+                <li class="list-group-item border-info titulo">{{ mascota.nombre | uppercase }}</li>
                 <img src="../../../assets/img/logo.png" class="card-img-top" alt="...">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item border-info">Edad: {{ mascota.edad }}</li>
                     <li class="list-group-item border-info">Raza: {{ mascota.raza }}</li>
                     <li class="list-group-item border-info">Género: {{ (mascota.genero == 'H') ? 'Hembra' : 'Macho' }}</li>
-                    <li class="list-group-item border-info">Tipo: {{ mascota.tipo_mascota.tipo_mascota }}</li>
+                    <li class="list-group-item border-info">Tipo: {{ mascota.tipo_mascota }}</li>
                     <li class="list-group-item border-info">Estado: {{ mascota.estado_salud }}</li>
                 </ul>
             </div>
@@ -24,9 +24,9 @@
 </div>
 
 
-<div class="container pt-5" [formGroup]="form">
+<div class="container pt-5" >
     <p class="lead titulo text-center">Registrar Nueva Mascota</p>
-    <form class="row g-3">
+    <form class="row g-3" [formGroup]="form" (ngSubmit)="submit()">
         <div class="col-md-6">
             <label for="inputNombr3" class="form-label">Nombre:</label>
             <input type="text" class="form-control border-info" id="inputNombr3" formControlName="nombre" placeholder="">
@@ -50,18 +50,18 @@
                 <option>H</option>
             </select>
         </div>
-        <div class="col-md-4">
 
+        <div class="col-md-4">
             <label for="inputState" class="form-label">Tipo Mascota</label>
-            <select id="inputState" formControlName="id_tipo_mascota" class="form-select border-info">
-                <option [selected]>Mascota</option>
-                <ng-container *ngFor="let tipo of tipo_mascotaI">
-                    <option [value]="id_tipo_mascota">{{ tipo.tipo_mascota }}</option>
-                </ng-container>
-                
-                
+            <select id="inputState" class="form-control" formControlName="tipo_mascota" class="form-select border-info">
+                <option [selected]>Tipo</option>
+                    <option>Perro</option>
+                    <option>Gato</option>
+                    <option>Ave</option>
+                    <option>Conejo</option>             
             </select>
         </div>
+
         <div class="col-md-4">
             <label for="inputState" class="form-label">Estado de Salud</label>
             <select formControlName="estado_salud" class="form-select border-info">
@@ -71,7 +71,7 @@
         </div>
 
         <div class="col-12">
-            <button type="submit" (click)="submit()" class="btn btn-info">Registrar</button>
+            <button type="submit" class="btn btn-info">Registrar</button>
         </div>
     </form>
 </div>

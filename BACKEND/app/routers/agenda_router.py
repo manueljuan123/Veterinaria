@@ -34,8 +34,8 @@ def crear_agenda():
 
 
 # Actualizar agenda
-@AgendaRouter.route('/actualizar/<int:id>', methods=['PUT'])
-def actualizar_agenda(id):
+@AgendaRouter.route('/actualizar', methods=['PUT'])
+def actualizar_agenda():
     j = request.get_json()
     try:
         schema = agenda_schema.load(j)
@@ -43,11 +43,10 @@ def actualizar_agenda(id):
         abort(make_response(jsonify(message="Dato no válido", error=True, errors=err.messages), 404))
 
     try:
-        agenda = AgendaModel.update(actualizado=datetime.now(), **schema).where(AgendaModel.id_agenda==id).execute()
+        agenda = AgendaModel.update(actualizado=datetime.now(), **schema)
     except IntegrityError as err:
         abort(make_response(jsonify(message="Dato no válido", error=True, errors=err.messages), 422))
 
-    agenda = AgendaModel.get(id_agenda=id)
     return agenda_schema.dump(agenda), 202
 
 
@@ -90,3 +89,15 @@ def list_agendas_veterinario():
     user = UserModel.select().where(UserModel.email==auth['payload']).get()
     agendas = AgendaModel.select().where(AgendaModel.veterinario == user.id, AgendaModel.eliminado.is_null(True))
     return agendas_schema.dumps(agendas),200
+
+
+# Listado de todas las agendas de un usuario en específico
+@AgendaRouter.route('/usuario', methods=['GET'])
+def list_agendas_usuario():
+    token = request.headers.get('Authorization')
+    auth = UserModel.decode_jwt(token[7:])
+    user = UserModel.select().where(UserModel.email==auth['payload']).get()
+    agendas = AgendaModel.select().where(AgendaModel.usuario == user.id, AgendaModel.eliminado.is_null(True))
+    return agendas_schema.dumps(agendas),200
+
+    

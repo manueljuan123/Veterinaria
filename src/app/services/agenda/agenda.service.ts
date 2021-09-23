@@ -18,6 +18,12 @@ export class AgendaService {
     return this.http.post<any>(this.BASE_URL+'/agenda/crear', data)
   }
 
+  // Actualizar agenda
+  actualizar_agenda_put_request(data:AgendaI): Observable<AgendaI>{
+    let ruta = this.BASE_URL+"/agenda/actualizar"
+    return this.http.put<any>(ruta, data)
+  }
+
   // Obtener todas las agendas
   obtener_agendas_get_request(): Observable<AgendaI[]>{
     let ruta = this.BASE_URL+"/agenda/listado"
@@ -27,6 +33,12 @@ export class AgendaService {
   // Obtener las agendas de un veterinario pendientes
   obtener_agendas_veterinario_get_request(id?:any): Observable<AgendaI[]>{
     let ruta = this.BASE_URL+"/agenda/veterinario"
+    return this.http.get<AgendaI[]>(ruta)
+  }
+
+  // Obtener las citas de un usuario pendientes
+  obtener_agendas_usuario_get_request(id?:any): Observable<AgendaI[]>{
+    let ruta = this.BASE_URL+"/agenda/usuario"
     return this.http.get<AgendaI[]>(ruta)
   }
 

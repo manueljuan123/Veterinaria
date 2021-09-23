@@ -9,8 +9,6 @@ import { HistoriaI } from 'src/app/models/historia';
 import { UsuarioService } from '../../services/usuario/usuario.service';
 import { MascotaI } from 'src/app/models/mascota.interface';
 import { MascotaService } from '../../services/macota/mascota.service';
-import { CitaI } from 'src/app/models/cita.interface';
-import { CitaService } from '../../services/cita/cita.service';
 import { AgendaI } from '../../models/agenda';
 import { AgendaService } from '../../services/agenda/agenda.service';
 
@@ -24,10 +22,9 @@ export class HistoriaClinicaComponent implements OnInit {
   form : FormGroup
   historias: HistoriaI[]
   mascotas: MascotaI[]
-  cita: CitaI
   agenda: AgendaI
 
-  constructor(private agendaS:AgendaService, private mascotaS:MascotaService, private activatedRoute:ActivatedRoute, private fb:FormBuilder, private citaS:CitaService, private mascota:MascotaService,private historia: HistoriaService, private route:Router, private auth:AuthService, private usuario:UsuarioService) { }
+  constructor(private agendaS:AgendaService, private mascotaS:MascotaService, private activatedRoute:ActivatedRoute, private fb:FormBuilder, private mascota:MascotaService,private historia: HistoriaService, private route:Router, private auth:AuthService, private usuario:UsuarioService) { }
 
   
 

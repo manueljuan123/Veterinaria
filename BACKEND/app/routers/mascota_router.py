@@ -1,10 +1,8 @@
 from werkzeug.exceptions import abort
 from app.models.usuario_model import UserModel
-from app.models.tipo_mascota_model import TipoMascotaModel
 from flask.helpers import make_response
 from marshmallow.exceptions import ValidationError
 from peewee import IntegrityError
-from app.schemas.tipo_mascota_schema import tipo_mascotas_schema, tipo_mascota_schema
 from app.models.mascota_model import MascotaModel
 from datetime import datetime
 from flask import Blueprint, request
@@ -89,19 +87,6 @@ def obtener_mascotas_usuario():
     mascotasUsuario = MascotaModel.select().where(MascotaModel.usuario_id == user.id).execute()
     return mascotas_schema.dumps(mascotasUsuario), 200
 
-
-# Listado por tipo de mascotas
-@MascotaRouter.route('/listado_tipo/<int:id>', methods=['GET'])
-def list_por_tipo_mascotas(id):
-    tipo_mascota = MascotaModel.select().join(TipoMascotaModel).where(MascotaModel.tipo_mascota == id, MascotaModel.eliminado.is_null(True)).execute()
-    return make_response(jsonify(mascotas_schema.dump(tipo_mascota))), 200
-
-
-# Listado de tipo mascotas
-@MascotaRouter.route('/listado_tipo', methods=['GET'])
-def list_tipo_mascotas():
-    tipo = TipoMascotaModel.select()
-    return tipo_mascotas_schema.dumps(tipo), 200
 
 
 

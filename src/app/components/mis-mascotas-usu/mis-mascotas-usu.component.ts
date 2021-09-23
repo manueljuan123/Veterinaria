@@ -19,7 +19,7 @@ export class MisMascotasUsuComponent implements OnInit {
   usuarios : UsuarioI[]
   form : FormGroup;
 
-  constructor(private mascotaService:MascotaService, private auth:AuthService, private fb:FormBuilder, private route:Router) { }
+  constructor(private mascotaService:MascotaService, private auth:AuthService, private route:Router) { }
   
 
   ngOnInit() {
@@ -30,14 +30,11 @@ export class MisMascotasUsuComponent implements OnInit {
       raza: new FormControl('', [Validators.required]),
       peso: new FormControl('', [Validators.required]),
       estado_salud: new FormControl('', [Validators.required]),
-      id_tipo_mascota: new FormControl('', [Validators.required]),
+      tipo_mascota: new FormControl('', [Validators.required]),
     })
 
     this.mascotaService.listado_mascotas_usuario_get_request().subscribe(res =>
       this.mascotas = res)
-
-    this.mascotaService.listado_all_tipo_mascotas_get_request().subscribe(res=>
-      this.tipo_mascotaI = res)
   }
 
   async submit(){
@@ -46,12 +43,11 @@ export class MisMascotasUsuComponent implements OnInit {
       (res:any) => {
             Swal.fire({
               title: "Éxito",
-              text:"Macota creada con satisfacción",
+              text:"Mascota creada con satisfacción",
               icon: 'success',
               showConfirmButton : false,
               timer: 3000 
               })
-              this.form.reset()
 
       }, err => {
         console.log(err)
@@ -63,7 +59,7 @@ export class MisMascotasUsuComponent implements OnInit {
           confirmButtonText:
           '<i class="fa fa-thumbs-up"></i> Entendido',
           confirmButtonAriaLabel: 'Thumbs up, great!',
-          text: err})
+          text: JSON.stringify(err)})
       }
     )
   }

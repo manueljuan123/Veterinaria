@@ -16,7 +16,7 @@ export interface TipoMascota {
     tipo_mascota:    string;
 }
 
-interface Usuario{
+export interface Usuario{
     id:          number;
     nombre:      string;
     apellido:    string;

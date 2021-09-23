@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CitaI } from 'src/app/models/cita.interface';
-import { CitaService } from '../../services/cita/cita.service';
-import { Router } from '@angular/router';
-import { ThrowStmt } from '@angular/compiler';
+import { AgendaI } from 'src/app/models/agenda';
+import { AgendaService } from '../../services/agenda/agenda.service';
 
 @Component({
   selector: 'app-gestion-citas',
@@ -11,14 +9,14 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class GestionCitasComponent implements OnInit {
 
-  citas : CitaI[]
+  agendas : AgendaI[]
 
 
-  constructor(private citaService:CitaService, private router:Router) { }
+  constructor(private agendaS:AgendaService) { }
 
   ngOnInit(): void {
-    this.citaService.obtener_listado_citas_get_request().subscribe(res =>{
-      this.citas = res;
+    this.agendaS.obtener_agendas_get_request().subscribe(res =>{
+      this.agendas = res;
     })
   }
 

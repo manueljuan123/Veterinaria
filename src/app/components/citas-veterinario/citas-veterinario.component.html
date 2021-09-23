@@ -5,9 +5,9 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Dueño</th>
                 <th scope="col">Mascota</th>
-                <th scope="col">Fecha</th>
+                <th scope="col">Hora Inicio</th>
+                <th scope="col">Hora Final</th>
                 <th scope="col">Historia / Eliminar</th>
             </tr>
         </thead>
@@ -15,9 +15,9 @@
             <tr *ngFor="let agenda of agendasPendientes">
                 <th>{{ agenda.id_agenda }}</th>
                 <th>{{ agenda.nombre }}</th>
-                <td>{{ agenda.usuario.nombre }} </td>
                 <td>{{ agenda.mascota.nombre }}</td>
                 <td>{{ agenda.fecha_inicio | date:'short' }}</td>
+                <td>{{ agenda.fecha_final | date:'short' }}</td>
                 <td>
                     <div class="row">
                         <div class="col-3">

@@ -10,7 +10,7 @@ class AgendaModel(BaseModel):
     nombre = CharField(column_name='nombre')
     fecha_inicio = DateTimeField(column_name='fecha_inicio')
     fecha_final = DateTimeField(column_name='fecha_final')
-    disponible = BooleanField(column_name='disponible')
+    motivo = CharField(column_name='motivo', null=True)
     veterinario = ForeignKeyField(UserModel)
     usuario = ForeignKeyField(UserModel, null=True)
     mascota = ForeignKeyField(MascotaModel, null=True)
@@ -21,9 +21,6 @@ class AgendaModel(BaseModel):
     class Meta:
         table_name = 'agenda'
 
-    
-    def save(self, *args, **kwargs):
-        super(AgendaModel, self).save(*args, **kwargs)
 
     def agenda_intervalo(segundos):
         minutos, segundos = divmod(segundos, 60)

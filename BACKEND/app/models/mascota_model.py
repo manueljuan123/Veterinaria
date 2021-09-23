@@ -1,6 +1,5 @@
-from app.models.tipo_mascota_model import TipoMascotaModel
 from app.models.usuario_model import UserModel
-from peewee import AutoField, CharField, ForeignKeyField, IntegerField, TimestampField, DateTimeField
+from peewee import AutoField, CharField, ForeignKeyField, TimestampField, DateTimeField
 from datetime import datetime
 from app.models import BaseModel
 
@@ -12,7 +11,7 @@ class MascotaModel(BaseModel):
     raza = CharField(column_name='raza')
     peso = CharField(column_name='peso')
     estado_salud = CharField(column_name='estado_salud', max_length=60)
-    tipo_mascota = ForeignKeyField(TipoMascotaModel)
+    tipo_mascota = CharField(column_name="tipo_mascota")
     usuario_id = ForeignKeyField(UserModel)
     creado = TimestampField(column_name='creado')
     actualizado = TimestampField(column_name='actualizado')

@@ -1,6 +1,5 @@
 from app.schemas.usuario_schema import UserSchema
 from app.schemas.usuario_schema import UserTypeSchema
-from app.schemas.tipo_mascota_schema import TipoMascotaSchema
 from marshmallow import Schema, fields
 
 class MascotaSchema(Schema):
@@ -13,7 +12,7 @@ class MascotaSchema(Schema):
     estado_salud = fields.Str(required=True)
     usuario = fields.Nested(UserTypeSchema, dump_only=True)
     id_tipo_mascota = fields.Int(load_only=True)
-    tipo_mascota = fields.Nested(TipoMascotaSchema, dump_only=True)
+    tipo_mascota = fields.Str(required=True)
     creado = fields.DateTime(dump_only=True)
     actualizado = fields.DateTime(dump_only=True)
     eliminado = fields.DateTime(dump_only=True)
@@ -24,6 +23,7 @@ mascotas_schema = MascotaSchema(many=True)
 class MascotaTypeSchema(Schema):
     id_mascota = fields.Int(dump_only=True)
     usuario = fields.Int(dump_only=True)
+    tipo_mascota = fields.Int(dump_only=True)
     nombre = fields.Str(dump_only=True)
     genero = fields.Str(dump_only=True)
     edad = fields.Str(dump_only=True)
