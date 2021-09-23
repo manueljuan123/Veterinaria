@@ -26,68 +26,87 @@
     </table>
 </div>
 
-<!--crear usuario-->
+
+
+<!--crear Veterinario-->
 
 <div class="container pt-5">
-    <p class="lead titulo text-center">Crear Veterinario</p>
-    <form class="row g-3 " [formGroup]="form">
-        <div class="col-md-6">
-            <label for="inputNombr3" class="form-label">Nombre:</label>
-            <span 
-            class="text-danger" *ngIf="form.get('nombre')?.hasError('required') && form.get('nombre')?.touched">El nombre <strong>es requerido</strong>
-            </span>
-            <input type="text" formControlName="nombre" class="form-control border-info" name="nombre" id="inputNombr3" placeholder="Nombre">
-        </div>
+    <p><button type="button" class="btn btn-info btn-lg titulo text-center" data-bs-toggle="modal" data-bs-target="#exampleModalC">Crear Veterinario</button></p>
+</div>    
 
-        <div class="col-md-6">
-            <label for="inputApell3" class="form-label">Apellido: </label>
-            <span 
-            class="text-danger" *ngIf="form.get('apellido')?.hasError('required') && form.get('apellido')?.touched"> El apellido <strong>es requerido</strong>
-            </span>
-            <input type="text" formControlName="apellido" class="form-control border-info" name="apellido" id="inputApell3" placeholder="Apellido">
+    <!-- Modal -->
+<div class="modal fade" id="exampleModalC" tabindex="-1" aria-labelledby="exampleModalCLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+            <form class="row g-3 " [formGroup]="form">
+                <div class="col-md-6">
+                    <label for="inputNombr3" class="form-label">Nombre:</label>
+                    <span 
+                    class="text-danger" *ngIf="form.get('nombre')?.hasError('required') && form.get('nombre')?.touched">El nombre <strong>es requerido</strong>
+                    </span>
+                    <input type="text" formControlName="nombre" class="form-control border-info" name="nombre" id="inputNombr3" placeholder="Nombre">
+                </div>
         
-        <div class="col-md-6">
-            <label for="inputCelu3" class="form-label">Celular</label>
-            <span 
-            class="text-danger" *ngIf="form.get('celular').hasError('required') && form.get('celular')?.touched">El celular <strong>es requerido</strong>
-            </span>
-            <input type="text" formControlName="celular" class="form-control border-info" name="celular" id="inputCelu3" placeholder="Celular">
-        </div>
-
-        <div class="col-md-6">
-            <label for="inputDirec3" class="form-label">Direccion</label>
-            <span 
-            class="text-danger" *ngIf="form.get('direccion').hasError('required') && form.get('direccion')?.touched">La direccion <strong>es requerida</strong>
-            </span>
-            <input type="text" formControlName="direccion" class="form-control border-info" name="direccion" id="inputDirec3" placeholder="">
-        </div>
-
-        <div class="col-md-6">
-            <label for="inputEmail3" class="form-label">Email</label>
-            
-            <span 
-            class="text-danger" *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">El e-mail <strong>es requerido</strong>
-            </span>
+                <div class="col-md-6">
+                    <label for="inputApell3" class="form-label">Apellido: </label>
+                    <span 
+                    class="text-danger" *ngIf="form.get('apellido')?.hasError('required') && form.get('apellido')?.touched"> El apellido <strong>es requerido</strong>
+                    </span>
+                    <input type="text" formControlName="apellido" class="form-control border-info" name="apellido" id="inputApell3" placeholder="Apellido">
+                </div>
+                
+                <div class="col-md-6">
+                    <label for="inputCelu3" class="form-label">Celular</label>
+                    <span 
+                    class="text-danger" *ngIf="form.get('celular').hasError('required') && form.get('celular')?.touched">El celular <strong>es requerido</strong>
+                    </span>
+                    <input type="text" formControlName="celular" class="form-control border-info" name="celular" id="inputCelu3" placeholder="Celular">
+                </div>
         
-            <span 
-            class="text-danger" *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">El e-mail <strong>es inválido</strong>
-            </span>
-
-            <input type="text" class="form-control border-info" formControlName="email" name="email" id="inputEmail3" placeholder="Email">
+                <div class="col-md-6">
+                    <label for="inputDirec3" class="form-label">Direccion</label>
+                    <span 
+                    class="text-danger" *ngIf="form.get('direccion').hasError('required') && form.get('direccion')?.touched">La direccion <strong>es requerida</strong>
+                    </span>
+                    <input type="text" formControlName="direccion" class="form-control border-info" name="direccion" id="inputDirec3" placeholder="">
+                </div>
+        
+                <div class="col-md-6">
+                    <label for="inputEmail3" class="form-label">Email</label>
+                    
+                    <span 
+                    class="text-danger" *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">El e-mail <strong>es requerido</strong>
+                    </span>
+                
+                    <span 
+                    class="text-danger" *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">El e-mail <strong>es inválido</strong>
+                    </span>
+        
+                    <input type="text" class="form-control border-info" formControlName="email" name="email" id="inputEmail3" placeholder="Email">
+                </div>
+        
+                <div class="col-md-6">
+                    <label for="inputPass3" class="form-label">Contraseña</label>
+                    <span 
+                    class="text-danger" *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">La contraseña <strong>es requerida</strong>
+                    </span>
+                    <input type="password" formControlName="password" name="password" class="form-control border-info" id="input3" placeholder="Contraseña">
+                </div>
+            </form>
         </div>
-
-        <div class="col-md-6">
-            <label for="inputPass3" class="form-label">Contraseña</label>
-            <span 
-            class="text-danger" *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">La contraseña <strong>es requerida</strong>
-            </span>
-            <input type="password" formControlName="password" name="password" class="form-control border-info" id="input3" placeholder="Contraseña">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" [disabled]="form.invalid" (click)="submit()" class="btn btn-info">Registrar</button>
         </div>
-
-        <div class="col-12">
-            <button type="submit" [disabled]="form.invalid" (click)="submit()" class="btn btn-info">Registrar</button>
-        </div>
-    </form>
-</div>
-<div class="pt-4"></div>
+      </div>
+    </div>
+  </div>
+    
+<div class="pt-5"></div>
+<div class="pt-5"></div>
+<div class="pt-5"></div>

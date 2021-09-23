@@ -1,3 +1,26 @@
+<div class="pt-2"></div>
+<div class="header">
+  <img src="https://images.pexels.com/photos/7014337/pexels-photo-7014337.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" 
+  class="avatar"  />
+  <h2 class="titulo tit"> {{ veterinario.nombre }} {{ veterinario.apellido }}</h2>
+</div>
+
+
+<div class="container-lg pt-3">
+  <div class="bg-light dts">
+
+      <p class="h4 titulo"><strong>Direccion: </strong> {{ veterinario.direccion }} </p>
+      <p class="h4 titulo"><strong>Celular: </strong>{{ veterinario.celular }} </p>
+      <p class="h4 titulo"><strong>Correo: </strong>{{ veterinario.email }} </p>
+      <p><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" 
+        data-bs-target="#exampleModalV">Editar Datos</button>
+      </p>   
+  </div>
+</div>
+
+
+
+
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <input type="file" (change)="upload($event)">
@@ -12,25 +35,6 @@
   </form>
 
 
-  <div class="container-lg pt-3">
-    <div class="row g-0 bg-light position-relative">
-    <div class="col-sm-8  p-3 ">
-      <h4 class="mt-0 text-center">Sobre Mi</h4>
-
-          <p>Nombre: {{ veterinario.nombre }}</p>
-          <p>Apellido: {{ veterinario.apellido }}</p>
-          <p>Direccion: {{ veterinario.direccion }}</p>
-          <p>Celular: {{ veterinario.celular }}</p>
-          <p>Correo: {{ veterinario.email }}</p>
-
-          <p><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalV">Editar Datos</button>
-          </p>
-
-
-    </div>
-  </div>
-
-  </div>
 
   
 <!-- Modal -->

@@ -1,23 +1,24 @@
+<div class="pt-2"></div>
+<div class="header">
+  <img src="https://images.pexels.com/photos/7014337/pexels-photo-7014337.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" 
+  class="avatar"  />
+  <h2 class="titulo tit"> {{ usuario.nombre }} {{ usuario.apellido }}</h2>
+</div>
+<ul class="social">
+  <li>Direccion: {{ usuario.direccion }}</li>
+  <li>Correo: {{ usuario.email }} </li>
+  <li>Celular: {{ usuario.celular }}</li>
+</ul>
+
+
 <div class="container-lg pt-3">
-  <div class="row g-0 bg-light position-relative">
-    <div class="col-4  p-3 ">
-      <div class="col-sm-8  p-3 ">
+  <div class="bg-light dts">
 
-        <h4 class="mt-0 text-center">Sobre Mi</h4>
-        <p>Nombre: {{ usuario.nombre }} {{ usuario.apellido }} </p>
-        <p>Direccion: {{ usuario.direccion }} </p>
-        <p>Celular: {{ usuario.celular }} </p>
-        <p>Correo: {{ usuario.email }} </p>
-        <p><button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal"
-            data-bs-target="#exampleModalU">Actualizar usuario</button></p>
-
-      </div>
-
-      <!--
-        <div class="img-fluid" alt="..." width="200px"> 
-          <p class="p-2"><button type="button" class="btn btn-info text-center">Cambiar Contraseña</button></p> 
-      </div>-->
-    </div>
+      <p class="h4 titulo"><strong>Direccion: </strong> {{ usuario.direccion }} </p>
+      <p class="h4 titulo"><strong>Celular: </strong>{{ usuario.celular }} </p>
+      <p class="h4 titulo"><strong>Correo: </strong>{{ usuario.email }} </p>
+      <p><button type="button" class="btn btn-info titulo" data-bs-toggle="modal"
+          data-bs-target="#exampleModalU">Actualizar usuario</button></p>     
   </div>
 </div>
 
