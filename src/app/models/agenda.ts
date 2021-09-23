@@ -6,7 +6,7 @@ export interface AgendaI {
     actualizado:  Date;
     fecha_inicio: Date;
     motivo:       string; 
-    mascota:      Mascota | null;
+    mascota:      Mascota;
     eliminado:    null;
     id_agenda:    number;
     veterinario:  Usuario;

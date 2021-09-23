@@ -1,3 +1,4 @@
+from app.models.mascota_model import MascotaModel
 from marshmallow import exceptions
 from peewee import IntegrityError
 from app.models.usuario_model import UserModel
@@ -37,15 +38,19 @@ def crear_agenda():
 @AgendaRouter.route('/actualizar', methods=['PUT'])
 def actualizar_agenda():
     j = request.get_json()
+    token = request.headers.get('Authorization')
+    auth = UserModel.decode_jwt(token[7:])
+    user = UserModel.select().where(UserModel.email==auth['payload']).get()
     try:
         schema = agenda_schema.load(j)
     except ValidationError as err:
         abort(make_response(jsonify(message="Dato no válido", error=True, errors=err.messages), 404))
 
     try:
-        agenda = AgendaModel.update(actualizado=datetime.now(), **schema)
+        agenda = AgendaModel.update(actualizado=datetime.now())
+        agenda = AgendaModel.update(usuario = user.id, **schema)
     except IntegrityError as err:
-        abort(make_response(jsonify(message="Dato no válido", error=True, errors=err.messages), 422))
+        return {"errors": f'{err}'}, 422
 
     return agenda_schema.dump(agenda), 202
 
@@ -98,6 +103,7 @@ def list_agendas_usuario():
     auth = UserModel.decode_jwt(token[7:])
     user = UserModel.select().where(UserModel.email==auth['payload']).get()
     agendas = AgendaModel.select().where(AgendaModel.usuario == user.id, AgendaModel.eliminado.is_null(True))
+    
     return agendas_schema.dumps(agendas),200
 
     
