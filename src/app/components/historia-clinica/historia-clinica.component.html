@@ -37,13 +37,17 @@
         </div>
 
         <div class="col-md-5">
-            <label for="inputdate" class="form-label"  >Fecha:</label>
+            <label for="inputdate" class="form-label" >Fecha:</label>
             <input type="date" formControlName="fecha" class="form-control border-info" id="inputdate">
         </div>
 
         <div class="col-md-5">
-            <label for="inputTipoC" class="form-label" >Tipo Cita</label>
-            <input type="text" formControlName="tipo_cita_id" class="form-control border-info" id="inputTipoC"/>
+            <label for="inputState" class="form-label">Tipo Cita</label>
+            <select id="inputState"  formControlName="tipo_cita_id" class="form-select border-info">
+                <ng-container *ngFor="let tipo of tipo_citas">
+                    <option [value]="tipo.tipo_cita">{{ tipo.nombre | uppercase }} {{ tipo.precio | titlecase }}</option>
+                </ng-container>
+            </select>
         </div>
 
 

@@ -11,7 +11,7 @@
             <select id="inputState" formControlName="mascota_id" class="form-select border-info">
                 <option selected>Mascota</option>
                 <ng-container *ngFor="let mascota of mascotasU">
-                    <option [value]="mascota.id_mascota">{{mascota.nombre}}</option>    
+                    <option [value]="mascota.id_mascota">{{ mascota.nombre }}</option>    
                 </ng-container>
                 
                 
@@ -26,13 +26,22 @@
         </div>
 
         <div class="col-md-5">
+            <label for="inputState" class="form-label">Tipo Cita</label>
+            <select id="inputState"  formControlName="tipo_cita_id" class="form-select border-info">
+                <ng-container *ngFor="let tipo of tipo_citas">
+                    <option [value]="tipo.tipo_cita">{{ tipo.nombre | uppercase }} {{ tipo.precio | titlecase }}</option>
+                </ng-container>
+            </select>
+        </div>
+
+        <div class="col-md-5">
             <label for="inputdate" class="form-label">Fecha Inicio:</label>
-            <input type="datetime-local" formControlName="fecha_inicio" class="form-control border-info" [value]="agenda.fecha_inicio" id="date">
+            <input type="datetime-local" class="form-control border-info" [value]="agenda.fecha_inicio" id="date">
         </div>
 
         <div class="col-md-5">
             <label for="inputdate" class="form-label">Fecha Final:</label>
-            <input type="datetime-local" formControlName="fecha_final" class="form-control border-info" [value]="agenda.fecha_final" id="date">
+            <input type="datetime-local" class="form-control border-info" [value]="agenda.fecha_final" id="date">
         </div>
 
         <div class="col-12">

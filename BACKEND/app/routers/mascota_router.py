@@ -45,7 +45,7 @@ def actualizar_mascota(id):
     try:
         mascota = MascotaModel.update(actualizado=datetime.now(),**schema).where(MascotaModel.id_mascota==id).execute()
     except IntegrityError as err:
-        abort(make_response(jsonify(message="Dato inválido", error=True), 422))
+        return {"errors": f'{err}'}, 422
 
     mascota = MascotaModel.get(id_mascota=id)
     return make_response(jsonify(mascota_schema.dump(mascota))), 201

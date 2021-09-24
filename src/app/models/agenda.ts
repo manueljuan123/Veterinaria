@@ -1,3 +1,4 @@
+import { TipoCitaI } from './tipo_cita.interface';
 
 export interface AgendaI {
     fecha_final:  Date;
@@ -5,7 +6,8 @@ export interface AgendaI {
     creado:       Date;
     actualizado:  Date;
     fecha_inicio: Date;
-    motivo:       string; 
+    motivo:       string;
+    tipo_cita:    TipoCitaI; 
     mascota:      Mascota;
     eliminado:    null;
     id_agenda:    number;

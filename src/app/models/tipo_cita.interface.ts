@@ -1,4 +1,5 @@
 export interface TipoCitaI {
-    id_tipo_cita: number;
-    nombre: string
+    tipo_cita: number;
+    nombre: string;
+    precio: string;
 }

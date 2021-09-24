@@ -28,10 +28,11 @@ def crear_historia():
 
     try:
         historia = HistoriasModel.create(**schema)
-        envio_historia(user.email)
+        usuario = HistoriasModel.select(HistoriasModel.usuario)
+        envio_historia(usuario.email)
 
-    except:
-        abort(make_response(jsonify(message="Dato inválido", error=True), 422))
+    except IntegrityError as err:
+        return {"errors": f'{err}'}, 422
 
     return make_response(historia_schema.dump(historia)), 201
 

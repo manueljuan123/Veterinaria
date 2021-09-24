@@ -1,5 +1,5 @@
-from app.models.mascota_model import MascotaModel
-from marshmallow import exceptions
+from app.schemas.tipo_cita_schema import TipoCitaSchema
+from app.models.tipo_cita_model import TipoCitaModel
 from peewee import IntegrityError
 from app.models.usuario_model import UserModel
 from flask import abort, Blueprint, request
@@ -9,6 +9,7 @@ from flask.helpers import make_response
 from flask.json import jsonify
 
 from app.schemas.agenda_schema import agenda_schema, agendas_schema
+from app.schemas.tipo_cita_schema import tipo_citas_schema
 from app.models.agenda_model import AgendaModel
 from marshmallow.exceptions import ValidationError
 
@@ -105,5 +106,12 @@ def list_agendas_usuario():
     agendas = AgendaModel.select().where(AgendaModel.usuario == user.id, AgendaModel.eliminado.is_null(True))
     
     return agendas_schema.dumps(agendas),200
+
+
+# Listado por tipo de citas
+@AgendaRouter.route('/listado_tipo_cita', methods=['GET'])
+def list_por_tipo_mascotas():
+    tipo_citas = TipoCitaModel.select()
+    return tipo_citas_schema.dumps(tipo_citas), 200
 
     
