@@ -43,7 +43,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form class="row g-3 " [formGroup]="form">
+            <form class="row g-3 " [formGroup]="form" (ngSubmit)="submit()">
                 <div class="col-md-6">
                     <label for="inputNombr3" class="form-label">Nombre:</label>
                     <span 
@@ -97,16 +97,17 @@
                     </span>
                     <input type="password" formControlName="password" name="password" class="form-control border-info" id="input3" placeholder="Contraseña">
                 </div>
-            </form>
-        </div>
+            
+        
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
           <button type="submit" [disabled]="form.invalid" class="btn btn-info">Registrar</button>
         </div>
+    </form>
       </div>
     </div>
   </div>
-    
+</div>
 <div class="pt-5"></div>
 <div class="pt-5"></div>
 <div class="pt-5"></div>
