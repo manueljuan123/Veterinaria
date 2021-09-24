@@ -4,7 +4,7 @@ import { UsuarioService } from '../../services/usuario/usuario.service';
 
 import { UsuarioI } from 'src/app/models/usuario.interface'
 import { AuthService } from '../../services/auth/auth.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Observable, Subject } from 'rxjs';
 
@@ -25,13 +25,13 @@ export class GestionUsuariosComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      nombre:['', Validators.required],
-      apellido:['', Validators.required],
-      celular:['', Validators.required],
-      direccion:['', Validators.required],
-      email:['', [Validators.required, Validators.email] ],
-      password:['', Validators.required ],
+    this.form = new FormGroup({
+      nombre: new FormControl ('', [Validators.required]),
+      apellido: new FormControl ('', [Validators.required]),
+      celular: new FormControl ('', [Validators.required]),
+      direccion: new FormControl ('', [Validators.required]),
+      email: new FormControl ('', [Validators.required]),
+      password: new FormControl ('', [Validators.required]),
     })
     
     this.usuarioService.listado_usuarios_get_request().subscribe(res =>{

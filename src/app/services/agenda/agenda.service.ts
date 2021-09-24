@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { TipoCitaI } from 'src/app/models/tipo_cita.interface';
 import { AgendaI } from '../../models/agenda';
 
 @Injectable({
@@ -46,5 +47,11 @@ export class AgendaService {
   obtener_agenda_get_request(id?:any): Observable<AgendaI>{
     let ruta = this.BASE_URL+"/agenda/"+id
     return this.http.get<AgendaI>(ruta)
+  }
+
+  // Obtener tipo de mascota
+  obtener_tipo_cita_get_request(): Observable<TipoCitaI[]>{
+    let ruta = this.BASE_URL+"/agenda/listado_tipo_cita"
+    return this.http.get<TipoCitaI[]>(ruta)
   }
 }

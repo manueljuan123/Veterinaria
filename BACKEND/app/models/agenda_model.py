@@ -1,3 +1,4 @@
+from app.models.tipo_cita_model import TipoCitaModel
 from datetime import datetime
 from peewee import AutoField, BooleanField, CharField, DateTimeField, ForeignKeyField, IntegerField, TimestampField, _StringField
 
@@ -8,9 +9,10 @@ from app.models.mascota_model import MascotaModel
 class AgendaModel(BaseModel):
     id_agenda = AutoField(column_name='id_agenda', primary_key=True)
     nombre = CharField(column_name='nombre')
-    fecha_inicio = DateTimeField(column_name='fecha_inicio')
-    fecha_final = DateTimeField(column_name='fecha_final')
+    fecha_inicio = DateTimeField(column_name='fecha_inicio', null=True)
+    fecha_final = DateTimeField(column_name='fecha_final', null=True)
     motivo = CharField(column_name='motivo', null=True)
+    tipo_cita = ForeignKeyField(TipoCitaModel, null=True)
     veterinario = ForeignKeyField(UserModel)
     usuario = ForeignKeyField(UserModel, null=True)
     mascota = ForeignKeyField(MascotaModel, null=True)

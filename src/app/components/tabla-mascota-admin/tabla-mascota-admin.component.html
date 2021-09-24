@@ -19,7 +19,7 @@
             <tr *ngFor="let mascota of mascotas">
                 <th scope="row">{{ mascota.id_mascota }}</th>
                 <td>{{ mascota.nombre }}</td>
-                <td>{{ mascota.tipo_mascota.tipo_mascota }}</td>
+                <td>{{ mascota.tipo_mascota }}</td>
                 <td>{{ (mascota.genero == 'H') ? 'Hembra' : 'Macho' }}</td>
                 <td>{{ mascota.edad }}</td>
                 <td>{{ mascota.peso }}</td>

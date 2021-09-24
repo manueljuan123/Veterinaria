@@ -3,8 +3,9 @@ from peewee import AutoField, CharField
 from app.models import BaseModel
 
 class TipoCitaModel(BaseModel):
-    id_tipo_cita = AutoField(column_name='id_tipo_cita', primary_key=True)
+    tipo_cita = AutoField(column_name='tipo_cita', primary_key=True)
     nombre = CharField(column_name = 'nombre', max_length=70)
+    precio = CharField(column_name='precio')
 
 
     class Meta:

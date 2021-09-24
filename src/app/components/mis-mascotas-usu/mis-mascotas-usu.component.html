@@ -23,7 +23,19 @@
 
 </div>
 
+<div class="container pt-5">
+    <p><button type="button" class="btn btn-info btn-lg titulo text-center" data-bs-toggle="modal" data-bs-target="#exampleModalC">Registrar Mascota</button></p>
+</div>
 
+<div class="modal fade" id="exampleModalC" tabindex="-1" aria-labelledby="exampleModalCLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCLabel">Registrar</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+    <div class="modal-body">
 <div class="container pt-5" >
     <p class="lead titulo text-center">Registrar Nueva Mascota</p>
     <form class="row g-3" [formGroup]="form" (ngSubmit)="submit()">
@@ -70,12 +82,14 @@
             </select>
         </div>
 
-        <div class="col-12">
-            <button type="submit" class="btn btn-info">Registrar</button>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" [disabled]="form.invalid" class="btn btn-info">Registrar</button>
         </div>
     </form>
 </div>
-<br>
-<br>
-<br>
+</div>
+
+</div>
+</div>
 

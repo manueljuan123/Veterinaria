@@ -11,6 +11,7 @@ import { MascotaI } from 'src/app/models/mascota.interface';
 import { MascotaService } from '../../services/macota/mascota.service';
 import { AgendaI } from '../../models/agenda';
 import { AgendaService } from '../../services/agenda/agenda.service';
+import { TipoCitaI } from '../../models/tipo_cita.interface';
 
 @Component({
   selector: 'app-historia-clinica',
@@ -21,6 +22,7 @@ export class HistoriaClinicaComponent implements OnInit {
 
   form : FormGroup
   historias: HistoriaI[]
+  tipo_citas: TipoCitaI[]
   mascotas: MascotaI[]
   agenda: AgendaI
 
@@ -29,6 +31,9 @@ export class HistoriaClinicaComponent implements OnInit {
   
 
   ngOnInit(): void {
+
+    this.agendaS.obtener_tipo_cita_get_request().subscribe(res => 
+      this.tipo_citas = res)
 
     this.mascotaS.listado_mascotas_usuario_get_request().subscribe(res =>
       this.mascotas = res)

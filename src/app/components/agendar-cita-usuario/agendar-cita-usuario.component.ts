@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AgendaI } from 'src/app/models/agenda';
 import { AgendaService } from '../../services/agenda/agenda.service';
-import { FormGroup, FormBuilder, RequiredValidator, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MascotaI } from 'src/app/models/mascota.interface';
 import { MascotaService } from '../../services/macota/mascota.service';
 import Swal from 'sweetalert2';
@@ -25,6 +25,8 @@ export class AgendarCitaUsuarioComponent implements OnInit {
   constructor(private activateRoute:ActivatedRoute, private agendas:AgendaService, private route:Router, private mascotaS:MascotaService) { }
 
   ngOnInit(): void {
+    this.agendas.obtener_tipo_cita_get_request().subscribe(res =>
+      this.tipo_citas = res)
 
     this.mascotaS.listado_mascotas_usuario_get_request().subscribe(res =>
       this.mascotasU = res)
@@ -41,8 +43,7 @@ export class AgendarCitaUsuarioComponent implements OnInit {
       motivo : new FormControl('', [Validators.required]),
       mascota_id : new FormControl('', [Validators.required]),
       nombre : new FormControl('', [Validators.required]),
-      fecha_inicio: new FormControl('', [Validators.required]),
-      fecha_final: new FormControl('', [Validators.required])
+      tipo_cita_id: new FormControl('', [Validators.required])
       
     })
 
