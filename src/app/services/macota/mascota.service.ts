@@ -19,19 +19,8 @@ export class MascotaService {
   }
 
   // Actualizar mascota en específico
-  async actualizar_mascota_put_request(data:any){
-    try
-    {const response = await fetch(this.BASE_URL+'/mascota/actualizar/<int:id>',
-                                  {method: 'PUT',
-                                  body: JSON.stringify(data),
-                                  headers:{
-                                    'Content-Type':'application/json'}})
-                                  return await response.json()
-    }
-    catch(error){
-      console.log(error)
-    }
-    return false
+  actualizar_mascota_put_request(id:any, data){
+    return this.http.put<any>(this.BASE_URL+'/mascota/actualizar/'+id, data)
   }
 
   // Inhabilitar mascota en específico

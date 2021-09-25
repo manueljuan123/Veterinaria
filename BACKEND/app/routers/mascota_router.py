@@ -39,8 +39,8 @@ def actualizar_mascota(id):
     j = request.get_json()
     try:
         schema = mascota_schema.load(j)
-    except ValidationError as error:
-        abort(make_response(jsonify(message="Dato inválido", error=True), 422))
+    except ValidationError as err:
+        abort(make_response(jsonify(message="Dato inválido", error=True, errors=err.messages), 422))
 
     try:
         mascota = MascotaModel.update(actualizado=datetime.now(),**schema).where(MascotaModel.id_mascota==id).execute()

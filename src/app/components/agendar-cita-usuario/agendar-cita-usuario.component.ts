@@ -50,7 +50,7 @@ export class AgendarCitaUsuarioComponent implements OnInit {
   }
 
   async actualizarForm(data:AgendaI){
-    this.agendas.actualizar_agenda_put_request(this.form.value)
+    this.agendas.actualizar_agenda_put_request(this.form.value, this.agenda.id_agenda)
     .subscribe(
       (res:any) => {
         this.route.navigate(['/vista-inicio-usuario'])

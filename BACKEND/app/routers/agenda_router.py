@@ -36,8 +36,8 @@ def crear_agenda():
 
 
 # Actualizar agenda
-@AgendaRouter.route('/actualizar', methods=['PUT'])
-def actualizar_agenda():
+@AgendaRouter.route('/actualizar/<int:id>', methods=['PUT'])
+def actualizar_agenda(id):
     j = request.get_json()
     token = request.headers.get('Authorization')
     auth = UserModel.decode_jwt(token[7:])
@@ -48,8 +48,8 @@ def actualizar_agenda():
         abort(make_response(jsonify(message="Dato no válido", error=True, errors=err.messages), 404))
 
     try:
-        agenda = AgendaModel.update(actualizado=datetime.now())
-        agenda = AgendaModel.update(usuario = user.id, **schema)
+        agenda = AgendaModel.update(actualizado=datetime.now()).where(AgendaModel.id_agenda == id).execute()
+        agenda = AgendaModel.update(usuario = user.id, **schema).where(AgendaModel.id_agenda == id).execute()
     except IntegrityError as err:
         return {"errors": f'{err}'}, 422
 

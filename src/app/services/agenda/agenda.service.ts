@@ -20,8 +20,8 @@ export class AgendaService {
   }
 
   // Actualizar agenda
-  actualizar_agenda_put_request(data:AgendaI): Observable<AgendaI>{
-    let ruta = this.BASE_URL+"/agenda/actualizar"
+  actualizar_agenda_put_request(data:AgendaI, id?:any): Observable<AgendaI>{
+    let ruta = this.BASE_URL+"/agenda/actualizar/"+id
     return this.http.put<any>(ruta, data)
   }
 
