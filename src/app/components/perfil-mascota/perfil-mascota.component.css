@@ -1,0 +1,19 @@
+.header{
+    text-align: center;
+    height:300px;
+    padding: 12px;
+}
+.avatar{
+    width:200px;
+    height:200px;
+    border-radius: 50%;
+}
+.tit{
+    margin-top:14px;
+}
+
+
+.dts{
+    padding: 1em;
+
+}

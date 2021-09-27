@@ -1,0 +1,111 @@
+<app-navbar-usuario></app-navbar-usuario>
+<div class="pt-2"></div>
+<div class="header">
+    <div>
+      <img src="http://localhost:5000/mascota/mostrar_foto_mascota/{{mascota.id_mascota}}" 
+          class="avatar"/>
+        
+          <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalF" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+            <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+            <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+            </svg>
+          </button>
+      </div>
+  <h2 class="titulo tit"> {{ mascota.nombre }}</h2>
+</div>
+
+<div class="container-lg pt-3">
+  <div class="bg-light dts">
+
+      <p class="h4 titulo"><strong>Edad: </strong> {{ mascota.edad }} </p>
+      <p class="h4 titulo"><strong>Raza: </strong>{{ mascota.raza }} </p>
+      <p class="h4 titulo"><strong>Género: </strong>{{ (mascota.genero == 'H') ? 'Hembra' : 'Macho' }} </p>
+      <p class="h4 titulo"><strong>Tipo: </strong>{{ mascota.tipo_mascota }} </p>
+      <p class="h4 titulo"><strong>Estado: </strong>{{ mascota.estado_salud }} </p>
+
+      <p><button type="button" class="btn btn-info titulo" data-bs-toggle="modal"
+          data-bs-target="#exampleModalU">Actualizar mascota</button></p>     
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalU" tabindex="-1" aria-labelledby="exampleModalULabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title titulo" id="exampleModalULabel">Editar</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+                  <form class="row g-3 " [formGroup]="form" (ngSubmit)="actualizarMascota()">
+                      <div class="col-md-6">
+                          <label for="inputNombr3" class="form-label">Nombre:</label>
+                          <input type="text" class="form-control border-info" formControlName="nombre">
+                      </div>
+              
+                      <div class="col-md-6">
+                          <label for="inputApell3" class="form-label">Edad:</label>
+                          <input type="text" class="form-control border-info" formControlName="edad">
+                      </div>
+                      
+                      <div class="col-md-6">
+                          <label for="inputCelu3" class="form-label">Raza</label>
+                          <input type="text" class="form-control border-info" formControlName="raza">
+                      </div>
+              
+                      <div class="col-md-6">
+                          <label for="inputDirec3" class="form-label">Género</label>
+                          <input type="text" class="form-control border-info" formControlName="genero">
+                      </div>
+              
+                      <div class="col-md-6">
+                          <label for="inputEmail3" class="form-label">Tipo</label>
+                          <input type="text" class="form-control border-info" formControlName="tipo_mascota">
+                      </div>
+
+                      <div class="col-md-6">
+                        <label for="inputPass3" class="form-label">Estado</label>
+                        <input type="text" class="form-control border-info" id="input3" formControlName="estado_salud">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" type="submit" class="btn btn-info">Guardar</button>
+                    </div>
+            
+                  </form>
+          </div>
+
+      </div>
+  </div>
+</div>
+
+<div class="container">
+    <button type="button" class="btn btn-secondary" (click)="volver()" data-bs-dismiss="modal">Volver</button>
+</div>
+
+
+<!-- Modal Cambio de foto-->
+<div class="modal fade" id="exampleModalF" tabindex="-1" aria-labelledby="exampleModalFLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalFLabel">Cambiar Foto De Perfil</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">     
+          <form [formGroup]="formIMG" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <input type="file" (change)="upload($event)">
+            </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Subir Foto</button>
+        </div>
+      </form>
+      </div>
+      </div>
+    </div>
+  </div>

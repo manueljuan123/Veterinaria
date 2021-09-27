@@ -15,7 +15,7 @@ from app.schemas.tipo_cita_schema import tipo_cita_schema
 
 HistoriaRouter = Blueprint('historia', __name__, url_prefix='/historia')
 
-@HistoriaRouter.route('/crear', methods=['POST'])
+'''@HistoriaRouter.route('/crear', methods=['POST'])
 def crear_historia():
     j = request.get_json()
     token = request.headers.get('Authorization')
@@ -34,7 +34,17 @@ def crear_historia():
     except IntegrityError as err:
         return {"errors": f'{err}'}, 422
 
-    return make_response(historia_schema.dump(historia)), 201
+    return make_response(historia_schema.dump(historia)), 201'''
+
+@HistoriaRouter.route('/crear', methods=['POST'])
+def crear_historia():
+    json = request.get_json()
+    observacion = json['observacion']
+    medicamentos = json['medicamentos']
+    fecha = json['fecha']
+    tipo_cita_id = json['tipo_cita_id']
+    veterinario_id = json['veterinario_id']
+    
 
 
 # Listado de todas las historias

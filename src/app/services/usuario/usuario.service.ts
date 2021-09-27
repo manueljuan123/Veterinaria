@@ -18,8 +18,9 @@ export class UsuarioService {
   }
 
   // Actualizar usuario en específico
-  actualizar_usuario_put_request(data:any){
-    return this.http.put<any>(this.BASE_URL+'/usuario/actualizar', data)
+  actualizar_usuario_put_request(data:any): Observable<UsuarioI>{
+    let ruta = this.BASE_URL+"/usuario/actualizar"
+    return this.http.put<UsuarioI>(ruta, data)
   }
 
 

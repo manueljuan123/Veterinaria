@@ -1,17 +1,21 @@
 
+from app.models.mascota_model import MascotaModel
 from flask import Blueprint, request
+from flask import json
 from werkzeug.utils import secure_filename
 import os
 from flask.json import jsonify
 from werkzeug.exceptions import abort
 from app.models.rol_model import RolModel
-from flask.helpers import make_response
+from flask.helpers import make_response, send_file
 from peewee import IntegrityError
 from flask import Blueprint, request
 from datetime import datetime
 
 from app.schemas.usuario_schema import user_schema, users_schema
 from app.models.usuario_model import UserModel
+from marshmallow.exceptions import ValidationError
+
 
 
 
@@ -35,20 +39,23 @@ def crear_usuario():
 
 
 # Actualizar usuario en específico
-@UsuarioRouter.route('/actualizar/<int:id>', methods=['PUT'])
-def actualizar_usuario(id):
+@UsuarioRouter.route('/actualizar', methods=['PUT'])
+def actualizar_usuario():
     j = request.get_json()
+    token = request.headers.get('Authorization')
+    auth = UserModel.decode_jwt(token[7:])
+    user = UserModel.select().where(UserModel.email==auth['payload']).get()
     try:
         schema = user_schema.load(j)
-    except:
-        abort(make_response(jsonify(message="Dato inválido", error=True), 422))
+    except ValidationError as error:
+        abort(make_response(jsonify(message="Dato inválido", error=True, errors=error.messages), 422))
     try:
-        user = UserModel.update(actualizado=datetime.now(), **schema).where(UserModel.id==id).execute()
+        usuario = UserModel.update(actualizado=datetime.now(), **schema).where(UserModel.id==user.id).execute()
     except IntegrityError as err:
         return {"errors": f'{err}'}, 422
 
-    user = UserModel.get(id=id)
-    return user_schema.dump(user), 202
+    usuario = UserModel.get(id=user.id)
+    return user_schema.dump(usuario), 202
 
 # Inhabilitar usuario en específico
 @UsuarioRouter.route('/eliminar/<int:id>', methods=['DELETE'])
@@ -72,6 +79,13 @@ def obtener_usuario():
     user = UserModel.get_or_none(id=user_token.id)
         
     return user_schema.dump(user), 200
+
+
+# Obtener datos del usuario conectado en específico
+@UsuarioRouter.route('/get/<int:id>', methods=['GET'])
+def obtener_datos_usuario(id):
+    usuario = UserModel.get_or_none(id=id)
+    return make_response(jsonify(user_schema.dump(usuario))), 200
 
 
 # Listado de todos los usuarios
@@ -108,20 +122,23 @@ def list_clientes():
     return make_response(users_schema.dumps(duenos)), 200
 
 
-# Cargar foto
+# Cargar foto usuario o veterinario
 @UsuarioRouter.route('/uploader', methods=['POST'])
-def upload_file():
+def subir_imagen_usuario():
       f = request.files['img']
       token = request.headers.get('Authorization')
       auth = UserModel.decode_jwt(token[7:])
       user = UserModel.select().where(UserModel.email==auth['payload']).get()
       currentUser = str(user.id)
-      ruta = "BACKEND/imagen/perfil_"+currentUser+".jpg"
+      ruta = "BACKEND/imagen/perfil_"+currentUser+"/"+currentUser+".jpg"
       os.mkdir('imagen/'+'perfil_'+currentUser)
       f.save(os.path.join('imagen/'+'perfil_'+currentUser, secure_filename(currentUser+".jpg")))
       return ruta
 
-
+# Mostrar foto del usuario
+@UsuarioRouter.route('/mostrar_foto/<int:id>', methods=["GET"])
+def mostrar(id):
+    return send_file(f'/home/juan/Escritorio/Veterinaria/BACKEND/imagen/perfil_{id}/{id}.jpg', mimetype='image/jpg')
 
 
 

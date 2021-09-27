@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MascotaI } from 'src/app/models/mascota.interface'
-import { UsuarioI } from '../../models/usuario.interface';
 import { TipoMascota } from 'src/app/models/mascota.interface';
 @Injectable({
   providedIn: 'root'
@@ -19,8 +18,9 @@ export class MascotaService {
   }
 
   // Actualizar mascota en específico
-  actualizar_mascota_put_request(id:any, data){
-    return this.http.put<any>(this.BASE_URL+'/mascota/actualizar/'+id, data)
+  actualizar_mascota_put_request(data:any, id?:any): Observable<MascotaI>{
+    let ruta = this.BASE_URL+"/mascota/actualizar/"+id
+    return this.http.put<MascotaI>(ruta, data)
   }
 
   // Inhabilitar mascota en específico
@@ -41,21 +41,10 @@ export class MascotaService {
   }
 
     // Obtener mascota en específico
-  async obtener_mascota_get_request(data:any){
-    try
-    {const response = await fetch(this.BASE_URL+'/mascota/get/<int:id>',
-                                  {method: 'GET',
-                                  body: JSON.stringify(data),
-                                  headers:{
-                                    'Content-Type':'application/json'}})
-                                  return await response.json
-  }
-  catch(error){
-    console.log(error)
-
-  }
-  return false
-  }
+  obtener_mascota_get_request(id?:any): Observable<MascotaI>{
+    let ruta = this.BASE_URL+"/mascota/get/"+id
+    return this.http.get<MascotaI>(ruta)
+    }
 
 
   // Listado de todas las mascotas

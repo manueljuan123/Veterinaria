@@ -38,7 +38,8 @@ import { VeterinariosUsuarioComponent } from './components/veterinarios-usuario/
 import { AgendarCitaUsuarioComponent } from './components/agendar-cita-usuario/agendar-cita-usuario.component';
 import { FooterUsuarioComponent } from './components/footer-usuario/footer-usuario.component';
 import { MisMascotasUsuComponent } from './components/mis-mascotas-usu/mis-mascotas-usu.component';
-
+import { HistoriaClinicaComponent } from './components/historia-clinica/historia-clinica.component';
+import { PerfilMascotaComponent } from './components/perfil-mascota/perfil-mascota.component';
 
 // Containers
 import { ContenedorHomeComponent } from './containers/contenedor-home/contenedor-home.component';
@@ -67,7 +68,7 @@ import { TokenInterceptorService } from './services/auth/token-interceptor.servi
 
 // Shared
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator';
-import { HistoriaClinicaComponent } from './components/historia-clinica/historia-clinica.component';
+
 
 
 
@@ -123,7 +124,8 @@ import { HistoriaClinicaComponent } from './components/historia-clinica/historia
     VeterinariosUsuarioComponent,
     AgendarCitaUsuarioComponent,
     FooterUsuarioComponent,
-    HistoriaClinicaComponent
+    HistoriaClinicaComponent,
+    PerfilMascotaComponent
 
   ],
   imports: [

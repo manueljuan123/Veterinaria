@@ -1,8 +1,10 @@
 <div class="pt-2"></div>
 <div class="header">
     <div>
-        <img src="https://images.pexels.com/photos/7014337/pexels-photo-7014337.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" 
-          class="avatar" />          
+        <img src="http://localhost:5000/usuario/mostrar_foto/{{usuario.id}}" 
+          class="avatar" />       
+            <!--CSS: background-image: url("https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");-->
+   
           <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalF" >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
             <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
@@ -34,43 +36,40 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-                  <form class="row g-3 ">
+                  <form class="row g-3" [formGroup]="form" (ngSubmit)="actualizarUsuario()">
                       <div class="col-md-6">
                           <label for="inputNombr3" class="form-label">Nombre:</label>
-                          <input type="text" class="form-control border-info" id="inputNombr3" placeholder="Nombre">
+                          <input type="text" class="form-control border-info" id="inputNombr3" formControlName="nombre">
                       </div>
               
                       <div class="col-md-6">
                           <label for="inputApell3" class="form-label">Apellido: </label>
-                          <input type="text" class="form-control border-info" id="inputApell3" placeholder="Apellido">
+                          <input type="text" class="form-control border-info" id="inputApell3" formControlName="apellido">
                       </div>
                       
                       <div class="col-md-6">
                           <label for="inputCelu3" class="form-label">Celular</label>
-                          <input type="text" class="form-control border-info" id="inputCelu3" placeholder="Celular">
+                          <input type="text" class="form-control border-info" id="inputCelu3" formControlName="celular">
                       </div>
               
                       <div class="col-md-6">
                           <label for="inputDirec3" class="form-label">Direccion</label>
-                          <input type="text" class="form-control border-info" id="inputDirec3" placeholder="Direccion">
+                          <input type="text" class="form-control border-info" id="inputDirec3" formControlName="direccion">
                       </div>
               
                       <div class="col-md-6">
                           <label for="inputEmail3" class="form-label">Email</label>
-                          <input type="text" class="form-control border-info" id="inputEmail3" placeholder="Email">
+                          <input type="text" class="form-control border-info" id="inputEmail3" formControlName="email">
                       </div>
 
-                      <div class="col-md-6">
-                        <label for="inputPass3" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control border-info" id="input3" placeholder="Contraseña">
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-info">Guardar</button>
                     </div>
             
                   </form>
           </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-info">Guardar</button>
-          </div>
+
       </div>
   </div>
 </div>
@@ -85,12 +84,17 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">     
-          Cambiar foto (Proximamente...)
-        </div>
+          <form [formGroup]="formIMG" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <input type="file" (change)="upload($event)">
+            </div>
+          
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
           <button type="submit" class="btn btn-primary">Subir Foto</button>
         </div>
+      </form>
       </div>
     </div>
+  </div>
   </div>

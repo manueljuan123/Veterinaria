@@ -1,11 +1,14 @@
+import os
 from werkzeug.exceptions import abort
 from app.models.usuario_model import UserModel
-from flask.helpers import make_response
+from flask.helpers import make_response, send_file
 from marshmallow.exceptions import ValidationError
 from peewee import IntegrityError
 from app.models.mascota_model import MascotaModel
 from datetime import datetime
 from flask import Blueprint, request
+from werkzeug.utils import secure_filename
+
 
 from flask import Blueprint, request, jsonify
 from app.schemas.mascota_schema import mascota_schema, mascotas_schema
@@ -37,6 +40,9 @@ def create_mascota():
 @MascotaRouter.route('/actualizar/<int:id>', methods=['PUT'])
 def actualizar_mascota(id):
     j = request.get_json()
+    token = request.headers.get('Authorization')
+    auth = UserModel.decode_jwt(token[7:])
+    user = UserModel.select().where(UserModel.email==auth['payload']).get()
     try:
         schema = mascota_schema.load(j)
     except ValidationError as err:
@@ -86,6 +92,23 @@ def obtener_mascotas_usuario():
     user = UserModel.select().where(UserModel.email==auth['payload']).get()
     mascotasUsuario = MascotaModel.select().where(MascotaModel.usuario_id == user.id).execute()
     return mascotas_schema.dumps(mascotasUsuario), 200
+
+
+# Cargar foto de la mascota
+@MascotaRouter.route('/uploader_mascota/<int:id>', methods=['POST'])
+def subir_imagen_mascota(id):
+      f = request.files['img']
+      currentMascota = MascotaModel.get_or_none(id_mascota=id)
+      mascota = str(currentMascota)
+      ruta = "BACKEND/imagen/mascota_"+mascota+"/"+mascota+".jpg"
+      os.mkdir('imagen/'+'mascota_'+mascota)
+      f.save(os.path.join('imagen/'+'mascota_'+mascota, secure_filename(mascota+".jpg")))
+      return ruta
+
+# Mostrar foto de la mascota
+@MascotaRouter.route('/mostrar_foto_mascota/<int:id>', methods=["GET"])
+def mostrar_foto_mascota(id):
+    return send_file(f'/home/juan/Escritorio/Veterinaria/BACKEND/imagen/mascota_{id}/{id}.jpg', mimetype='image/jpg')
 
 
 

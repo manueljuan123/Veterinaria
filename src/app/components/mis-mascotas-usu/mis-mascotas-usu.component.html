@@ -8,13 +8,9 @@
             <div class="card border-info" style="width: 18rem;">
 
                 <li class="list-group-item border-info titulo">{{ mascota.nombre | uppercase }}</li>
-                <img src="../../../assets/img/logo.png" class="card-img-top" alt="...">
+                <img src="http://localhost:5000/mascota/mostrar_foto_mascota/{{mascota.id_mascota}}" class="card-img-top" alt="...">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item border-info">Edad: {{ mascota.edad }}</li>
-                    <li class="list-group-item border-info">Raza: {{ mascota.raza }}</li>
-                    <li class="list-group-item border-info">Género: {{ (mascota.genero == 'H') ? 'Hembra' : 'Macho' }}</li>
-                    <li class="list-group-item border-info">Tipo: {{ mascota.tipo_mascota }}</li>
-                    <li class="list-group-item border-info">Estado: {{ mascota.estado_salud }}</li>
+                    <li class="list-group-item text-center"><button (click)="detalles(mascota.id_mascota)" type="button" class="btn btn-info">Detalles</button></li>
                 </ul>
             </div>
         </div>
@@ -66,7 +62,6 @@
         <div class="col-md-4">
             <label for="inputState" class="form-label">Tipo Mascota</label>
             <select id="inputState" class="form-control" formControlName="tipo_mascota" class="form-select border-info">
-                <option [selected]>Tipo</option>
                     <option>Perro</option>
                     <option>Gato</option>
                     <option>Ave</option>
