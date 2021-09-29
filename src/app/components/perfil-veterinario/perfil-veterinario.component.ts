@@ -50,6 +50,12 @@ export class PerfilVeterinarioComponent implements OnInit {
 
  }
 
+ getVet(){
+      let vet = this.veterinariosS.obtener_usuario_get_request().subscribe(res => {
+        this.veterinario = res;
+        return vet})
+}
+
  actualizarVeterinario(){
   this.veterinariosS.actualizar_usuario_put_request(this.formVet.value)
   .subscribe(
@@ -61,7 +67,7 @@ export class PerfilVeterinarioComponent implements OnInit {
         showConfirmButton : false,
         timer: 3000 
         })
-        
+        this.getVet()
         
     },
     err => {
@@ -92,7 +98,6 @@ export class PerfilVeterinarioComponent implements OnInit {
 
       this.auth.postRequestSendForm('http://localhost:5000/usuario/uploader', formData).subscribe(
         (response: any) => {
-          this.imagen = response.ruta
         },
       (error) => {
         console.log(error.status);

@@ -26,6 +26,12 @@ export class PerfilUsuarioComponent implements OnInit {
     email: new FormControl('', [Validators.required]),
   })
 
+  getUser(){
+    let user = this.usuariosS.obtener_usuario_get_request().subscribe(res => {
+      this.usuario = res;
+      return user
+    })
+  }
 
 
   ngOnInit(): void {
@@ -61,6 +67,7 @@ export class PerfilUsuarioComponent implements OnInit {
           showConfirmButton : false,
           timer: 3000 
           })
+          this.getUser()
           
           
       },

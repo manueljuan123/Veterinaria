@@ -44,7 +44,14 @@ export class MisMascotasUsuComponent implements OnInit {
       }
     })  
 
+  
+  }
 
+  getPets(){
+    let pets =  this.mascotaService.listado_mascotas_usuario_get_request().subscribe(res =>{ 
+      this.mascotas = res;
+      return pets
+    })
   }
 
   async submit(){
@@ -57,7 +64,8 @@ export class MisMascotasUsuComponent implements OnInit {
               icon: 'success',
               showConfirmButton : false,
               timer: 3000 
-              })
+              }),
+              this.getPets()
 
       }, err => {
         console.log(err)

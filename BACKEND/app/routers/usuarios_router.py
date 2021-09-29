@@ -69,7 +69,7 @@ def eliminar_usuario(id):
     return user_schema.dump(user)
 
 
-# Obtener usuario en específico
+# Obtener usuario conectado en específico
 @UsuarioRouter.route('/get', methods=['GET'])
 def obtener_usuario():
     token = request.headers.get('Authorization')
@@ -81,7 +81,7 @@ def obtener_usuario():
     return user_schema.dump(user), 200
 
 
-# Obtener datos del usuario conectado en específico
+# Obtener datos del usuario en específico
 @UsuarioRouter.route('/get/<int:id>', methods=['GET'])
 def obtener_datos_usuario(id):
     usuario = UserModel.get_or_none(id=id)

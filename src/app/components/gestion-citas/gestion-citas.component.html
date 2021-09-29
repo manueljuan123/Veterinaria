@@ -20,8 +20,10 @@
                 <td>{{ agenda.mascota.nombre }}</td>
                 <td>{{ agenda.usuario.nombre }} {{ agenda.usuario.apellido }}</td>
                 <td>{{ agenda.motivo }}</td>
-                <td>{{ agenda.fecha_inicio }}</td>
-                <td>{{ agenda.fecha_final }}</td>
+                <td>{{ agenda.fecha_inicio | date:"short" }}</td>
+                <td>{{ agenda.fecha_final | date:"short"}}</td>
             </tr>
     </table>
 </div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

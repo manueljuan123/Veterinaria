@@ -1,6 +1,8 @@
 
 <div class="container pt-2" >
-    
+    <div *ngIf="mascotas.length === 0" class="card p-2">
+        <h6>No hay mascotas para mostrar. ¡Crea tu mascota!</h6>
+    </div>
     <p class="lead titulo">Mis Mascotas</p>
     <div class="row row-cols-1 row-cols-md-3 g-4 ">
         <tr *ngFor='let mascota of mascotas'>

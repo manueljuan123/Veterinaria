@@ -36,6 +36,12 @@ export class UsuarioService {
     return this.http.get<UsuarioI>(ruta)
   }
 
+  // Obtener datos de usuario o veterinario en específico
+  obtener_datos_usuario(id?:any): Observable<UsuarioI>{
+    let ruta = this.BASE_URL+"/usuario/get/"+id
+    return this.http.get<UsuarioI>(ruta)
+    }
+
   // Listado de todos los usuarios
   listado_usuarios_get_request():Observable<UsuarioI[]>{
     let ruta = this.BASE_URL + "/usuario/listado_usuarios"

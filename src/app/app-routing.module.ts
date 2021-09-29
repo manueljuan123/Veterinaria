@@ -23,6 +23,7 @@ import { PerfilMascotaComponent } from './components/perfil-mascota/perfil-masco
 import { NoAuthGuard } from './guards/no-auth.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
+import { PerfilVeterinarioUsuarioComponent } from './components/perfil-veterinario-usuario/perfil-veterinario-usuario.component';
 
 
 const routes: Routes = [
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path: 'vista-mis-citas-usuario', component: VistaMisCitasUsuComponent},
   {path: 'vista-mis-mascotas-usuario', component: VistaMisMascotasUsuComponent},
   {path: 'vista-editar-mi-mascota/:id', component: PerfilMascotaComponent},
-  {path: 'vista-veterinarios-usuario', component: VistaVeterinariosUsuComponent, canActivate:[AuthGuard]},
+  {path: 'vista-veterinarios-usuario', component: VistaVeterinariosUsuComponent},
+  {path: 'vista-detalles-veterinario/:id', component: PerfilVeterinarioUsuarioComponent},
   {path: 'vista-perfil-usuario', component: VistaPerfilUsuComponent},
 
   // Vista veterinario
@@ -46,10 +48,10 @@ const routes: Routes = [
   {path: 'vista-veterinario-mis-agendas/:id', component: VistaMisAgendasComponent},
 
   // Vista Admin
-  {path: 'vista-admin-gestion-citas', component:GestionCitasAdminComponent, canActivate:[AdminGuard]},
-  {path: 'vista-admin-gestion-usuarios', component:GestionUsuarioAdminComponent, canActivate:[AdminGuard]},
-  {path: 'vista-admin-veterinarios', component:GestionVeterinariosAdminComponent, canActivate:[AdminGuard]},
-  {path: 'vista-admin-mascotas',component:MascotasComponent, canActivate:[AdminGuard]}
+  {path: 'vista-admin-gestion-citas', component:GestionCitasAdminComponent},
+  {path: 'vista-admin-gestion-usuarios', component:GestionUsuarioAdminComponent},
+  {path: 'vista-admin-veterinarios', component:GestionVeterinariosAdminComponent},
+  {path: 'vista-admin-mascotas',component:MascotasComponent}
 
 ];
 

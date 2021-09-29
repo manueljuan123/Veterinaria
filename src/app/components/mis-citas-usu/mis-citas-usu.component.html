@@ -1,5 +1,8 @@
 
 <div class="container pt-4">
+    <div *ngIf="agendas.length === 0" class="card p-2">
+        <h6>No hay citas agendadas aún</h6>
+    </div>
     <table class="table table-hover">
         <thead>
             <tr class="table-info">

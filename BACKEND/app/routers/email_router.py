@@ -71,7 +71,7 @@ def consulta():
 
 # Enviar historias clínicas al cliente
 @EmailRouter.route('/enviar_historia', methods=['POST'])
-def envio_historia(email):
+def envio_historia():
 
     j = request.get_json()
     observacion = j['observacion']
@@ -80,6 +80,7 @@ def envio_historia(email):
     tipo_cita_id = j['tipo_cita_id']
     mascota_id = j['mascota_id']
     veterinario_id = j['veterinario_id']
+    email = j['email']
     
     
     #credenciales

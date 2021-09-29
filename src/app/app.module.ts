@@ -68,6 +68,7 @@ import { TokenInterceptorService } from './services/auth/token-interceptor.servi
 
 // Shared
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator';
+import { PerfilVeterinarioUsuarioComponent } from './components/perfil-veterinario-usuario/perfil-veterinario-usuario.component';
 
 
 
@@ -125,7 +126,8 @@ import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator
     AgendarCitaUsuarioComponent,
     FooterUsuarioComponent,
     HistoriaClinicaComponent,
-    PerfilMascotaComponent
+    PerfilMascotaComponent,
+    PerfilVeterinarioUsuarioComponent
 
   ],
   imports: [

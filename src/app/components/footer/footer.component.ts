@@ -23,6 +23,13 @@ export class FooterComponent implements OnInit {
 )
   }
 
+  limpiarFormulario(){
+    this.form.patchValue({
+      email:'',
+      consulta:''
+    })
+  }
+
   async submit(){
     this.consulta.consultar_post_request(this.form.value)
     .subscribe(
@@ -33,7 +40,7 @@ export class FooterComponent implements OnInit {
           icon: 'success',
           showConfirmButton : false,
           timer: 3000
-          })
+          }), this.limpiarFormulario()
         
       }
     )

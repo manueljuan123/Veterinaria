@@ -40,11 +40,16 @@ export class GestionUsuariosComponent implements OnInit {
   
   }
 
+  getAll(){
+    let users = this.usuarioService.listado_usuarios_get_request().subscribe(res =>{
+      this.usuarios = res;
+      return users})
+  }
+
   async submit(){
     this.usuarioService.crear_usuario_post_request(this.form.value)
     .subscribe(
       (res:any) => {
-        this.route.navigate(['/vista-admin-gestion-usuarios'])
             Swal.fire({
               title: "Éxito",
               text:"Veterinario creado con satisfacción",
@@ -52,6 +57,7 @@ export class GestionUsuariosComponent implements OnInit {
               showConfirmButton : false,
               timer: 3000 
               })
+              this.getAll()
 
       }, err => {
         Swal.fire({

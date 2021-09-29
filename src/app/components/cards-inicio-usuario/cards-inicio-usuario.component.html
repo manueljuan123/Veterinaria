@@ -1,5 +1,9 @@
 
 <div class="container">
+    <div *ngIf="agendas.length === 0" class="card p-2">
+        <h6>No hay agendas disponibles por hoy</h6>
+    </div>
+    <h1>Agendas disponibles</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4  pt-3">
         <tr *ngFor="let agenda of agendas">
         <div class="col">

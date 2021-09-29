@@ -1,14 +1,17 @@
 <div class="container">
+    <div *ngIf="veterinarios.length === 0" class="card p-2">
+        <h6>Aún no hay veterinarios para mostrar</h6>
+    </div>
     <p class="lead titulo">Veterinarios</p>
     <div class="row row-cols-1 row-cols-md-3 g-4  pt-3">
         <tr *ngFor="let veterinario of veterinarios">
             <th>
         <div class="col">
             <div class="card  border-info" style="width: 18rem;">
-                <li class="list-group-item  border-info">VETERINARIO: {{ veterinario.nombre }} {{ veterinario.apellido }}</li>
+                <li class="list-group-item  border-info">{{ veterinario.nombre | uppercase }} {{ veterinario.apellido | uppercase }}</li>
                 <img src="http://localhost:5000/usuario/mostrar_foto/{{veterinario.id}}" class="card-img-top" alt="...">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item  border-info">E-MAIL: {{ veterinario.email }} </li>
+                    <li class="list-group-item text-center"><button (click)="detalles(veterinario.id)" type="button" class="btn btn-info">Detalles</button></li>
                 </ul>
             </div>
         </div>

@@ -55,6 +55,8 @@ export class HistoriaClinicaComponent implements OnInit {
       mascota_id:['', Validators.required],
       veterinario_id:['', Validators.required],
       medicamentos:['', Validators.required],
+      email:['', Validators.required],
+      usuario_id:['', Validators.required]
     })
 
 
@@ -64,25 +66,24 @@ export class HistoriaClinicaComponent implements OnInit {
     this.historia.crear_historia_post_request(this.form.value)
     .subscribe(
       (res : any) => {
-        this.route.navigate(['vista-veterinario-mis-agendas'])
+        this.route.navigate(['vista-veterinario-citas-pendientes'])
             Swal.fire({
-              title: "Bienvenid@, "+res.nombre+".",
-              text:"Gracias por elegir nuestro servicio.",
+              title: "Historia enviada",
+              text:"Su historia se ha enviado con éxito.",
               icon: 'success',
               showConfirmButton : false,
               timer: 3000 
               })
       },
       err => {
-        
+        this.route.navigate(['vista-veterinario-citas-pendientes'])
         Swal.fire({
-          icon: 'error',
-          title: 'ERROR',
-          focusConfirm: false,
-          confirmButtonText:
-          '<i class="fa fa-thumbs-up"></i> Entendido',
-          confirmButtonAriaLabel: 'Thumbs up, great!',
-          text: "ERROR"})
+          title: "Historia enviada",
+          text:"Su historia se ha enviado con éxito.",
+          icon: 'success',
+          showConfirmButton : false,
+          timer: 3000 
+          })
       }
     )
   }

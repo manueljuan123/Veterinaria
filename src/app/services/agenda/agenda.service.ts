@@ -54,4 +54,10 @@ export class AgendaService {
     let ruta = this.BASE_URL+"/agenda/listado_tipo_cita"
     return this.http.get<TipoCitaI[]>(ruta)
   }
+
+  // Eliminar o marcar como agendada la agenda
+  agendar_cita_delete_request(id?:any): Observable<AgendaI>{
+    let ruta = this.BASE_URL+"/agenda/eliminar/"+id
+    return this.http.delete<AgendaI>(ruta)
+  }
 }

@@ -54,6 +54,12 @@ export class PerfilMascotaComponent implements OnInit {
     })
   }
 
+  getPet(id){
+    let pet = this.mascotaS.obtener_mascota_get_request(id).subscribe(res =>{
+      this.mascota = res;
+      return pet})
+  }
+
   actualizarMascota(){
     this.mascotaS.actualizar_mascota_put_request(this.form.value, this.mascota.id_mascota)
     .subscribe(
@@ -66,7 +72,7 @@ export class PerfilMascotaComponent implements OnInit {
             showConfirmButton : false,
             timer: 3000 
             })
-            
+            this.getPet(this.mascota.id_mascota)
             
         },
         err => {

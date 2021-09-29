@@ -1,20 +1,25 @@
+<br><br><br>
 <h1 class="titulo">Citas Pendientes</h1>
-<div class="container">
-    <table class="table table-dark table-striped">
+<div class="container" *ngFor="let agenda of agendasPendientes" >
+    <div *ngIf="agenda.mascota === null" class="card p-2">
+        <h6>No hay agendas tomadas aún</h6>
+    </div>
+    <div *ngIf="agendasPendientes.length === 0" class="card p-2">
+        <h6>Crea tu agenda para ver esta sección</h6>
+    </div>
+    <table class="table table-dark table-striped" *ngIf="agenda.mascota !== null">
         <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nombre</th>
+                <th scope="col">ID Agenda</th>
                 <th scope="col">Mascota</th>
                 <th scope="col">Hora Inicio</th>
                 <th scope="col">Hora Final</th>
-                <th scope="col">Historia / Eliminar</th>
+                <th scope="col">Historia / Agendado</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let agenda of agendasPendientes">
                 <th>{{ agenda.id_agenda }}</th>
-                <th>{{ agenda.nombre }}</th>
                 <td>{{ agenda.mascota.nombre }}</td>
                 <td>{{ agenda.fecha_inicio | date:'short' }}</td>
                 <td>{{ agenda.fecha_final | date:'short' }}</td>
@@ -31,13 +36,11 @@
                               </button>
                         </div>
                         <div class="col-3">
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button type="button" type="submit" class="btn btn-warning" (click)="agendarCita(agenda.id_agenda)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash2" viewBox="0 0 16 16">
                                     <path d="M14 3a.702.702 0 0 1-.037.225l-1.684 10.104A2 2 0 0 1 10.305 15H5.694a2 2 0 0 1-1.973-1.671L2.037 3.225A.703.703 0 0 1 2 3c0-1.105 2.686-2 6-2s6 .895 6 2zM3.215 4.207l1.493 8.957a1 1 0 0 0 .986.836h4.612a1 1 0 0 0 .986-.836l1.493-8.957C11.69 4.689 9.954 5 8 5c-1.954 0-3.69-.311-4.785-.793z"/>
                                   </svg>
                             </button>
-
-                            
                         </div>
                     </div>
                 </td>

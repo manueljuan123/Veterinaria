@@ -26,7 +26,7 @@
     
       <div class="col-md-6">
           <label for="floatingInputValue">Fecha Y Hora de Final</label>
-          <input type="datetime-local" class="form-control" formControlName="fecha_final" id="floatingInputValue" value="">
+          <input type="datetime-local" class="form-control" formControlName="fecha_final" id="floatingInputValue">
       </div>
     </div>
   </div>
@@ -34,10 +34,44 @@
 </form>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-    <button class="btn btn-outline-info" (click)="submit()" type="submit">Crear Espacio</button>
+    <button class="btn btn-outline-info" [disabled]="form.invalid" (click)="submit()" type="submit">Crear Espacio</button>
   </div>
 </div>
 </div>
+</div>
+</div>
+</div>
 
-<br>
-<br>
+<div class="container">
+  <div *ngIf="agendas.length === 0" class="card p-2">
+      <h6>Aún no hay agendas para mostrar</h6>
+  </div>
+  <h1 class="titulo">Mis Agendas</h1>
+  <table class="table table-dark table-striped">
+      <thead>
+          <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Fecha Inicio</th>
+              <th scope="col">Fecha Final</th>
+              <th scope="col">Cancelar</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor='let agenda of agendas'>
+              <td>{{ agenda.nombre }}</td>
+              <td>{{ agenda.fecha_inicio | date:"short" }}</td>
+              <td>{{ agenda.fecha_final | date:"short" }}</td>
+              <td> <div class="row">
+                <div class="col-7">
+                    <button type="button" type="submit" class="btn btn-danger" (click)="cancelarAgenda(agenda.id_agenda)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash2" viewBox="0 0 16 16">
+                            <path d="M14 3a.702.702 0 0 1-.037.225l-1.684 10.104A2 2 0 0 1 10.305 15H5.694a2 2 0 0 1-1.973-1.671L2.037 3.225A.703.703 0 0 1 2 3c0-1.105 2.686-2 6-2s6 .895 6 2zM3.215 4.207l1.493 8.957a1 1 0 0 0 .986.836h4.612a1 1 0 0 0 .986-.836l1.493-8.957C11.69 4.689 9.954 5 8 5c-1.954 0-3.69-.311-4.785-.793z"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+          </td>
+          </tr>
+  </table>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

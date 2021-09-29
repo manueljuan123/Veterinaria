@@ -14,8 +14,7 @@ export class GestionVeterinariosComponent implements OnInit {
   constructor(private agendaService:AgendaService) { }
 
   ngOnInit(): void {
-    this.agendaService.obtener_agendas_veterinario_get_request().subscribe(res =>
-      this.agendas = res)
+
     }
   }
 
