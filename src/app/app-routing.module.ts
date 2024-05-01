@@ -1,7 +1,5 @@
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
-import { ContenedorHomeComponent } from './containers/contenedor-home/contenedor-home.component';
-import { ContenedorRegistroComponent } from './containers/contenedor-registro/contenedor-registro.component';
 import { ContenedorInfoComponent } from './containers/contenedor-info/contenedor-info.component';
 import { VistaInicioComponent } from './containers/contenedor-veterinario/vista-inicio/vista-inicio.component';
 import { VistaAgendarmeComponent } from './containers/contenedor-veterinario/vista-agendarme/vista-agendarme.component';
@@ -27,9 +25,7 @@ import { PerfilVeterinarioUsuarioComponent } from './components/perfil-veterinar
 
 
 const routes: Routes = [
-  {path: '', component: ContenedorInfoComponent},
-  {path: 'login', component: ContenedorHomeComponent},
-  {path: 'registro', component: ContenedorRegistroComponent},
+  { path: '', loadChildren: () => import('./public/public.module').then(m=> m.PublicModule) },
 
   // Vista usuario
   {path: 'vista-inicio-usuario', component: VistaInicioUsuComponent},

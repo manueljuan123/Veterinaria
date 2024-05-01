@@ -1,0 +1,158 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center align-items-center">
+      <form [formGroup]="form">
+        <section class="form-register">
+          <h4 class="main-title text-center">Sé parte de nuestra comunidad</h4>
+          <div>
+            <span
+              class="text-danger"
+              *ngIf="
+                form.get('nombre')?.hasError('required') &&
+                form.get('nombre')?.touched
+              "
+            >
+              El nombre <strong>es requerido</strong>
+            </span>
+            <input
+              class="controls"
+              formControlName="nombre"
+              type="text"
+              name="nombre"
+              id="nombre"
+              placeholder="Nombre"
+              required
+            />
+          </div>
+
+          <div>
+            <span
+              class="text-danger"
+              *ngIf="
+                form.get('apellido')?.hasError('required') &&
+                form.get('apellido')?.touched
+              "
+              >El apellido <strong>es requerido</strong>
+            </span>
+            <input
+              class="controls"
+              formControlName="apellido"
+              type="text"
+              name="apellido"
+              id="apellido"
+              placeholder="Apellido"
+              required
+            />
+          </div>
+
+          <div>
+            <span
+              class="text-danger"
+              *ngIf="
+                form.get('celular').hasError('required') &&
+                form.get('celular')?.touched
+              "
+              >El celular <strong>es requerido</strong>
+            </span>
+            <input
+              class="controls"
+              formControlName="celular"
+              type="text"
+              name="telefono"
+              id="telefono"
+              placeholder="Celular"
+              required
+            />
+          </div>
+
+          <div>
+            <span
+              class="text-danger"
+              *ngIf="
+                form.get('direccion').hasError('required') &&
+                form.get('direccion')?.touched
+              "
+              >La direccion <strong>es requerida</strong>
+            </span>
+            <input
+              class="controls"
+              formControlName="direccion"
+              type="text"
+              name="direccion"
+              id="direccion"
+              placeholder="Dirección"
+              required
+            />
+          </div>
+
+          <div>
+            <span
+              class="text-danger"
+              *ngIf="
+                form.get('email')?.hasError('required') &&
+                form.get('email')?.touched
+              "
+              >El e-mail <strong>es requerido</strong>
+            </span>
+
+            <span
+              class="text-danger"
+              *ngIf="
+                form.get('email')?.hasError('email') &&
+                form.get('email')?.touched
+              "
+              >El e-mail <strong>es inválido</strong>
+            </span>
+            <input
+              class="controls"
+              formControlName="email"
+              type="email"
+              name="correo"
+              id="email"
+              placeholder="E-mail"
+              required
+            />
+          </div>
+
+          <div>
+            <span
+              class="text-danger"
+              *ngIf="
+                form.get('password')?.hasError('required') &&
+                form.get('password')?.touched
+              "
+              >La contraseña <strong>es requerida</strong>
+            </span>
+            <input
+              class="controls"
+              formControlName="password"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Contraseña"
+              required
+            />
+          </div>
+          <!--
+                  <div>
+                    <span 
+                    class="text-danger" *ngIf="form.get('password') !== form.get('password')">La contraseña <strong>es requerida</strong>
+                    </span>
+                    <input class="controls" formControlName="password" appConfirmEqualValidator="password" type="password" name="password" id="password" placeholder="Confirmar contraseña" required>
+                  </div>
+                  -->
+          <!--<input type="checkbox" name="recordar" value="Sí"> Acepto los <a href="#">Términos y Condiciones</a>-->
+          <button
+            class="initial-button main-title"
+            [disabled]="form.invalid"
+            type="submit"
+            (click)="submit()"
+          >
+            Registrarse
+          </button>
+          <p class="secondary-title"><a routerLink="/login">¿Ya tienes una cuenta?</a></p>
+        </section>
+      </form>
+    </div>
+  </div>
+</div>

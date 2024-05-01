@@ -1,0 +1,27 @@
+.container {
+    margin-top: 10rem!important;
+    margin-bottom: 10rem!important;
+}
+
+.focus-gradient {
+  background: -webkit-linear-gradient(var(--light-yellow), var(--light-turquoise));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark-button {
+    background-color: var(--black);
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.light-button {
+    background-color: var(--light-yellow);
+    color: var(--turquoise);
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: 600;
+}
+

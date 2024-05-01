@@ -9,13 +9,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 // Components
 import { AppComponent } from './app.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
-import { LoginComponent } from './components/login/login.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CardsComponent } from './components/cards/cards.component';
 import { InfoComponent } from './components/info/info.component';
 import { VeterinarioTablaComponent } from './components/veterinario-tabla/veterinario-tabla.component';
-import { RegistroComponent } from './components/registro/registro.component';
 import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 import { SidebarAdminComponent } from './components/sidebar-admin/sidebar-admin.component';
 import { VeterinariosComponent } from './components/veterinarios/veterinarios.component';
@@ -42,8 +40,6 @@ import { HistoriaClinicaComponent } from './components/historia-clinica/historia
 import { PerfilMascotaComponent } from './components/perfil-mascota/perfil-mascota.component';
 
 // Containers
-import { ContenedorHomeComponent } from './containers/contenedor-home/contenedor-home.component';
-import { ContenedorRegistroComponent } from './containers/contenedor-registro/contenedor-registro.component';
 import { ContenedorInfoComponent } from './containers/contenedor-info/contenedor-info.component';
 import { VistaInicioComponent } from './containers/contenedor-veterinario/vista-inicio/vista-inicio.component';
 import { VistaAgendarmeComponent } from './containers/contenedor-veterinario/vista-agendarme/vista-agendarme.component';
@@ -69,6 +65,7 @@ import { TokenInterceptorService } from './services/auth/token-interceptor.servi
 // Shared
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator';
 import { PerfilVeterinarioUsuarioComponent } from './components/perfil-veterinario-usuario/perfil-veterinario-usuario.component';
+import { InitialTextComponent } from './components/home-components/initial-text/initial-text.component';
 
 
 
@@ -78,15 +75,11 @@ import { PerfilVeterinarioUsuarioComponent } from './components/perfil-veterinar
   declarations: [
     AppComponent,
     CarouselComponent,
-    LoginComponent,
     FooterComponent,
     NavbarComponent,
     CardsComponent,
-    RegistroComponent,
     InfoComponent,
     VeterinarioTablaComponent,
-    ContenedorHomeComponent,
-    ContenedorRegistroComponent,
     ContenedorInfoComponent,
     SidebarAdminComponent,
     PerfilUsuarioComponent,
@@ -127,8 +120,8 @@ import { PerfilVeterinarioUsuarioComponent } from './components/perfil-veterinar
     FooterUsuarioComponent,
     HistoriaClinicaComponent,
     PerfilMascotaComponent,
-    PerfilVeterinarioUsuarioComponent
-
+    PerfilVeterinarioUsuarioComponent,
+    InitialTextComponent,
   ],
   imports: [
     BrowserModule,

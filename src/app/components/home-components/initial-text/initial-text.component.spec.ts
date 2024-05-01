@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContenedorRegistroComponent } from './contenedor-registro.component';
+import { InitialTextComponent } from './initial-text.component';
 
-describe('ContenedorRegistroComponent', () => {
-  let component: ContenedorRegistroComponent;
-  let fixture: ComponentFixture<ContenedorRegistroComponent>;
+describe('InitialTextComponent', () => {
+  let component: InitialTextComponent;
+  let fixture: ComponentFixture<InitialTextComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContenedorRegistroComponent ]
+      declarations: [ InitialTextComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContenedorRegistroComponent);
+    fixture = TestBed.createComponent(InitialTextComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContenedorHomeComponent } from './contenedor-home.component';
+import { PublicComponent } from './public.component';
 
-describe('ContenedorHomeComponent', () => {
-  let component: ContenedorHomeComponent;
-  let fixture: ComponentFixture<ContenedorHomeComponent>;
+describe('PublicComponent', () => {
+  let component: PublicComponent;
+  let fixture: ComponentFixture<PublicComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContenedorHomeComponent ]
+      declarations: [ PublicComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContenedorHomeComponent);
+    fixture = TestBed.createComponent(PublicComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

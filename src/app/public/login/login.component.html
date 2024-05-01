@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center align-items-center">
+      <form [formGroup]="form">
+        <section class="form-register">
+          <h4 class="main-title text-center">¡Bienvenido nuevamente!</h4>
+          <h4 class="secondary-title text-center">Ingresa por favor tus credenciales</h4>
+          <div>
+            <!--Validaciones del LOGIN-->
+            <span
+              class="text-danger"
+              *ngIf="
+                form.get('email')?.hasError('required') &&
+                form.get('email')?.touched
+              "
+              >El e-mail <strong>es requerido</strong>
+            </span>
+            <br />
+            <span
+              class="text-danger"
+              *ngIf="
+                form.get('email')?.hasError('required') &&
+                form.get('email')?.touched
+              "
+              >El e-mail <strong>es inválido</strong>
+            </span>
+            <!--E-mail-->
+            <input
+              formControlName="email"
+              class="controls"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="E-mail"
+              required
+            />
+          </div>
+
+          <!--Password-->
+          <div>
+            <span
+              class="text-danger"
+              *ngIf="
+                form.get('password')?.hasError('required') &&
+                form.get('password')?.touched
+              "
+              >La contraseña <strong>es requerida</strong>
+            </span>
+            <input
+              formControlName="password"
+              class="controls"
+              type="password"
+              name="password"
+              placeholder="Contraseña"
+            />
+          </div>
+
+          <!--Inactividad de botón mientras el usuario no registre el formulario-->
+          <button
+            (click)="submit()"
+            [disabled]="form.invalid"
+            type="submit"
+            class="initial-button main-title"
+            name="submit"
+          >
+            Iniciar
+          </button>
+          <!--<p><a href="#" >¿Olvidaste tu contraseña?</a></p>-->
+          <p class="secondary-title"><a routerLink="/registro">REGÍSTRATE</a></p>
+        </section>
+      </form>
+    </div>
+  </div>
+</div>

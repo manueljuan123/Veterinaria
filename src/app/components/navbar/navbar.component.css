@@ -1,11 +1,50 @@
-a{
-    left: 250px;
+/* Estilos para el encabezado */
+.header-home {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: auto;
 }
-li{
-    display: block;
-    padding: 20px;
 
+/* Estilos para la barra de navegación */
+.nav-home {
+  display: flex;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  animation: nav-shadown 1s linear both;
+  animation-timeline: scroll();
+  animation-range: 0 100px;
 }
-p{
-    font-size: 1.5em
+
+/* Estilos para los elementos de navegación */
+.nav-home a {
+  position: relative;
+  display: block;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s;
+  color: var(--light-yellow);
+}
+
+@keyframes nav-shadown {
+  to {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    /* Agrega aquí otras propiedades de estilo */
+    background-color: rgba(255, 255, 255, 0.5); /* Ejemplo */
+    backdrop-filter: blur(25px);
+}
+}
+
+/* Estilos para el estado de hover */
+.nav-home a:hover {
+  color: var(--turquoise); /* Equivalente a hover:text-yellow-500 en Tailwind */
+}
+
+/* Estilos para el estado de hover en modo oscuro */
+.nav-home a:hover.dark {
+  color: #f59e0b; /* Equivalente a dark:hover:text-yellow-400 en Tailwind */
 }

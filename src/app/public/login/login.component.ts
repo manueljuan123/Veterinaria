@@ -9,7 +9,7 @@ import { UsuarioI, Rol } from '../../models/usuario.interface';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['../global-auth-styles.css']
 })
 export class LoginComponent implements OnInit {
 
